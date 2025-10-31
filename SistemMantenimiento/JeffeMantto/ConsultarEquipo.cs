@@ -16,5 +16,7 @@ namespace SistemMantenimiento.JeffeMantto
         {
             InitializeComponent();
         }
+
+    
     }
 }

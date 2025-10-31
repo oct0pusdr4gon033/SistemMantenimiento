@@ -35,6 +35,8 @@
             this.flp_top = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_recientes = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.gp_agregar = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.dtp_fecha_registro = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.cmb_estado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btn_agregar = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_estado = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -56,8 +58,6 @@
             this.lbl_marca = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_codigo_flota = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_codigo = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dtp_fecha_registro = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel_principal.SuspendLayout();
             this.gp_agregar.SuspendLayout();
@@ -158,6 +158,34 @@
             this.gp_agregar.Size = new System.Drawing.Size(786, 576);
             this.gp_agregar.TabIndex = 4;
             this.gp_agregar.Text = "Agregar Equipos";
+            // 
+            // dtp_fecha_registro
+            // 
+            this.dtp_fecha_registro.BackColor = System.Drawing.Color.White;
+            this.dtp_fecha_registro.BorderRadius = 10;
+            this.dtp_fecha_registro.Checked = true;
+            this.dtp_fecha_registro.FillColor = System.Drawing.Color.White;
+            this.dtp_fecha_registro.FocusedColor = System.Drawing.Color.White;
+            this.dtp_fecha_registro.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtp_fecha_registro.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtp_fecha_registro.Location = new System.Drawing.Point(498, 117);
+            this.dtp_fecha_registro.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtp_fecha_registro.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtp_fecha_registro.Name = "dtp_fecha_registro";
+            this.dtp_fecha_registro.Size = new System.Drawing.Size(247, 36);
+            this.dtp_fecha_registro.TabIndex = 22;
+            this.dtp_fecha_registro.Value = new System.DateTime(2025, 10, 30, 2, 27, 45, 40);
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(390, 129);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(77, 17);
+            this.guna2HtmlLabel1.TabIndex = 21;
+            this.guna2HtmlLabel1.Text = "Fecha Ingreso";
             // 
             // cmb_estado
             // 
@@ -512,34 +540,6 @@
             this.lbl_codigo.Size = new System.Drawing.Size(89, 17);
             this.lbl_codigo.TabIndex = 0;
             this.lbl_codigo.Text = "Codigo de Flota:";
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(390, 129);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(77, 17);
-            this.guna2HtmlLabel1.TabIndex = 21;
-            this.guna2HtmlLabel1.Text = "Fecha Ingreso";
-            // 
-            // dtp_fecha_registro
-            // 
-            this.dtp_fecha_registro.BackColor = System.Drawing.Color.White;
-            this.dtp_fecha_registro.BorderRadius = 10;
-            this.dtp_fecha_registro.Checked = true;
-            this.dtp_fecha_registro.FillColor = System.Drawing.Color.White;
-            this.dtp_fecha_registro.FocusedColor = System.Drawing.Color.White;
-            this.dtp_fecha_registro.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtp_fecha_registro.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtp_fecha_registro.Location = new System.Drawing.Point(498, 117);
-            this.dtp_fecha_registro.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtp_fecha_registro.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtp_fecha_registro.Name = "dtp_fecha_registro";
-            this.dtp_fecha_registro.Size = new System.Drawing.Size(247, 36);
-            this.dtp_fecha_registro.TabIndex = 22;
-            this.dtp_fecha_registro.Value = new System.DateTime(2025, 10, 30, 2, 27, 45, 40);
             // 
             // AgregarEquipos
             // 

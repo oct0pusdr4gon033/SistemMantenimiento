@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaEntidad.Equipo;
+using CapaEntidad.Equipo; 
 using CapaLogica.Equipo;
+
 
 namespace SistemMantenimiento.JeffeMantto
 {
     public partial class AgregarEquipos : Form
     {
+        private logEquipo objLogica = new logEquipo();
         public AgregarEquipos()
         {
             InitializeComponent();
@@ -21,37 +23,83 @@ namespace SistemMantenimiento.JeffeMantto
         }
         public void top_cinco(FlowLayoutPanel flp_top_cinco)
         {
-            // 1. (Recomendado) Limpia el panel antes de añadir nuevos controles
+           
             flp_top_cinco.Controls.Clear();
-
-            // 2. Asegúrate de que apile los controles verticalmente
             flp_top_cinco.FlowDirection = FlowDirection.TopDown;
-
-            // (Opcional) Añade un poco de relleno interno
             flp_top_cinco.Padding = new Padding(10);
 
-            for (int i = 1; i <= 5; i++)
+            try
             {
-                Label lbl = new Label();
-                lbl.Name = "lbl_top_" + i;
-                lbl.BackColor = Color.Red;
-                lbl.Size = new Size(150, 30); // El FlowLayoutPanel respetará este tamaño
-                lbl.Text = "Top " + i;
-                lbl.ForeColor = Color.White;
-                lbl.TextAlign = ContentAlignment.MiddleCenter;
+             
+                List<entEquipo> listaTopEquipos = objLogica.ListarTop5Equipos();
+                if (listaTopEquipos.Count > 0)
+                {
 
-                // (Opcional) Añade un margen para separarlos
-                lbl.Margin = new Padding(0, 0, 0, 5);
+                    foreach (entEquipo equipo in listaTopEquipos)
+                    {
+                        Label lbl = new Label();
 
-                // 3. Añade el Label al FlowLayoutPanel
-                // ¡Él se encargará de la posición automáticamente!
-                flp_top_cinco.Controls.Add(lbl);
+                        // Hacemos el Label tan ancho como el panel
+                        // (AutoSize = false es clave para esto)
+                        lbl.AutoSize = false;
+                        lbl.Width = flp_top_cinco.Width - 25; // Ancho del panel menos el padding
+                        lbl.Height = 30; // Altura fija
+
+                        // --- ESTILO COMO TU IMAGEN ---
+
+                        // 1. Quitamos el fondo rojo (lo hacemos transparente)
+                        lbl.BackColor = Color.Transparent;
+
+                        // 2. Cambiamos el color del texto a un gris oscuro
+                        lbl.ForeColor = Color.DimGray; // 'DimGray' es un color muy similar al de tu foto
+
+                        // 3. Ajustamos la alineación del texto
+                        // (En tu foto parece alineado a la izquierda o al centro-izquierda)
+                        lbl.TextAlign = ContentAlignment.MiddleLeft;
+
+                        // 4. (Opcional) Ajustamos la fuente para que se vea profesional
+                        lbl.Font = new Font("Segoe UI", 10, FontStyle.Regular); // Segoe UI es estándar en WinForms
+
+                        // 5. Asignamos el texto
+                        lbl.Text = equipo.codigo_flota + " - " + equipo.marca;
+
+                        // 6. Añadimos el ToolTip que vimos antes (¡sigue siendo útil!)
+                        ToolTip tt = new ToolTip();
+                        tt.SetToolTip(lbl, "Modelo: " + equipo.modelo + "\nTipo: " + equipo.tipo_equipo);
+
+                        // 7. Añadimos el Label al panel
+                        flp_top_cinco.Controls.Add(lbl);
+                    }
+                }
+                else
+                {
+                
+                    Label lblVacio = new Label();
+                    lblVacio.Name = "lbl_vacio";
+                    lblVacio.BackColor = Color.Gray; // Color diferente
+                    lblVacio.Size = new Size(150, 30);
+                    lblVacio.Text = "No hay equipos";
+                    lblVacio.ForeColor = Color.White;
+                    lblVacio.TextAlign = ContentAlignment.MiddleCenter;
+
+                    flp_top_cinco.Controls.Add(lblVacio);
+                }
+                // --- FIN DE LA CONEXIÓN A LA LÓGICA ---
             }
+            catch (Exception ex)
+            {
+                
+                Label lblError = new Label();
+                lblError.Name = "lbl_error";
+                lblError.BackColor = Color.Black;
+                lblError.Size = new Size(150, 60); // Más alto para el error
+                lblError.Text = "Error al cargar:\n" + ex.Message;
+                lblError.ForeColor = Color.Yellow;
+                lblError.TextAlign = ContentAlignment.MiddleCenter;
 
-
-
+                flp_top_cinco.Controls.Add(lblError);
+            }
         }
-
         private void btn_agregar_Click(object sender, EventArgs e)
         {
                  List<string> listaDeErrores = ValidarDatos();

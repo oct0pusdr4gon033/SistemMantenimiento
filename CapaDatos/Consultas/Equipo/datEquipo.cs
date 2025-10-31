@@ -62,6 +62,77 @@ namespace CapaDatos.Consultas.Equipo
                 return equipo;
             }
         }
+        ///////Estraer top 5 recientes 
+        public List<entEquipo> extraer_top_five()
+        {
+            List<entEquipo> listaEquipos = new List<entEquipo>();
+          
+            using (SqlConnection con = ConexionDB.ConexionDB.Instancia.Conectar())
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ObtenerUltimosCincoEquipos", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                entEquipo equipo = new entEquipo();
+
+                                // ---- INICIO DE CORRECCIONES ----
+
+                                // 1. Mapeo de Nombres: 'estado' (BD) a 'estado_equipo' (C#)
+                                equipo.estado_equipo = Convert.ToBoolean(reader["estado"]);
+
+                                // 2. Mapeo de columnas NO NULAS (sin cambios)
+                                equipo.codigo_flota = reader["codigo_flota"].ToString();
+                                equipo.marca = reader["marca"].ToString();
+                                equipo.modelo = reader["modelo"].ToString();
+                                equipo.tipo_equipo = reader["tipo_equipo"].ToString();
+                                equipo.horometro_inicial = Convert.ToInt32(reader["horometro_inicial"]);
+                                equipo.horometro_actual = Convert.ToInt32(reader["horometro_actual"]);
+
+                                // 3. Mapeo de NULOS (string)
+                                // Si es nulo en la BD, asigna 'null' en C# (lo cual 'string' permite)
+                                equipo.num_serie = reader["num_serie"] == DBNull.Value
+                                    ? null
+                                    : reader["num_serie"].ToString();
+
+                                // 4. Mapeo de NULOS (int)
+                                // Si es nulo en la BD, asigna un valor por defecto (ej: 0)
+                                equipo.anio_fabricacion = reader["anio_fabricacion"] == DBNull.Value
+                                    ? 0  // <-- Valor por defecto, ya que 'int' no puede ser null
+                                    : Convert.ToInt32(reader["anio_fabricacion"]);
+
+                                // 5. Mapeo de NULOS (DateTime)
+                                // Si es nulo en la BD, asigna un valor por defecto (DateTime.MinValue)
+                                equipo.fecha_compra = reader["fecha_compra"] == DBNull.Value
+                                    ? DateTime.MinValue // <-- Valor por defecto
+                                    : Convert.ToDateTime(reader["fecha_compra"]);
+
+                                equipo.fecha_registro = reader["fecha_registro"] == DBNull.Value
+                                    ? DateTime.MinValue // <-- Valor por defecto
+                                    : Convert.ToDateTime(reader["fecha_registro"]);
+
+                                // NOTA: 'id_equipo' se ignora, ya que no está en tu clase 'entEquipo'.
+
+                                // ---- FIN DE CORRECCIONES ----
+
+                                listaEquipos.Add(equipo);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Error al extraer el top 5 de equipos: " + ex.Message);
+                    }
+                }
+            }
+            return listaEquipos;
+        }
 
         #endregion
 

@@ -113,6 +113,9 @@
     <EmbeddedResource Include="JeffeMantto\AgregarEquipos.resx">
       <DependentUpon>AgregarEquipos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JeffeMantto\ConsultarEquipo.resx">
+      <DependentUpon>ConsultarEquipo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +144,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
       <Project>{de0a74ba-56b5-452d-aeba-7ce13ec69453}</Project>
       <Name>CapaEntidad</Name>
@@ -149,9 +155,6 @@
       <Project>{c82b342a-8267-44fa-8535-77f09ffbfcad}</Project>
       <Name>CapaLogica</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

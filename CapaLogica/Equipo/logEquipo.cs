@@ -12,6 +12,7 @@ namespace CapaLogica.Equipo
     public class logEquipo
     {
         private static readonly logEquipo _instancia = new logEquipo();
+        private datEquipo objDatos = new datEquipo();
         public static logEquipo Instancia
         {
             get { return logEquipo._instancia; }
@@ -29,5 +30,12 @@ namespace CapaLogica.Equipo
                 throw new ApplicationException("Error en la capa lógica al registrar el equipo.", ex);
             }
         }
+        public List<entEquipo> ListarTop5Equipos()
+        {
+            // Simplemente llama al método de la capa de datos
+            // y devuelve lo que esta le da.
+            return objDatos.extraer_top_five();
+        }
+
     }
 }
