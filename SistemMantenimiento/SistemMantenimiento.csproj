@@ -81,6 +81,12 @@
     <Compile Include="JeffeMantto\EditarEquipo.Designer.cs">
       <DependentUpon>EditarEquipo.cs</DependentUpon>
     </Compile>
+    <Compile Include="JeffeMantto\EquipoCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="JeffeMantto\EquipoCard.Designer.cs">
+      <DependentUpon>EquipoCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="JeffeMantto\Horometros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="JeffeMantto\ConsultarEquipo.resx">
       <DependentUpon>ConsultarEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JeffeMantto\EquipoCard.resx">
+      <DependentUpon>EquipoCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
