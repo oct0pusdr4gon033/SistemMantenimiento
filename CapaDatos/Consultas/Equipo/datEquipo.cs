@@ -14,6 +14,7 @@ namespace CapaDatos.Consultas.Equipo
     public class datEquipo
     {
         private static readonly datEquipo _instancia = new datEquipo();
+        
 
         public static datEquipo Instancia
         {
@@ -116,11 +117,6 @@ namespace CapaDatos.Consultas.Equipo
                                 equipo.fecha_registro = reader["fecha_registro"] == DBNull.Value
                                     ? DateTime.MinValue // <-- Valor por defecto
                                     : Convert.ToDateTime(reader["fecha_registro"]);
-
-                                // NOTA: 'id_equipo' se ignora, ya que no está en tu clase 'entEquipo'.
-
-                                // ---- FIN DE CORRECCIONES ----
-
                                 listaEquipos.Add(equipo);
                             }
                         }
@@ -133,6 +129,68 @@ namespace CapaDatos.Consultas.Equipo
             }
             return listaEquipos;
         }
+        public List<entEquipo> BuscarEquipos(string tipo, string marca, int? año, string modelo, string fecha)
+        {
+            List<entEquipo> lista = new List<entEquipo>();
+
+            // Conversión de fecha. Si 'fecha' no es válida, la dejamos como null
+            DateTime? fechaValida = null;
+            if (DateTime.TryParse(fecha, out DateTime tempFecha))
+            {
+                fechaValida = tempFecha;
+            }
+
+            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("sp_BuscarEquipos", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // --- PARÁMETROS CORREGIDOS ---
+                    // Esta forma es más segura para manejar strings vacíos y nulos
+                    cmd.Parameters.AddWithValue("@Tipo", string.IsNullOrEmpty(tipo) ? (object)DBNull.Value : tipo);
+                    cmd.Parameters.AddWithValue("@Marca", string.IsNullOrEmpty(marca) ? (object)DBNull.Value : marca);
+                    cmd.Parameters.AddWithValue("@Anio", año.HasValue ? (object)año.Value : (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Modelo", string.IsNullOrEmpty(modelo) ? (object)DBNull.Value : modelo);
+                    cmd.Parameters.AddWithValue("@FechaIngreso", fechaValida.HasValue ? (object)fechaValida.Value : (object)DBNull.Value);
+
+                    cn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    // --- LECTOR A PRUEBA DE CRASHES ---
+                    while (dr.Read())
+                    {
+                        // Usamos el operador ternario (condición ? si_verdadero : si_falso)
+                        // para comprobar si el valor es DBNull ANTES de convertirlo.
+                        entEquipo equipo = new entEquipo
+                        {
+                            // ¡Llenamos la entidad completa!
+                          
+                            codigo_flota = dr["codigo_flota"] == DBNull.Value ? "" : dr["codigo_flota"].ToString(),
+                            tipo_equipo = dr["TipoEquipo"] == DBNull.Value ? "" : dr["TipoEquipo"].ToString(),
+                            marca = dr["Marca"] == DBNull.Value ? "" : dr["Marca"].ToString(),
+                            modelo = dr["Modelo"] == DBNull.Value ? "" : dr["Modelo"].ToString(),
+                            num_serie = dr["num_serie"] == DBNull.Value ? "" : dr["num_serie"].ToString(),
+                            fecha_registro = dr["FechaIngreso"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dr["FechaIngreso"]),
+                            anio_fabricacion = dr["Fabricacion"] == DBNull.Value ? 0 : Convert.ToInt32(dr["Fabricacion"]),
+                            horometro_actual = dr["horometro_actual"] == DBNull.Value ? 0 : Convert.ToInt32(dr["horometro_actual"]),
+                            estado_equipo = dr["estado"] == DBNull.Value ? false : Convert.ToBoolean(dr["estado"])
+                        };
+                        lista.Add(equipo);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Es buena idea lanzar el error para que la capa de lógica lo vea
+                    throw new Exception("Error al buscar equipos desde la capa de datos: " + ex.Message, ex);
+                }
+            }
+
+            return lista;
+        }
+
+
 
         #endregion
 

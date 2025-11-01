@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl_titulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_subtitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbl_titulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.cmb_tipo_filtro = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lbl_marca_equipo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txb_valo_busqueda = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_tipo_filtro = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txb_filtro = new Guna.UI2.WinForms.Guna2TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cmb_tipo_filtro = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btn_buscar = new Guna.UI2.WinForms.Guna2Button();
             this.txb_editar = new Guna.UI2.WinForms.Guna2Button();
             this.btn_ver_plan = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.flp_equipos_buscados = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -51,8 +50,19 @@
             this.panel1.Controls.Add(this.lbl_titulo);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(435, 83);
+            this.panel1.Size = new System.Drawing.Size(323, 83);
             this.panel1.TabIndex = 2;
+            // 
+            // lbl_subtitulo
+            // 
+            this.lbl_subtitulo.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_subtitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_subtitulo.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_subtitulo.Location = new System.Drawing.Point(21, 45);
+            this.lbl_subtitulo.Name = "lbl_subtitulo";
+            this.lbl_subtitulo.Size = new System.Drawing.Size(243, 20);
+            this.lbl_subtitulo.TabIndex = 1;
+            this.lbl_subtitulo.Text = "Filta y busca tus equipos mas rapido";
             // 
             // lbl_titulo
             // 
@@ -65,27 +75,61 @@
             this.lbl_titulo.TabIndex = 0;
             this.lbl_titulo.Text = "Buscar Equipos";
             // 
-            // lbl_subtitulo
-            // 
-            this.lbl_subtitulo.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_subtitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_subtitulo.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_subtitulo.Location = new System.Drawing.Point(21, 45);
-            this.lbl_subtitulo.Name = "lbl_subtitulo";
-            this.lbl_subtitulo.Size = new System.Drawing.Size(235, 20);
-            this.lbl_subtitulo.TabIndex = 1;
-            this.lbl_subtitulo.Text = "Filta y busa tus equipos mas rapido";
-            // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2Panel1.Controls.Add(this.txb_filtro);
+            this.guna2Panel1.Controls.Add(this.lbl_marca_equipo);
+            this.guna2Panel1.Controls.Add(this.txb_valo_busqueda);
             this.guna2Panel1.Controls.Add(this.lbl_tipo_filtro);
             this.guna2Panel1.Controls.Add(this.cmb_tipo_filtro);
-            this.guna2Panel1.Location = new System.Drawing.Point(12, 102);
+            this.guna2Panel1.Location = new System.Drawing.Point(12, 131);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(435, 338);
+            this.guna2Panel1.Size = new System.Drawing.Size(323, 149);
             this.guna2Panel1.TabIndex = 3;
+            // 
+            // lbl_marca_equipo
+            // 
+            this.lbl_marca_equipo.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_marca_equipo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_marca_equipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_marca_equipo.Location = new System.Drawing.Point(6, 68);
+            this.lbl_marca_equipo.Name = "lbl_marca_equipo";
+            this.lbl_marca_equipo.Size = new System.Drawing.Size(105, 17);
+            this.lbl_marca_equipo.TabIndex = 5;
+            this.lbl_marca_equipo.Text = "Valor de Busqueda:";
+            // 
+            // txb_valo_busqueda
+            // 
+            this.txb_valo_busqueda.BackColor = System.Drawing.Color.Transparent;
+            this.txb_valo_busqueda.BorderColor = System.Drawing.Color.Transparent;
+            this.txb_valo_busqueda.BorderRadius = 10;
+            this.txb_valo_busqueda.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_valo_busqueda.DefaultText = "";
+            this.txb_valo_busqueda.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_valo_busqueda.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_valo_busqueda.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_valo_busqueda.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_valo_busqueda.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_valo_busqueda.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_valo_busqueda.ForeColor = System.Drawing.Color.Black;
+            this.txb_valo_busqueda.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_valo_busqueda.Location = new System.Drawing.Point(6, 91);
+            this.txb_valo_busqueda.Name = "txb_valo_busqueda";
+            this.txb_valo_busqueda.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txb_valo_busqueda.PlaceholderText = "";
+            this.txb_valo_busqueda.SelectedText = "";
+            this.txb_valo_busqueda.Size = new System.Drawing.Size(308, 36);
+            this.txb_valo_busqueda.TabIndex = 4;
+            // 
+            // lbl_tipo_filtro
+            // 
+            this.lbl_tipo_filtro.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_tipo_filtro.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tipo_filtro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_tipo_filtro.Location = new System.Drawing.Point(3, 3);
+            this.lbl_tipo_filtro.Name = "lbl_tipo_filtro";
+            this.lbl_tipo_filtro.Size = new System.Drawing.Size(60, 17);
+            this.lbl_tipo_filtro.TabIndex = 1;
+            this.lbl_tipo_filtro.Text = "Tipo Filtro: ";
             // 
             // cmb_tipo_filtro
             // 
@@ -102,57 +146,11 @@
             "Marca de Equipo",
             "Tipo de Equipo",
             "Año de Fabricacion",
-            "Fecha Ingreso",
-            "Fecha Compra",
-            ""});
+            "Buscar por Modelo"});
             this.cmb_tipo_filtro.Location = new System.Drawing.Point(3, 26);
             this.cmb_tipo_filtro.Name = "cmb_tipo_filtro";
             this.cmb_tipo_filtro.Size = new System.Drawing.Size(308, 36);
             this.cmb_tipo_filtro.TabIndex = 0;
-            // 
-            // lbl_tipo_filtro
-            // 
-            this.lbl_tipo_filtro.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_tipo_filtro.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tipo_filtro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_tipo_filtro.Location = new System.Drawing.Point(3, 3);
-            this.lbl_tipo_filtro.Name = "lbl_tipo_filtro";
-            this.lbl_tipo_filtro.Size = new System.Drawing.Size(60, 17);
-            this.lbl_tipo_filtro.TabIndex = 1;
-            this.lbl_tipo_filtro.Text = "Tipo Filtro: ";
-            // 
-            // txb_filtro
-            // 
-            this.txb_filtro.BackColor = System.Drawing.Color.Transparent;
-            this.txb_filtro.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_filtro.BorderRadius = 10;
-            this.txb_filtro.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_filtro.DefaultText = "";
-            this.txb_filtro.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_filtro.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_filtro.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_filtro.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_filtro.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_filtro.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_filtro.ForeColor = System.Drawing.Color.Black;
-            this.txb_filtro.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_filtro.Location = new System.Drawing.Point(3, 88);
-            this.txb_filtro.Name = "txb_filtro";
-            this.txb_filtro.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_filtro.PlaceholderText = "";
-            this.txb_filtro.SelectedText = "";
-            this.txb_filtro.Size = new System.Drawing.Size(308, 36);
-            this.txb_filtro.TabIndex = 4;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_buscar);
-            this.flowLayoutPanel1.Controls.Add(this.txb_editar);
-            this.flowLayoutPanel1.Controls.Add(this.btn_ver_plan);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(15, 446);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(376, 103);
-            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // btn_buscar
             // 
@@ -166,13 +164,14 @@
             this.btn_buscar.FillColor = System.Drawing.Color.DarkGray;
             this.btn_buscar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_buscar.Location = new System.Drawing.Point(3, 3);
+            this.btn_buscar.Location = new System.Drawing.Point(58, 295);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.PressedColor = System.Drawing.Color.Transparent;
             this.btn_buscar.Size = new System.Drawing.Size(180, 45);
             this.btn_buscar.TabIndex = 4;
             this.btn_buscar.Text = "Buscar";
             this.btn_buscar.UseWaitCursor = true;
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
             // txb_editar
             // 
@@ -186,7 +185,7 @@
             this.txb_editar.FillColor = System.Drawing.Color.DarkGray;
             this.txb_editar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.txb_editar.Location = new System.Drawing.Point(189, 3);
+            this.txb_editar.Location = new System.Drawing.Point(58, 574);
             this.txb_editar.Name = "txb_editar";
             this.txb_editar.PressedColor = System.Drawing.Color.Transparent;
             this.txb_editar.Size = new System.Drawing.Size(180, 45);
@@ -205,31 +204,34 @@
             this.btn_ver_plan.FillColor = System.Drawing.Color.DarkGray;
             this.btn_ver_plan.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ver_plan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_ver_plan.Location = new System.Drawing.Point(3, 54);
+            this.btn_ver_plan.Location = new System.Drawing.Point(58, 638);
             this.btn_ver_plan.Name = "btn_ver_plan";
             this.btn_ver_plan.PressedColor = System.Drawing.Color.Transparent;
             this.btn_ver_plan.Size = new System.Drawing.Size(180, 45);
             this.btn_ver_plan.TabIndex = 7;
             this.btn_ver_plan.Text = "Plan de Mantenimiento";
             // 
-            // guna2HtmlLabel1
+            // flp_equipos_buscados
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(6, 68);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(60, 17);
-            this.guna2HtmlLabel1.TabIndex = 5;
-            this.guna2HtmlLabel1.Text = "Tipo Filtro: ";
+            this.flp_equipos_buscados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flp_equipos_buscados.AutoScroll = true;
+            this.flp_equipos_buscados.Location = new System.Drawing.Point(351, 13);
+            this.flp_equipos_buscados.Name = "flp_equipos_buscados";
+            this.flp_equipos_buscados.Size = new System.Drawing.Size(705, 670);
+            this.flp_equipos_buscados.TabIndex = 8;
             // 
             // ConsultarEquipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1110, 767);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1100, 767);
+            this.Controls.Add(this.flp_equipos_buscados);
+            this.Controls.Add(this.btn_buscar);
+            this.Controls.Add(this.btn_ver_plan);
+            this.Controls.Add(this.txb_editar);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -239,7 +241,6 @@
             this.panel1.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -252,11 +253,11 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_tipo_filtro;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_tipo_filtro;
-        private Guna.UI2.WinForms.Guna2TextBox txb_filtro;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2TextBox txb_valo_busqueda;
         private Guna.UI2.WinForms.Guna2Button btn_buscar;
         private Guna.UI2.WinForms.Guna2Button txb_editar;
         private Guna.UI2.WinForms.Guna2Button btn_ver_plan;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_marca_equipo;
+        private System.Windows.Forms.FlowLayoutPanel flp_equipos_buscados;
     }
 }
