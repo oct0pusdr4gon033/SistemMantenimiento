@@ -134,6 +134,9 @@
     <EmbeddedResource Include="JeffeMantto\EquipoCard.resx">
       <DependentUpon>EquipoCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JeffeMantto\Horometros.resx">
+      <DependentUpon>Horometros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JeffeMantto\Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>

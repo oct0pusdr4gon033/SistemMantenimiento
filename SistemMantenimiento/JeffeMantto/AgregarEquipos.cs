@@ -39,25 +39,21 @@ namespace SistemMantenimiento.JeffeMantto
                     {
                         Label lbl = new Label();
 
-                        // Hacemos el Label tan ancho como el panel
-                        // (AutoSize = false es clave para esto)
+
                         lbl.AutoSize = false;
                         lbl.Width = flp_top_cinco.Width - 25; // Ancho del panel menos el padding
                         lbl.Height = 30; // Altura fija
 
-                        // --- ESTILO COMO TU IMAGEN ---
 
-                        // 1. Quitamos el fondo rojo (lo hacemos transparente)
                         lbl.BackColor = Color.Transparent;
 
                         // 2. Cambiamos el color del texto a un gris oscuro
                         lbl.ForeColor = Color.DimGray; // 'DimGray' es un color muy similar al de tu foto
 
-                        // 3. Ajustamos la alineación del texto
-                        // (En tu foto parece alineado a la izquierda o al centro-izquierda)
+
                         lbl.TextAlign = ContentAlignment.MiddleLeft;
 
-                        // 4. (Opcional) Ajustamos la fuente para que se vea profesional
+
                         lbl.Font = new Font("Segoe UI", 10, FontStyle.Regular); // Segoe UI es estándar en WinForms
 
                         // 5. Asignamos el texto
