@@ -1,4 +1,5 @@
 ﻿using CapaEntidad.Usuario;
+using CapaLogica.Equipo;
 using Guna.UI2.WinForms;
 using SistemMantenimiento.FuncionesAuxiliares;
 using SistemMantenimiento.JeffeMantto;
@@ -32,6 +33,7 @@ namespace SistemMantenimiento
         FuncionesAuxiliares.Auxiliares aux = new FuncionesAuxiliares.Auxiliares();
         private SubMenuManager subMenuEquipos;
         private Form formularioActivo = null;
+        entUsuarioLogueado usuarioLogueado = null; 
 
 
         public JefeMantenimiento(entUsuarioLogueado usuario)
@@ -39,21 +41,9 @@ namespace SistemMantenimiento
             InitializeComponent();
             panel_form_hijo.Visible= false;
             btn_resize_min.Visible=false;
-            DateTime dia = DateTime.Now;
-            string formatoPersonalizado = dia.ToString("dddd, dd 'de' MMMM yyyy",
-                                                       new System.Globalization.CultureInfo("es-ES"));
-            // Capitalizamos la primera letra del día y del mes
-            formatoPersonalizado = System.Globalization.CultureInfo.CurrentCulture.TextInfo
-                .ToTitleCase(formatoPersonalizado);
-
-            lbl_fecha_bienvenida.Text = formatoPersonalizado;
-            lbl_rol_bienvenida.Text = usuario.Rol;
-            lbl_usuario_bienvenida.Text = usuario.Nombre + " " + usuario.Apellido;
-            inicialesUsuario = aux.ObtenerIniciales(usuario.Nombre + " " + usuario.Apellido);
-            load_sub_menu_equipos();
+            usuarioLogueado = usuario; 
+            load_sub_menu_equipos(); 
         }
-       
-
         private void btn_salir_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -95,38 +85,20 @@ namespace SistemMantenimiento
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0); // envía mensaje de "mover ventana"
             }
         }
-
-        private void flp_panel_principal_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture(); // libera el control del mouse
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0); // envía mensaje de "mover ventana"
-            }
-        }
-
-        private void panel_perfil_Paint(object sender, PaintEventArgs e)
-        {
-            AvatarRenderer.DibujarAvatar(panel_perfil, e, inicialesUsuario);
-        }
-        private void CargarTarjetasDashboard(FlowLayoutPanel panelContenedor)
-        {
-            panelContenedor.Controls.Clear();
-
-            var card1 = new TarjetaKPI_Emoji("248", "Total Equipos", Color.FromArgb(0, 128, 128), "⚙️");
-            var card2 = new TarjetaKPI_Emoji("42", "Trabajos Completados", Color.FromArgb(40, 167, 69), "✅");
-            var card3 = new TarjetaKPI_Emoji("18", "En Progreso", Color.FromArgb(108, 117, 125), "⌛");
-            var card4 = new TarjetaKPI_Emoji("5", "Urgentes", Color.FromArgb(255, 128, 0), "⚠️");
-
-            panelContenedor.Controls.Add(card1.PanelTarjeta);
-            panelContenedor.Controls.Add(card2.PanelTarjeta);
-            panelContenedor.Controls.Add(card3.PanelTarjeta);
-            panelContenedor.Controls.Add(card4.PanelTarjeta);
-        }
-
         private void JefeMantenimiento_Load(object sender, EventArgs e)
         {
-            CargarTarjetasDashboard(flp_tarjetaas_kpi);
+           
+            if (this.usuarioLogueado != null)
+            {
+                AbrirFormularioEnPanel(new frm_Inicio(this.usuarioLogueado));
+            }
+            else
+            {
+            
+                MessageBox.Show("Error crítico: No se pudo cargar la información del usuario.", "Error de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit(); // O this.Close() para volver al Login
+            }
+
         }
         private void load_sub_menu_equipos()
         {
@@ -134,11 +106,9 @@ namespace SistemMantenimiento
             // 1. Crea un Diccionario que une el texto (string) con una acción (Action)
             var opcionesConAcciones = new Dictionary<string, Action>
             {
-                // Key: "El texto del botón"
-                // Value: () => La_Accion_A_Ejecutar()
-        
+             
                 { "➕ Crear Equipo",             () => AbrirFormularioEnPanel(new AgregarEquipos()) },
-                { "✏️ Editar/Actualizar Equipo",  () => AbrirFormularioEnPanel(new EditarEquipo()) },
+                { "✏️ Editar Equipo",  () => AbrirFormularioEnPanel(new EditarEquipo()) },
                 { "🔍 Consultar Equipos",         () => AbrirFormularioEnPanel(new ConsultarEquipo()) },
                 { "⏱️ Actualizar Horómetro",    () => AbrirFormularioEnPanel(new Horometros()) },
                 { "📜 Historial de Mantenimiento", () => AbrirFormularioEnPanel(new VerHistorialMantto()) }
@@ -161,7 +131,6 @@ namespace SistemMantenimiento
                 formularioActivo.Close();
             }
 
-
             // 2. Guardamos la referencia del nuevo formulario
             formularioActivo = formularioHijo;
             // 3. Configuramos el formulario para que actúe como un control
@@ -181,7 +150,11 @@ namespace SistemMantenimiento
             formularioHijo.Show();
         }
 
-
+        private void btn_inicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new frm_Inicio(usuarioLogueado));
+  
+        }
 
     }
     

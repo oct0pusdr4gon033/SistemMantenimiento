@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,18 +28,17 @@ namespace CapaLogica.Equipo
             }
             catch (Exception ex)
             {
-                // Relanzamos la excepción con contexto adicional
+               
                 throw new ApplicationException("Error en la capa lógica al registrar el equipo.", ex);
             }
         }
         public List<entEquipo> ListarTop5Equipos()
         {
-            // Simplemente llama al método de la capa de datos
-            // y devuelve lo que esta le da.
+        
             return objDatos.extraer_top_five();
         }
         public List<entEquipo> BuscarEquipos(
-             // ¡CORREGIDO! Aceptamos los 5 parámetros del formulario
+             
              string tipo,
              string marca,
              int? anio,
@@ -47,8 +47,7 @@ namespace CapaLogica.Equipo
         {
             try
             {
-                // ¡CORREGIDO! Llamamos a la Capa de Datos
-                // con los mismos 5 parámetros
+                
                 return datEquipo.Instancia.BuscarEquipos(
                     tipo,
                     marca,
@@ -58,10 +57,34 @@ namespace CapaLogica.Equipo
             }
             catch (Exception ex)
             {
-                // Tu manejo de errores es perfecto
+                
                 throw new Exception("Error al buscar equipos desde la capa lógica: " + ex.Message, ex);
             }
         }
+
+        public int ContarEquipos()
+        {
+            try
+             {
+                int conteo = datEquipo.Instancia.contar_equipos();
+
+                if (conteo == 0)
+                {
+                    throw new Exception("No hay equipos registrados en el sistema.");
+                }
+                return conteo;
+            }
+            catch (Exception ex)
+            {
+      
+                throw new Exception("Error en la capa lógica al contar equipos.", ex);
+            }
+  
+        }
+
+
+
+
 
     }
 }

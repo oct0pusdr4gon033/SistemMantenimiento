@@ -93,6 +93,12 @@
     <Compile Include="JeffeMantto\Horometros.Designer.cs">
       <DependentUpon>Horometros.cs</DependentUpon>
     </Compile>
+    <Compile Include="JeffeMantto\Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JeffeMantto\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="JeffeMantto\VerHistorialMantto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,8 +128,14 @@
     <EmbeddedResource Include="JeffeMantto\ConsultarEquipo.resx">
       <DependentUpon>ConsultarEquipo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JeffeMantto\EditarEquipo.resx">
+      <DependentUpon>EditarEquipo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JeffeMantto\EquipoCard.resx">
       <DependentUpon>EquipoCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JeffeMantto\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
