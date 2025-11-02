@@ -43,7 +43,8 @@ namespace CapaLogica.Equipo
              string marca,
              int? anio,
              string modelo,
-             string fecha)
+             string fecha,
+             string num_serie)
         {
             try
             {
@@ -53,7 +54,8 @@ namespace CapaLogica.Equipo
                     marca,
                     anio,
                     modelo,
-                    fecha);
+                    fecha,
+                    num_serie);
             }
             catch (Exception ex)
             {
@@ -80,6 +82,18 @@ namespace CapaLogica.Equipo
                 throw new Exception("Error en la capa lógica al contar equipos.", ex);
             }
   
+        }
+
+        public entEquipo ObtenerEquipoPorId(int id_equipo)
+        {
+            try
+            {
+                return datEquipo.Instancia.obtener_equipos_id(id_equipo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el equipo por ID desde la capa lógica: " + ex.Message, ex);
+            }
         }
 
 

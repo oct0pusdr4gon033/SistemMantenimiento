@@ -83,13 +83,7 @@ namespace CapaDatos.Consultas.Equipo
                             while (reader.Read())
                             {
                                 entEquipo equipo = new entEquipo();
-
-                                // ---- INICIO DE CORRECCIONES ----
-
-                                // 1. Mapeo de Nombres: 'estado' (BD) a 'estado_equipo' (C#)
                                 equipo.estado_equipo = Convert.ToBoolean(reader["estado"]);
-
-                                // 2. Mapeo de columnas NO NULAS (sin cambios)
                                 equipo.codigo_flota = reader["codigo_flota"].ToString();
                                 equipo.marca = reader["marca"].ToString();
                                 equipo.modelo = reader["modelo"].ToString();
@@ -97,26 +91,19 @@ namespace CapaDatos.Consultas.Equipo
                                 equipo.horometro_inicial = Convert.ToInt32(reader["horometro_inicial"]);
                                 equipo.horometro_actual = Convert.ToInt32(reader["horometro_actual"]);
 
-                                // 3. Mapeo de NULOS (string)
-                                // Si es nulo en la BD, asigna 'null' en C# (lo cual 'string' permite)
                                 equipo.num_serie = reader["num_serie"] == DBNull.Value
                                     ? null
                                     : reader["num_serie"].ToString();
 
-                                // 4. Mapeo de NULOS (int)
-                                // Si es nulo en la BD, asigna un valor por defecto (ej: 0)
                                 equipo.anio_fabricacion = reader["anio_fabricacion"] == DBNull.Value
-                                    ? 0  // <-- Valor por defecto, ya que 'int' no puede ser null
+                                    ? 0  
                                     : Convert.ToInt32(reader["anio_fabricacion"]);
-
-                                // 5. Mapeo de NULOS (DateTime)
-                                // Si es nulo en la BD, asigna un valor por defecto (DateTime.MinValue)
                                 equipo.fecha_compra = reader["fecha_compra"] == DBNull.Value
-                                    ? DateTime.MinValue // <-- Valor por defecto
+                                    ? DateTime.MinValue 
                                     : Convert.ToDateTime(reader["fecha_compra"]);
 
                                 equipo.fecha_registro = reader["fecha_registro"] == DBNull.Value
-                                    ? DateTime.MinValue // <-- Valor por defecto
+                                    ? DateTime.MinValue 
                                     : Convert.ToDateTime(reader["fecha_registro"]);
                                 listaEquipos.Add(equipo);
                             }
@@ -130,7 +117,8 @@ namespace CapaDatos.Consultas.Equipo
             }
             return listaEquipos;
         }
-        public List<entEquipo> BuscarEquipos(string tipo, string marca, int? año, string modelo, string fecha)
+        public List<entEquipo> BuscarEquipos(string tipo, string marca, int? año, 
+                                            string modelo, string fecha, string num_serie)
         {
             List<entEquipo> lista = new List<entEquipo>();
 
@@ -155,7 +143,7 @@ namespace CapaDatos.Consultas.Equipo
                     cmd.Parameters.AddWithValue("@Anio", año.HasValue ? (object)año.Value : (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@Modelo", string.IsNullOrEmpty(modelo) ? (object)DBNull.Value : modelo);
                     cmd.Parameters.AddWithValue("@FechaIngreso", fechaValida.HasValue ? (object)fechaValida.Value : (object)DBNull.Value);
-
+                    cmd.Parameters.AddWithValue("@NumSerie", string.IsNullOrEmpty(num_serie) ? (object)DBNull.Value : num_serie);
                     cn.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
 
@@ -167,7 +155,7 @@ namespace CapaDatos.Consultas.Equipo
                         entEquipo equipo = new entEquipo
                         {
                             // ¡Llenamos la entidad completa!
-                          
+                            id_equipo = dr["id_equipo"] == DBNull.Value ? 0 : Convert.ToInt32(dr["id_equipo"]),
                             codigo_flota = dr["codigo_flota"] == DBNull.Value ? "" : dr["codigo_flota"].ToString(),
                             tipo_equipo = dr["TipoEquipo"] == DBNull.Value ? "" : dr["TipoEquipo"].ToString(),
                             marca = dr["Marca"] == DBNull.Value ? "" : dr["Marca"].ToString(),
@@ -177,7 +165,7 @@ namespace CapaDatos.Consultas.Equipo
                             anio_fabricacion = dr["Fabricacion"] == DBNull.Value ? 0 : Convert.ToInt32(dr["Fabricacion"]),
                             horometro_actual = dr["horometro_actual"] == DBNull.Value ? 0 : Convert.ToInt32(dr["horometro_actual"]),
                             estado_equipo = dr["estado"] == DBNull.Value ? false : Convert.ToBoolean(dr["estado"])
-                        };
+                        };  
                         lista.Add(equipo);
                     }
                 }
@@ -222,6 +210,56 @@ namespace CapaDatos.Consultas.Equipo
 
             return total_equipos;
         }
+        /// Obtiene un equipo por su ID.
+        public entEquipo obtener_equipos_id(int id)
+        {
+            try
+            {
+                using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_Buscar_Id", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        conn.Open();
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                entEquipo equipo = new entEquipo
+                                {
+                                    id_equipo = Convert.ToInt32(dr["id_equipo"]),
+                                    codigo_flota = dr["codigo_flota"].ToString(),
+                                    marca = dr["marca"].ToString(),
+                                    modelo = dr["modelo"].ToString(),
+                                    num_serie = dr["num_serie"] == DBNull.Value ? string.Empty : dr["num_serie"].ToString(),
+                                    tipo_equipo = dr["tipo_equipo"].ToString(),
+                                    anio_fabricacion = dr["anio_fabricacion"] == DBNull.Value ? 0 : Convert.ToInt32(dr["anio_fabricacion"]),
+                                    horometro_inicial = Convert.ToInt32(dr["horometro_inicial"]),
+                                    horometro_actual = Convert.ToInt32(dr["horometro_actual"]),
+                                    fecha_compra = dr["fecha_compra"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dr["fecha_compra"]),
+                                    fecha_registro = dr["fecha_registro"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dr["fecha_registro"]),
+                                    estado_equipo = dr["estado"] != DBNull.Value && Convert.ToBoolean(dr["estado"])
+                                };
+
+                                return equipo;
+                            }
+                            else
+                            {
+                                return null; // No se encontró el equipo
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al obtener el equipo por ID: {ex.Message}");
+            }
+        }
+
 
 
 

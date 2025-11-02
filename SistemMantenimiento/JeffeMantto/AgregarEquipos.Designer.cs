@@ -153,7 +153,7 @@
             this.gp_agregar.Controls.Add(this.lbl_codigo);
             this.gp_agregar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gp_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.gp_agregar.Location = new System.Drawing.Point(26, 84);
+            this.gp_agregar.Location = new System.Drawing.Point(26, 102);
             this.gp_agregar.Name = "gp_agregar";
             this.gp_agregar.Size = new System.Drawing.Size(786, 576);
             this.gp_agregar.TabIndex = 4;
