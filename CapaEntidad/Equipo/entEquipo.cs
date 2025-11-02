@@ -8,6 +8,7 @@ namespace CapaEntidad.Equipo
 {
     public class entEquipo
     {
+        public int id_equipo { get; set; }
         public string codigo_flota { get; set; }
         public string marca { get; set; }
         public string modelo { get; set; }

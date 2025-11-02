@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -189,6 +190,39 @@ namespace CapaDatos.Consultas.Equipo
 
             return lista;
         }
+
+        //////Metodo conteo de equipos --Funcion para contar el total de equipos de la BD--
+        public int contar_equipos()
+        {
+            int total_equipos = 0;
+            string query = "SELECT COUNT(*) FROM Equipo";
+
+            try
+            {
+                using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        conn.Open();
+
+                        object resultado = cmd.ExecuteScalar();
+
+                        if (resultado != null && resultado != DBNull.Value)
+                        {
+                            total_equipos = Convert.ToInt32(resultado);
+                        }
+                    } 
+                } 
+            }
+            catch (Exception ex)
+            {
+             
+                throw new Exception("No se pudieron contar los equipos.", ex);
+            }
+
+            return total_equipos;
+        }
+
 
 
 
