@@ -1,4 +1,6 @@
-﻿using CapaEntidad.Equipo;
+﻿using CapaEntidad;
+using CapaEntidad.Equipo;
+using CapaEntidad.Usuario;
 using CapaLogica.Equipo;
 using System;
 using System.Collections.Generic;
@@ -18,11 +20,44 @@ namespace SistemMantenimiento.JeffeMantto
     public partial class ConsultarEquipo : Form
     {
         private entEquipo equipo_seleccionado;
-        public ConsultarEquipo()
+        private Form formularioActivo = null;
+        List<entEquipo> lista_equipos = new List<entEquipo>();
+        private entUsuarioLogueado usuarioLogueado = null;
+
+        public ConsultarEquipo(entUsuarioLogueado usuario )
         {
             InitializeComponent();
+            usuarioLogueado = usuario;
             RealizarBusqueda(null, null, null, null, null, null);
             panel_opciones.Visible = false;
+            panel_form_hijo.Visible = false;
+       
+        }
+        private void AbrirFormularioEnPanel(Form formularioHijo)
+        {
+            // 1. Si ya hay un formulario abierto, lo cerramos
+            if (formularioActivo != null)
+            {
+                formularioActivo.Close();
+            }
+
+            // 2. Guardamos la referencia del nuevo formulario
+            formularioActivo = formularioHijo;
+            // 3. Configuramos el formulario para que actúe como un control
+            formularioHijo.TopLevel = false;
+            formularioHijo.FormBorderStyle = FormBorderStyle.None;
+            formularioHijo.Dock = DockStyle.Fill; // <-- ¡Tu línea mágica!
+
+            // 4. Limpiamos el panel y añadimos el nuevo formulario (UNA SOLA VEZ)
+            panel_form_hijo.Visible = true;
+            panel_form_hijo.BringToFront();
+            panel_form_hijo.Controls.Clear();
+            panel_form_hijo.Controls.Add(formularioHijo);
+            panel_form_hijo.Tag = formularioHijo;
+
+            // 5. Lo mostramos
+            formularioHijo.BringToFront();
+            formularioHijo.Show();
         }
         private void btn_buscar_Click(object sender, EventArgs e)
         {
@@ -120,6 +155,7 @@ namespace SistemMantenimiento.JeffeMantto
                         equipo.modelo,
                         equipo.fecha_registro,
                         equipo.anio_fabricacion
+                        
                     );
 
                     // ¡CORREGIDO! Suscribirse al evento antes de agregar
@@ -136,40 +172,35 @@ namespace SistemMantenimiento.JeffeMantto
         // Manejador del evento de clic en tarjeta
         private void Tarjeta_Click_Handler(object sender, int idEquipo)
         {
-            ActivarPanelDeAcciones(idEquipo);
-        }
-
-        private void ActivarPanelDeAcciones(int idDelEquipo)
-        {
-            // Toggle: Si ya está visible y es el mismo equipo, cerrar
-            if (panel_opciones.Visible &&
-                equipo_seleccionado != null &&
-                equipo_seleccionado.id_equipo == idDelEquipo)
-            {
-                DesactivarPanelDeAcciones();
-                return;
-            }
-
             try
             {
-                equipo_seleccionado = logEquipo.Instancia.ObtenerEquipoPorId(idDelEquipo);
-                if (equipo_seleccionado != null)
-                {
-                    lblEquipoSeleccionado.Text =
-                        $"{equipo_seleccionado.codigo_flota}\n" +
-                        $"{equipo_seleccionado.marca} {equipo_seleccionado.modelo}";
+                // Cargar la entidad desde la BD
+                equipo_seleccionado = logEquipo.Instancia.ObtenerEquipoPorId(idEquipo);
 
-                    SetBotonesEnabled(panel_opciones, true);
-                    panel_opciones.Visible = true;
-                    panel_opciones.BackColor = Color.FromArgb(0, 77, 64);
+                if (equipo_seleccionado == null)
+                {
+                    MessageBox.Show("No se encontró el equipo seleccionado.");
+                    return;
                 }
+
+                // Mostrar información en panel lateral
+                lblEquipoSeleccionado.Text =
+                    $"{equipo_seleccionado.codigo_flota}\n" +
+                    $"{equipo_seleccionado.marca} {equipo_seleccionado.modelo}";
+
+                SetBotonesEnabled(panel_opciones, true);
+                panel_opciones.Visible = true;
+                panel_opciones.BackColor = Color.White;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al obtener detalles del equipo: {ex.Message}",
+                MessageBox.Show($"Error al obtener los detalles: {ex.Message}",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
+        
         private void DesactivarPanelDeAcciones()
         {
             equipo_seleccionado = null;
@@ -198,6 +229,28 @@ namespace SistemMantenimiento.JeffeMantto
         private void ConsultarEquipo_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_editar_Click(object sender, EventArgs e)
+        {
+            if (equipo_seleccionado == null)
+            {
+                MessageBox.Show("Seleccione un equipo antes de editar.");
+                return;
+            }
+
+            AbrirFormularioEnPanel(new EditarEquipo(equipo_seleccionado,usuarioLogueado));
+        }
+
+        private void btn_historial_Click(object sender, EventArgs e)
+        {
+            if (equipo_seleccionado == null)
+            {
+                MessageBox.Show("Seleccione un equipo antes de ver el historial.");
+                return;
+            }
+
+            AbrirFormularioEnPanel(new VerHistorialMantto(equipo_seleccionado));
         }
     }
 }
