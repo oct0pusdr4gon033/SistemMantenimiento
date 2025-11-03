@@ -95,6 +95,37 @@ namespace CapaLogica.Equipo
                 throw new Exception("Error al obtener el equipo por ID desde la capa lógica: " + ex.Message, ex);
             }
         }
+        public bool ActualizarEquipo(entEquipo equipo, string usuarioEdito, string motivo)
+        {
+            // ✅ Validaciones previas a nivel lógico (antes de tocar la BD)
+            if (equipo == null)
+                throw new ArgumentNullException("El objeto equipo no puede ser null.");
+
+            if (equipo.id_equipo <= 0)
+                throw new ArgumentException("El ID del equipo no es válido.");
+
+            if (string.IsNullOrWhiteSpace(usuarioEdito))
+                throw new ArgumentException("El usuario que edita no puede estar vacío.");
+
+            if (string.IsNullOrWhiteSpace(motivo))
+                motivo = "Modificación de datos del equipo"; // default
+
+            // ✅ Llamar a la capa de datos (SQL Server)
+            try
+            {
+                return datEquipo.Instancia.ActualizarEquipo(equipo, usuarioEdito, motivo);
+            }
+            catch (Exception ex)
+            {
+                // Puedes manejar la excepción aquí o lanzarla hacia arriba
+                throw new Exception($"Error en lógica al actualizar el equipo: {ex.Message}", ex);
+            }
+        }
+
+        public bool existe_bitacora(int id_equipo)
+        {
+            return datEquipo.Instancia.existe_bitacora(id_equipo);
+        }
 
 
 

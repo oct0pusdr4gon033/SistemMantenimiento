@@ -29,36 +29,38 @@
         private void InitializeComponent()
         {
             this.gp_agregar = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dtp_fecha_registro = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.cmb_estado = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btn_editar = new Guna.UI2.WinForms.Guna2Button();
             this.lbl_estado = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dtp_fecha_compra = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.dtp_fecha_registro = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.cmb_estado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txb_horometro_actual = new Guna.UI2.WinForms.Guna2TextBox();
             this.txb_horometro_inicial = new Guna.UI2.WinForms.Guna2TextBox();
             this.txb_anio_fabricacion = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cmb_tipo_equipo = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lbl_fecha_lectura = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.dtp_fecha_compra = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.lbl_horometro_act = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_horometro_inicial = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbl_fecha_lectura = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_anio_fabricacion = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_tipo_equipo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_numero_serie = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_num_serie = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_modelo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cmb_marca = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbl_modelo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_marca = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_codigo_flota = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_codigo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btn_editar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_id_editar = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_buscar = new Guna.UI2.WinForms.Guna2Button();
             this.btn_eliminar = new Guna.UI2.WinForms.Guna2Button();
+            this.txb_marca = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txb_tipo_equipo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.rch_observacion = new System.Windows.Forms.RichTextBox();
             this.gp_agregar.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +68,12 @@
             // gp_agregar
             // 
             this.gp_agregar.AutoScroll = true;
+            this.gp_agregar.Controls.Add(this.rch_observacion);
+            this.gp_agregar.Controls.Add(this.btn_eliminar);
+            this.gp_agregar.Controls.Add(this.guna2HtmlLabel5);
+            this.gp_agregar.Controls.Add(this.btn_editar);
+            this.gp_agregar.Controls.Add(this.txb_tipo_equipo);
+            this.gp_agregar.Controls.Add(this.txb_marca);
             this.gp_agregar.Controls.Add(this.lbl_estado);
             this.gp_agregar.Controls.Add(this.guna2HtmlLabel1);
             this.gp_agregar.Controls.Add(this.dtp_fecha_registro);
@@ -73,7 +81,6 @@
             this.gp_agregar.Controls.Add(this.txb_horometro_actual);
             this.gp_agregar.Controls.Add(this.txb_horometro_inicial);
             this.gp_agregar.Controls.Add(this.txb_anio_fabricacion);
-            this.gp_agregar.Controls.Add(this.cmb_tipo_equipo);
             this.gp_agregar.Controls.Add(this.dtp_fecha_compra);
             this.gp_agregar.Controls.Add(this.lbl_horometro_act);
             this.gp_agregar.Controls.Add(this.lbl_horometro_inicial);
@@ -83,7 +90,6 @@
             this.gp_agregar.Controls.Add(this.txb_numero_serie);
             this.gp_agregar.Controls.Add(this.lbl_num_serie);
             this.gp_agregar.Controls.Add(this.txb_modelo);
-            this.gp_agregar.Controls.Add(this.cmb_marca);
             this.gp_agregar.Controls.Add(this.lbl_modelo);
             this.gp_agregar.Controls.Add(this.lbl_marca);
             this.gp_agregar.Controls.Add(this.txb_codigo_flota);
@@ -92,40 +98,31 @@
             this.gp_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.gp_agregar.Location = new System.Drawing.Point(12, 176);
             this.gp_agregar.Name = "gp_agregar";
-            this.gp_agregar.Size = new System.Drawing.Size(641, 473);
+            this.gp_agregar.Size = new System.Drawing.Size(922, 526);
             this.gp_agregar.TabIndex = 6;
             this.gp_agregar.Text = "Editar Equipos";
             // 
-            // panel2
+            // lbl_estado
             // 
-            this.panel2.Controls.Add(this.guna2HtmlLabel2);
-            this.panel2.Controls.Add(this.guna2HtmlLabel3);
-            this.panel2.Location = new System.Drawing.Point(155, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(313, 68);
-            this.panel2.TabIndex = 23;
+            this.lbl_estado.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_estado.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_estado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_estado.Location = new System.Drawing.Point(379, 326);
+            this.lbl_estado.Name = "lbl_estado";
+            this.lbl_estado.Size = new System.Drawing.Size(41, 17);
+            this.lbl_estado.TabIndex = 19;
+            this.lbl_estado.Text = "Estado:";
             // 
-            // guna2HtmlLabel2
+            // guna2HtmlLabel1
             // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.DarkGray;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(13, 36);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(282, 20);
-            this.guna2HtmlLabel2.TabIndex = 1;
-            this.guna2HtmlLabel2.Text = "Edita errores en la insercion de tus activos";
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.Teal;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(74, 3);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(157, 27);
-            this.guna2HtmlLabel3.TabIndex = 0;
-            this.guna2HtmlLabel3.Text = "Editar Equipos";
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(379, 257);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(77, 17);
+            this.guna2HtmlLabel1.TabIndex = 21;
+            this.guna2HtmlLabel1.Text = "Fecha Ingreso";
             // 
             // dtp_fecha_registro
             // 
@@ -143,17 +140,6 @@
             this.dtp_fecha_registro.Size = new System.Drawing.Size(247, 36);
             this.dtp_fecha_registro.TabIndex = 22;
             this.dtp_fecha_registro.Value = new System.DateTime(2025, 10, 30, 2, 27, 45, 40);
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(379, 257);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(77, 17);
-            this.guna2HtmlLabel1.TabIndex = 21;
-            this.guna2HtmlLabel1.Text = "Fecha Ingreso";
             // 
             // cmb_estado
             // 
@@ -173,53 +159,6 @@
             this.cmb_estado.Name = "cmb_estado";
             this.cmb_estado.Size = new System.Drawing.Size(247, 36);
             this.cmb_estado.TabIndex = 20;
-            // 
-            // btn_editar
-            // 
-            this.btn_editar.Animated = true;
-            this.btn_editar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_editar.BorderRadius = 10;
-            this.btn_editar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_editar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_editar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_editar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_editar.FillColor = System.Drawing.Color.DarkGray;
-            this.btn_editar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_editar.Location = new System.Drawing.Point(659, 176);
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_editar.Size = new System.Drawing.Size(180, 45);
-            this.btn_editar.TabIndex = 3;
-            this.btn_editar.Text = "Editar";
-            // 
-            // lbl_estado
-            // 
-            this.lbl_estado.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_estado.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_estado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_estado.Location = new System.Drawing.Point(379, 326);
-            this.lbl_estado.Name = "lbl_estado";
-            this.lbl_estado.Size = new System.Drawing.Size(41, 17);
-            this.lbl_estado.TabIndex = 19;
-            this.lbl_estado.Text = "Estado:";
-            // 
-            // dtp_fecha_compra
-            // 
-            this.dtp_fecha_compra.BackColor = System.Drawing.Color.White;
-            this.dtp_fecha_compra.BorderRadius = 10;
-            this.dtp_fecha_compra.Checked = true;
-            this.dtp_fecha_compra.FillColor = System.Drawing.Color.White;
-            this.dtp_fecha_compra.FocusedColor = System.Drawing.Color.White;
-            this.dtp_fecha_compra.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtp_fecha_compra.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtp_fecha_compra.Location = new System.Drawing.Point(379, 213);
-            this.dtp_fecha_compra.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtp_fecha_compra.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtp_fecha_compra.Name = "dtp_fecha_compra";
-            this.dtp_fecha_compra.Size = new System.Drawing.Size(247, 36);
-            this.dtp_fecha_compra.TabIndex = 18;
-            this.dtp_fecha_compra.Value = new System.DateTime(2025, 10, 30, 2, 27, 45, 40);
             // 
             // txb_horometro_actual
             // 
@@ -290,44 +229,22 @@
             this.txb_anio_fabricacion.Size = new System.Drawing.Size(247, 36);
             this.txb_anio_fabricacion.TabIndex = 15;
             // 
-            // cmb_tipo_equipo
+            // dtp_fecha_compra
             // 
-            this.cmb_tipo_equipo.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_tipo_equipo.BorderRadius = 10;
-            this.cmb_tipo_equipo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_tipo_equipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_tipo_equipo.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_tipo_equipo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_tipo_equipo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_tipo_equipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_tipo_equipo.ItemHeight = 30;
-            this.cmb_tipo_equipo.Items.AddRange(new object[] {
-            "Motoniveladora",
-            "Excavadora",
-            "Cargador Frontal",
-            "Tractor Oruga",
-            "Bulldozer",
-            "Moto Niveladora",
-            "Dumper",
-            "Volquete",
-            "Tractor Oruga",
-            "Manipulador Telescópico",
-            "Camion Cisterna"});
-            this.cmb_tipo_equipo.Location = new System.Drawing.Point(13, 349);
-            this.cmb_tipo_equipo.Name = "cmb_tipo_equipo";
-            this.cmb_tipo_equipo.Size = new System.Drawing.Size(247, 36);
-            this.cmb_tipo_equipo.TabIndex = 14;
-            // 
-            // lbl_fecha_lectura
-            // 
-            this.lbl_fecha_lectura.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_fecha_lectura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_fecha_lectura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_fecha_lectura.Location = new System.Drawing.Point(379, 190);
-            this.lbl_fecha_lectura.Name = "lbl_fecha_lectura";
-            this.lbl_fecha_lectura.Size = new System.Drawing.Size(82, 17);
-            this.lbl_fecha_lectura.TabIndex = 13;
-            this.lbl_fecha_lectura.Text = "Fecha Compra:";
+            this.dtp_fecha_compra.BackColor = System.Drawing.Color.White;
+            this.dtp_fecha_compra.BorderRadius = 10;
+            this.dtp_fecha_compra.Checked = true;
+            this.dtp_fecha_compra.FillColor = System.Drawing.Color.White;
+            this.dtp_fecha_compra.FocusedColor = System.Drawing.Color.White;
+            this.dtp_fecha_compra.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtp_fecha_compra.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtp_fecha_compra.Location = new System.Drawing.Point(379, 213);
+            this.dtp_fecha_compra.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtp_fecha_compra.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtp_fecha_compra.Name = "dtp_fecha_compra";
+            this.dtp_fecha_compra.Size = new System.Drawing.Size(247, 36);
+            this.dtp_fecha_compra.TabIndex = 18;
+            this.dtp_fecha_compra.Value = new System.DateTime(2025, 10, 30, 2, 27, 45, 40);
             // 
             // lbl_horometro_act
             // 
@@ -350,6 +267,17 @@
             this.lbl_horometro_inicial.Size = new System.Drawing.Size(112, 19);
             this.lbl_horometro_inicial.TabIndex = 11;
             this.lbl_horometro_inicial.Text = "Horometro Inicial:";
+            // 
+            // lbl_fecha_lectura
+            // 
+            this.lbl_fecha_lectura.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_fecha_lectura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_fecha_lectura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_fecha_lectura.Location = new System.Drawing.Point(379, 190);
+            this.lbl_fecha_lectura.Name = "lbl_fecha_lectura";
+            this.lbl_fecha_lectura.Size = new System.Drawing.Size(82, 17);
+            this.lbl_fecha_lectura.TabIndex = 13;
+            this.lbl_fecha_lectura.Text = "Fecha Compra:";
             // 
             // lbl_anio_fabricacion
             // 
@@ -430,28 +358,6 @@
             this.txb_modelo.Size = new System.Drawing.Size(247, 36);
             this.txb_modelo.TabIndex = 6;
             // 
-            // cmb_marca
-            // 
-            this.cmb_marca.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_marca.BorderRadius = 10;
-            this.cmb_marca.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_marca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_marca.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_marca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_marca.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_marca.ItemHeight = 30;
-            this.cmb_marca.Items.AddRange(new object[] {
-            "Caterpillar (CAT)",
-            "Komatsu",
-            "Volvo",
-            "JCB",
-            "Liebherr"});
-            this.cmb_marca.Location = new System.Drawing.Point(13, 143);
-            this.cmb_marca.Name = "cmb_marca";
-            this.cmb_marca.Size = new System.Drawing.Size(247, 36);
-            this.cmb_marca.TabIndex = 5;
-            // 
             // lbl_modelo
             // 
             this.lbl_modelo.BackColor = System.Drawing.Color.Transparent;
@@ -507,6 +413,57 @@
             this.lbl_codigo.Size = new System.Drawing.Size(89, 17);
             this.lbl_codigo.TabIndex = 0;
             this.lbl_codigo.Text = "Codigo de Flota:";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.guna2HtmlLabel2);
+            this.panel2.Controls.Add(this.guna2HtmlLabel3);
+            this.panel2.Location = new System.Drawing.Point(119, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(384, 68);
+            this.panel2.TabIndex = 23;
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.DarkGray;
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(41, 36);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(313, 20);
+            this.guna2HtmlLabel2.TabIndex = 1;
+            this.guna2HtmlLabel2.Text = "Actualizar errores en la insercion de tus activos";
+            // 
+            // guna2HtmlLabel3
+            // 
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.Teal;
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(74, 3);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(200, 27);
+            this.guna2HtmlLabel3.TabIndex = 0;
+            this.guna2HtmlLabel3.Text = "Actualizar Equipos";
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.Animated = true;
+            this.btn_editar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_editar.BorderRadius = 10;
+            this.btn_editar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_editar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_editar.FillColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btn_editar.Location = new System.Drawing.Point(379, 405);
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.PressedColor = System.Drawing.Color.Transparent;
+            this.btn_editar.Size = new System.Drawing.Size(173, 45);
+            this.btn_editar.TabIndex = 3;
+            this.btn_editar.Text = "Actualizar";
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
             // 
             // guna2HtmlLabel4
             // 
@@ -573,12 +530,79 @@
             this.btn_eliminar.FillColor = System.Drawing.Color.DarkGray;
             this.btn_eliminar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_eliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_eliminar.Location = new System.Drawing.Point(659, 229);
+            this.btn_eliminar.Location = new System.Drawing.Point(652, 405);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.PressedColor = System.Drawing.Color.Transparent;
             this.btn_eliminar.Size = new System.Drawing.Size(180, 45);
             this.btn_eliminar.TabIndex = 25;
             this.btn_eliminar.Text = "Eliminar";
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
+            // 
+            // txb_marca
+            // 
+            this.txb_marca.BackColor = System.Drawing.Color.Transparent;
+            this.txb_marca.BorderColor = System.Drawing.Color.Transparent;
+            this.txb_marca.BorderRadius = 10;
+            this.txb_marca.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_marca.DefaultText = "";
+            this.txb_marca.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_marca.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_marca.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_marca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_marca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_marca.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_marca.ForeColor = System.Drawing.Color.Black;
+            this.txb_marca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_marca.Location = new System.Drawing.Point(13, 146);
+            this.txb_marca.Name = "txb_marca";
+            this.txb_marca.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txb_marca.PlaceholderText = "";
+            this.txb_marca.SelectedText = "";
+            this.txb_marca.Size = new System.Drawing.Size(247, 36);
+            this.txb_marca.TabIndex = 23;
+            // 
+            // txb_tipo_equipo
+            // 
+            this.txb_tipo_equipo.BackColor = System.Drawing.Color.Transparent;
+            this.txb_tipo_equipo.BorderColor = System.Drawing.Color.Transparent;
+            this.txb_tipo_equipo.BorderRadius = 10;
+            this.txb_tipo_equipo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_tipo_equipo.DefaultText = "";
+            this.txb_tipo_equipo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_tipo_equipo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_tipo_equipo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_tipo_equipo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_tipo_equipo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_tipo_equipo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_tipo_equipo.ForeColor = System.Drawing.Color.Black;
+            this.txb_tipo_equipo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_tipo_equipo.Location = new System.Drawing.Point(13, 349);
+            this.txb_tipo_equipo.Name = "txb_tipo_equipo";
+            this.txb_tipo_equipo.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txb_tipo_equipo.PlaceholderText = "";
+            this.txb_tipo_equipo.SelectedText = "";
+            this.txb_tipo_equipo.Size = new System.Drawing.Size(247, 36);
+            this.txb_tipo_equipo.TabIndex = 24;
+            // 
+            // guna2HtmlLabel5
+            // 
+            this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(652, 55);
+            this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(72, 17);
+            this.guna2HtmlLabel5.TabIndex = 25;
+            this.guna2HtmlLabel5.Text = "Observacion: ";
+            // 
+            // rch_observacion
+            // 
+            this.rch_observacion.Location = new System.Drawing.Point(652, 78);
+            this.rch_observacion.Name = "rch_observacion";
+            this.rch_observacion.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
+            this.rch_observacion.Size = new System.Drawing.Size(224, 240);
+            this.rch_observacion.TabIndex = 26;
+            this.rch_observacion.Text = "";
             // 
             // EditarEquipo
             // 
@@ -586,16 +610,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1133, 788);
-            this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.txb_id_editar);
-            this.Controls.Add(this.btn_editar);
             this.Controls.Add(this.guna2HtmlLabel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.gp_agregar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditarEquipo";
             this.Text = "EditarEquipo";
+            this.Load += new System.EventHandler(this.EditarEquipo_Load);
             this.gp_agregar.ResumeLayout(false);
             this.gp_agregar.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -616,7 +639,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txb_horometro_actual;
         private Guna.UI2.WinForms.Guna2TextBox txb_horometro_inicial;
         private Guna.UI2.WinForms.Guna2TextBox txb_anio_fabricacion;
-        private Guna.UI2.WinForms.Guna2ComboBox cmb_tipo_equipo;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_fecha_lectura;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_horometro_act;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_horometro_inicial;
@@ -625,7 +647,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txb_numero_serie;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_num_serie;
         private Guna.UI2.WinForms.Guna2TextBox txb_modelo;
-        private Guna.UI2.WinForms.Guna2ComboBox cmb_marca;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_modelo;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_marca;
         private Guna.UI2.WinForms.Guna2TextBox txb_codigo_flota;
@@ -638,5 +659,9 @@
         private Guna.UI2.WinForms.Guna2TextBox txb_id_editar;
         private Guna.UI2.WinForms.Guna2Button btn_buscar;
         private Guna.UI2.WinForms.Guna2Button btn_eliminar;
+        private Guna.UI2.WinForms.Guna2TextBox txb_tipo_equipo;
+        private Guna.UI2.WinForms.Guna2TextBox txb_marca;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
+        private System.Windows.Forms.RichTextBox rch_observacion;
     }
 }

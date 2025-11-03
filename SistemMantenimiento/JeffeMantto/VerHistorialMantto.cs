@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntidad.Equipo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace SistemMantenimiento.JeffeMantto
 {
     public partial class VerHistorialMantto : Form
     {
-        public VerHistorialMantto()
+        private entEquipo _equipo;
+
+        public VerHistorialMantto(entEquipo equipo)
         {
             InitializeComponent();
+            _equipo = equipo;
+            if (equipo==null)
+            {
+
+            }
+           
         }
     }
 }
