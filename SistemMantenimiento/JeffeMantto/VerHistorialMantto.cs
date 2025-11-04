@@ -19,11 +19,13 @@ namespace SistemMantenimiento.JeffeMantto
         {
             InitializeComponent();
             _equipo = equipo;
-            if (equipo==null)
-            {
-
-            }
            
+           
+        }
+        public VerHistorialMantto()
+        {
+            InitializeComponent();
+            this._equipo = null;
         }
     }
 }

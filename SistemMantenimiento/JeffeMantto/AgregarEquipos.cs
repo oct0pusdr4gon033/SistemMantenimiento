@@ -21,6 +21,7 @@ namespace SistemMantenimiento.JeffeMantto
             InitializeComponent();
             top_cinco(flp_top);
         }
+        
         public void top_cinco(FlowLayoutPanel flp_top_cinco)
         {
            

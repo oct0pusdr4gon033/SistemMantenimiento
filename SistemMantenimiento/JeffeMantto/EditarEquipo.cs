@@ -36,6 +36,14 @@ namespace SistemMantenimiento.JeffeMantto
             txb_codigo_flota.Text = equipo.codigo_flota;
 
         }
+        public EditarEquipo()
+        {
+            InitializeComponent();
+            this.usuarioEdito = null; 
+            this.equipo = null;
+            txb_id_editar.Enabled = true;
+            editables(); 
+        }
         private void no_editables()
         {
             txb_id_editar.Enabled = false;
@@ -204,10 +212,6 @@ namespace SistemMantenimiento.JeffeMantto
                 return;
             }
 
-            // ✅ Aquí llamas al procedimiento almacenado que:
-            //    - Actualiza el equipo.
-            //    - Registra automáticamente la bitácora.
-            // Por tanto, no se invoca manualmente a logBitacora.
             string nombre = usuarioEdito.Nombre;
             string apellido = usuarioEdito.Apellido;
             string usuario = $"{nombre} {apellido}";
@@ -231,7 +235,7 @@ namespace SistemMantenimiento.JeffeMantto
             if (result == DialogResult.Yes)
             {
                 // 👉 Acción si el usuario acepta
-                //desactivar_equipo(equipo.id_equipo);
+                logEquipo.Instancia.dar_baja_equipo(equipo.id_equipo);
                 MessageBox.Show("El equipo ha sido dado de baja correctamente.",
                                 "Acción completada",
                                 MessageBoxButtons.OK,

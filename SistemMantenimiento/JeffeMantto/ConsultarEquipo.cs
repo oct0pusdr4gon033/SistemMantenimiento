@@ -33,6 +33,11 @@ namespace SistemMantenimiento.JeffeMantto
             panel_form_hijo.Visible = false;
        
         }
+        public ConsultarEquipo()
+        {
+            InitializeComponent();
+            this.usuarioLogueado = null; 
+        }
         private void AbrirFormularioEnPanel(Form formularioHijo)
         {
             // 1. Si ya hay un formulario abierto, lo cerramos

@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.gp_agregar = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.rch_observacion = new System.Windows.Forms.RichTextBox();
+            this.btn_eliminar = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btn_editar = new Guna.UI2.WinForms.Guna2Button();
+            this.txb_tipo_equipo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txb_marca = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_estado = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.dtp_fecha_registro = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -52,15 +58,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btn_editar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_id_editar = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_buscar = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_eliminar = new Guna.UI2.WinForms.Guna2Button();
-            this.txb_marca = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txb_tipo_equipo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.rch_observacion = new System.Windows.Forms.RichTextBox();
             this.gp_agregar.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +101,112 @@
             this.gp_agregar.Size = new System.Drawing.Size(922, 526);
             this.gp_agregar.TabIndex = 6;
             this.gp_agregar.Text = "Editar Equipos";
+            // 
+            // rch_observacion
+            // 
+            this.rch_observacion.Location = new System.Drawing.Point(652, 78);
+            this.rch_observacion.Name = "rch_observacion";
+            this.rch_observacion.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
+            this.rch_observacion.Size = new System.Drawing.Size(224, 240);
+            this.rch_observacion.TabIndex = 26;
+            this.rch_observacion.Text = "";
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.Animated = true;
+            this.btn_eliminar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_eliminar.BorderRadius = 10;
+            this.btn_eliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_eliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_eliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_eliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_eliminar.FillColor = System.Drawing.Color.DarkGray;
+            this.btn_eliminar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btn_eliminar.Location = new System.Drawing.Point(640, 405);
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.PressedColor = System.Drawing.Color.Transparent;
+            this.btn_eliminar.Size = new System.Drawing.Size(180, 45);
+            this.btn_eliminar.TabIndex = 25;
+            this.btn_eliminar.Text = "Eliminar";
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
+            // 
+            // guna2HtmlLabel5
+            // 
+            this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(652, 55);
+            this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(72, 17);
+            this.guna2HtmlLabel5.TabIndex = 25;
+            this.guna2HtmlLabel5.Text = "Observacion: ";
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.Animated = true;
+            this.btn_editar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_editar.BorderRadius = 10;
+            this.btn_editar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_editar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_editar.FillColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btn_editar.Location = new System.Drawing.Point(379, 405);
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.PressedColor = System.Drawing.Color.Transparent;
+            this.btn_editar.Size = new System.Drawing.Size(173, 45);
+            this.btn_editar.TabIndex = 3;
+            this.btn_editar.Text = "Actualizar";
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
+            // 
+            // txb_tipo_equipo
+            // 
+            this.txb_tipo_equipo.BackColor = System.Drawing.Color.Transparent;
+            this.txb_tipo_equipo.BorderColor = System.Drawing.Color.Transparent;
+            this.txb_tipo_equipo.BorderRadius = 10;
+            this.txb_tipo_equipo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_tipo_equipo.DefaultText = "";
+            this.txb_tipo_equipo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_tipo_equipo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_tipo_equipo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_tipo_equipo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_tipo_equipo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_tipo_equipo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_tipo_equipo.ForeColor = System.Drawing.Color.Black;
+            this.txb_tipo_equipo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_tipo_equipo.Location = new System.Drawing.Point(13, 349);
+            this.txb_tipo_equipo.Name = "txb_tipo_equipo";
+            this.txb_tipo_equipo.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txb_tipo_equipo.PlaceholderText = "";
+            this.txb_tipo_equipo.SelectedText = "";
+            this.txb_tipo_equipo.Size = new System.Drawing.Size(247, 36);
+            this.txb_tipo_equipo.TabIndex = 24;
+            // 
+            // txb_marca
+            // 
+            this.txb_marca.BackColor = System.Drawing.Color.Transparent;
+            this.txb_marca.BorderColor = System.Drawing.Color.Transparent;
+            this.txb_marca.BorderRadius = 10;
+            this.txb_marca.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_marca.DefaultText = "";
+            this.txb_marca.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_marca.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_marca.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_marca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_marca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_marca.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_marca.ForeColor = System.Drawing.Color.Black;
+            this.txb_marca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_marca.Location = new System.Drawing.Point(13, 146);
+            this.txb_marca.Name = "txb_marca";
+            this.txb_marca.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txb_marca.PlaceholderText = "";
+            this.txb_marca.SelectedText = "";
+            this.txb_marca.Size = new System.Drawing.Size(247, 36);
+            this.txb_marca.TabIndex = 23;
             // 
             // lbl_estado
             // 
@@ -445,26 +551,6 @@
             this.guna2HtmlLabel3.TabIndex = 0;
             this.guna2HtmlLabel3.Text = "Actualizar Equipos";
             // 
-            // btn_editar
-            // 
-            this.btn_editar.Animated = true;
-            this.btn_editar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_editar.BorderRadius = 10;
-            this.btn_editar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_editar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_editar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_editar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_editar.FillColor = System.Drawing.Color.DarkGray;
-            this.btn_editar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_editar.Location = new System.Drawing.Point(379, 405);
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_editar.Size = new System.Drawing.Size(173, 45);
-            this.btn_editar.TabIndex = 3;
-            this.btn_editar.Text = "Actualizar";
-            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
-            // 
             // guna2HtmlLabel4
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
@@ -517,92 +603,6 @@
             this.btn_buscar.Size = new System.Drawing.Size(180, 36);
             this.btn_buscar.TabIndex = 24;
             this.btn_buscar.Text = "Buscar";
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.Animated = true;
-            this.btn_eliminar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_eliminar.BorderRadius = 10;
-            this.btn_eliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_eliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_eliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_eliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_eliminar.FillColor = System.Drawing.Color.DarkGray;
-            this.btn_eliminar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_eliminar.Location = new System.Drawing.Point(652, 405);
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_eliminar.Size = new System.Drawing.Size(180, 45);
-            this.btn_eliminar.TabIndex = 25;
-            this.btn_eliminar.Text = "Eliminar";
-            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
-            // 
-            // txb_marca
-            // 
-            this.txb_marca.BackColor = System.Drawing.Color.Transparent;
-            this.txb_marca.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_marca.BorderRadius = 10;
-            this.txb_marca.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_marca.DefaultText = "";
-            this.txb_marca.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_marca.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_marca.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_marca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_marca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_marca.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_marca.ForeColor = System.Drawing.Color.Black;
-            this.txb_marca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_marca.Location = new System.Drawing.Point(13, 146);
-            this.txb_marca.Name = "txb_marca";
-            this.txb_marca.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_marca.PlaceholderText = "";
-            this.txb_marca.SelectedText = "";
-            this.txb_marca.Size = new System.Drawing.Size(247, 36);
-            this.txb_marca.TabIndex = 23;
-            // 
-            // txb_tipo_equipo
-            // 
-            this.txb_tipo_equipo.BackColor = System.Drawing.Color.Transparent;
-            this.txb_tipo_equipo.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_tipo_equipo.BorderRadius = 10;
-            this.txb_tipo_equipo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_tipo_equipo.DefaultText = "";
-            this.txb_tipo_equipo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_tipo_equipo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_tipo_equipo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_tipo_equipo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_tipo_equipo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_tipo_equipo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_tipo_equipo.ForeColor = System.Drawing.Color.Black;
-            this.txb_tipo_equipo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_tipo_equipo.Location = new System.Drawing.Point(13, 349);
-            this.txb_tipo_equipo.Name = "txb_tipo_equipo";
-            this.txb_tipo_equipo.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_tipo_equipo.PlaceholderText = "";
-            this.txb_tipo_equipo.SelectedText = "";
-            this.txb_tipo_equipo.Size = new System.Drawing.Size(247, 36);
-            this.txb_tipo_equipo.TabIndex = 24;
-            // 
-            // guna2HtmlLabel5
-            // 
-            this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(652, 55);
-            this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(72, 17);
-            this.guna2HtmlLabel5.TabIndex = 25;
-            this.guna2HtmlLabel5.Text = "Observacion: ";
-            // 
-            // rch_observacion
-            // 
-            this.rch_observacion.Location = new System.Drawing.Point(652, 78);
-            this.rch_observacion.Name = "rch_observacion";
-            this.rch_observacion.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.rch_observacion.Size = new System.Drawing.Size(224, 240);
-            this.rch_observacion.TabIndex = 26;
-            this.rch_observacion.Text = "";
             // 
             // EditarEquipo
             // 
