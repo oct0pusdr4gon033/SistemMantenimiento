@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CapaLogica
 {
-    public static   class segEncriptacion
+    public static  class segEncriptacion
     {
         public static  string EncriptarSHA256(string texto)
         {
