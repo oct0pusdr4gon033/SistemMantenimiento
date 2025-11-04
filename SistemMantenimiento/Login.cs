@@ -158,8 +158,6 @@ namespace SistemMantenimiento
                 MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-
         }
     }
 }
