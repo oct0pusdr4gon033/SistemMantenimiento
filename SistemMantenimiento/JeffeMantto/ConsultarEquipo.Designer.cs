@@ -47,6 +47,7 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_opciones = new Guna.UI2.WinForms.Guna2Panel();
             this.lblEquipoSeleccionado = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.panel_form_hijo = new Guna.UI2.WinForms.Guna2Panel();
             this.panel1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.panel_titulo_opciones.SuspendLayout();
@@ -213,6 +214,7 @@
             this.btn_editar.TabIndex = 10;
             this.btn_editar.Text = "Editar";
             this.btn_editar.UseWaitCursor = true;
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
             // 
             // btn_plan_mantto
             // 
@@ -253,6 +255,7 @@
             this.btn_historial.TabIndex = 12;
             this.btn_historial.Text = "Ver Historial";
             this.btn_historial.UseWaitCursor = true;
+            this.btn_historial.Click += new System.EventHandler(this.btn_historial_Click);
             // 
             // btn_generar_ot
             // 
@@ -319,13 +322,23 @@
             // lblEquipoSeleccionado
             // 
             this.lblEquipoSeleccionado.BackColor = System.Drawing.Color.Transparent;
-            this.lblEquipoSeleccionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEquipoSeleccionado.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblEquipoSeleccionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEquipoSeleccionado.ForeColor = System.Drawing.Color.Gray;
             this.lblEquipoSeleccionado.Location = new System.Drawing.Point(18, 456);
             this.lblEquipoSeleccionado.Name = "lblEquipoSeleccionado";
-            this.lblEquipoSeleccionado.Size = new System.Drawing.Size(144, 20);
+            this.lblEquipoSeleccionado.Size = new System.Drawing.Size(164, 20);
             this.lblEquipoSeleccionado.TabIndex = 2;
             this.lblEquipoSeleccionado.Text = "Seleccione un equipo";
+            // 
+            // panel_form_hijo
+            // 
+            this.panel_form_hijo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_form_hijo.Location = new System.Drawing.Point(12, 5);
+            this.panel_form_hijo.Name = "panel_form_hijo";
+            this.panel_form_hijo.Size = new System.Drawing.Size(1086, 750);
+            this.panel_form_hijo.TabIndex = 11;
             // 
             // ConsultarEquipo
             // 
@@ -340,6 +353,7 @@
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_form_hijo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultarEquipo";
             this.Text = "ConsultarEquipo";
@@ -377,5 +391,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2Panel panel_opciones;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblEquipoSeleccionado;
+        private Guna.UI2.WinForms.Guna2Panel panel_form_hijo;
     }
 }

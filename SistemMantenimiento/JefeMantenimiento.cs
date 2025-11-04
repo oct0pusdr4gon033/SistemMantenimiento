@@ -1,4 +1,5 @@
-﻿using CapaEntidad.Usuario;
+﻿using CapaEntidad.Equipo;
+using CapaEntidad.Usuario;
 using CapaLogica.Equipo;
 using Guna.UI2.WinForms;
 using SistemMantenimiento.FuncionesAuxiliares;
@@ -34,6 +35,8 @@ namespace SistemMantenimiento
         private SubMenuManager subMenuEquipos;
         private Form formularioActivo = null;
         entUsuarioLogueado usuarioLogueado = null; 
+        entEquipo equipo_seleccionado;
+
 
 
         public JefeMantenimiento(entUsuarioLogueado usuario)
@@ -102,25 +105,53 @@ namespace SistemMantenimiento
         }
         private void load_sub_menu_equipos()
         {
-            // --- ESTA ES LA PARTE CLAVE ---
-            // 1. Crea un Diccionario que une el texto (string) con una acción (Action)
             var opcionesConAcciones = new Dictionary<string, Action>
             {
-             
-                { "➕ Crear Equipo",             () => AbrirFormularioEnPanel(new AgregarEquipos()) },
-                { "✏️ Editar Equipo",  () => AbrirFormularioEnPanel(new EditarEquipo()) },
-                { "🔍 Consultar Equipos",         () => AbrirFormularioEnPanel(new ConsultarEquipo()) },
-                { "⏱️ Actualizar Horómetro",    () => AbrirFormularioEnPanel(new Horometros()) },
-                { "📜 Historial de Mantenimiento", () => AbrirFormularioEnPanel(new VerHistorialMantto()) }
+                { "➕ Crear Equipo", () => AbrirFormularioEnPanel(new AgregarEquipos()) },
+
+                { "✏️ Editar Equipo", () =>
+                    {
+                        if (equipo_seleccionado != null)
+                            AbrirFormularioEnPanel(new EditarEquipo(equipo_seleccionado, usuarioLogueado));
+                        else
+                            AbrirFormularioEnPanel(new EditarEquipo()); // ✅ abrir sin entidad
+                    }
+                },
+
+                { "🔍 Consultar Equipos", () =>
+                    {
+                        if (usuarioLogueado != null)
+                            AbrirFormularioEnPanel(new ConsultarEquipo(usuarioLogueado));
+                        else
+                            AbrirFormularioEnPanel(new ConsultarEquipo()); // ✅ sin usuario
+                    }
+                },
+
+                { "⏱️ Actualizar Horómetro", () =>
+                    {
+                        if (equipo_seleccionado != null)
+                            AbrirFormularioEnPanel(new Horometros(equipo_seleccionado));
+                        else
+                            AbrirFormularioEnPanel(new Horometros()); // ✅ constructor alternativo
+                    }
+                },
+
+                { "📜 Historial de Mantenimiento", () =>
+                    {
+                        if (equipo_seleccionado != null)
+                            AbrirFormularioEnPanel(new VerHistorialMantto(equipo_seleccionado));
+                        else
+                            AbrirFormularioEnPanel(new VerHistorialMantto()); // ✅ sin entidad
+                    }
+                }
             };
 
-            // 2. Llama a tu SubMenuManager (asumiendo que lo modificaste para aceptar el Diccionario)
             subMenuEquipos = new SubMenuManager(
-                this,                     // Form principal
-                btn_equipos,              // Tu botón principal Guna2
-                panel_sub_menu_equipos,   // Panel contenedor del submenú
-                flp_sub_menu_equipos,     // FlowLayoutPanel interno
-                opcionesConAcciones       // ¡Le pasamos el Diccionario!
+                this,
+                btn_equipos,
+                panel_sub_menu_equipos,
+                flp_sub_menu_equipos,
+                opcionesConAcciones
             );
         }
         private void AbrirFormularioEnPanel(Form formularioHijo)

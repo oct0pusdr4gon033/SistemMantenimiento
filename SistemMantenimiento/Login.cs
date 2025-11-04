@@ -75,28 +75,27 @@ namespace SistemMantenimiento
         }
         public int GetId(string rol)
         {
-            // 1️⃣ Obtener el texto del rol seleccionado (por si no viene)
-            rol = cmb_rol.GetItemText(cmb_rol.SelectedItem);
+            // Obtener el texto seleccionado del ComboBox
+            rol = cmb_rol.GetItemText(cmb_rol.SelectedItem)?.Trim();
 
-            int id;
+            int id=0;
 
-            // 2️⃣ Asignar ID según el texto del rol
             switch (rol)
             {
                 case "Jefe de Mantenimiento":
                     id = 1;
                     break;
 
-                case "Planner":
+                case "Gerente de Mantenimiento":
                     id = 2;
                     break;
 
-                case "Gerente":
-                    id = 3;
+                case "Planner de Mantenimiento":
+                    id = 4;
                     break;
 
-                case "Jefe de Logística":
-                    id = 4;
+                case "Jefe Logistica":
+                    id = 3;
                     break;
 
                 default:
@@ -106,51 +105,77 @@ namespace SistemMantenimiento
 
             return id;
         }
+        private void AbrirFormularioPorRol(int idRol, entUsuarioLogueado usuario)
+        {
+            Form frm = null;
+
+            switch (idRol)
+            {
+                case 1:
+                    frm = new JefeMantenimiento(usuario);
+                    break;
+                case 2:
+                    //frm = new Gerente(usuario);
+                    break;
+                case 3:
+                    //frm = new JefeLogistica(usuario);
+                    break;
+                case 4:
+                    frm = new PlannerMantto(usuario);
+                    break;
+                default:
+                    MessageBox.Show("Rol no reconocido. Contacte con el administrador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+            }
+
+            frm.Show();
+            this.Hide();
+        }
 
         private void btn_ingresar_Click(object sender, EventArgs e)
         {
-            string user=txb_usuario.Text;
-            string password = txb_password.Text;
-            int id_rol = GetId(cmb_rol.GetItemText(cmb_rol.SelectedItem));
+            string user = txb_usuario.Text.Trim();
+            string password = txb_password.Text.Trim();
 
-
-
-            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password) )
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+           
+
+            int id_rol = GetId(cmb_rol.GetItemText(cmb_rol.SelectedItem));
+
+            // Crear entidad con el hash
             entUsuario usuario = new entUsuario()
             {
                 dni = user,
-                password = password,
+                password = password,   // Aquí se pasa el hash
                 id_rol = id_rol
             };
-            
+
             try
             {
-                // 4️⃣ Invocar capa lógica
+                // Llamada a la capa lógica
                 bool logeado = logUsuario.Instancia.Login(usuario);
 
-                entUsuarioLogueado datosUsuario = logUsuarioLogueado.Instancia.CargarUsuarioLogueado(user, id_rol);
-                SesionActual.UsuarioLogueado = datosUsuario;
-                // 3️⃣ Guardar en sesión global
-                SesionActual.UsuarioLogueado = datosUsuario;
-
-                // 5️⃣ Validar resultado
                 if (logeado)
                 {
-                    MessageBox.Show("Inicio de sesión exitoso", $"Bienvenido {datosUsuario.Nombre} {datosUsuario.Apellido} ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Puedes cargar los datos del usuario logueado aquí
+                    entUsuarioLogueado datosUsuario = logUsuarioLogueado.Instancia.CargarUsuarioLogueado(user, id_rol);
+                    SesionActual.UsuarioLogueado = datosUsuario;
 
-                    // 👉 Aquí puedes abrir tu formulario principal
-                    JefeMantenimiento frm = new JefeMantenimiento(datosUsuario);
-                    frm.Show();
-                    this.Hide();
+                    MessageBox.Show($"Inicio de sesión exitoso.\nBienvenido {datosUsuario.Nombre} {datosUsuario.Apellido}.",
+                                    "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Abrir formulario según el rol
+                    AbrirFormularioPorRol(id_rol, datosUsuario);
                 }
                 else
                 {
-                    MessageBox.Show("Credenciales incorrectas. Verifique su usuario, contraseña o rol.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Credenciales incorrectas. Verifique su usuario, contraseña o rol.",
+                                    "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -158,6 +183,11 @@ namespace SistemMantenimiento
                 MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+<<<<<<< HEAD
         }
+=======
+
+         }
+>>>>>>> origin/main
     }
 }

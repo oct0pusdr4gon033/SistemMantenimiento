@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntidad.Equipo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,8 @@ namespace SistemMantenimiento.JeffeMantto
     {
         // EVENTO que notifica al formulario padre
         public event EventHandler<int> TarjetaClickeada;
+        public entEquipo Equipo { get; set; }
+
 
         public int IdEquipo { get; private set; }
 
@@ -44,7 +47,7 @@ namespace SistemMantenimiento.JeffeMantto
             lbl_num_serie.Text = "N° Serie: " + num_serie;
             lblFechaIngreso.Text = "Ingreso: " + fechaIngreso.ToString("dd/MM/yyyy");
             lblAnio.Text = "Fabricación: " + anioFabricacion.ToString();
-
+            
             // Colores por defecto
             Color colorBorde = Color.FromArgb(240, 240, 240);
             Color colorEtiqueta = Color.FromArgb(224, 224, 224);

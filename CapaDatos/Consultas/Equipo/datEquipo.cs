@@ -1,21 +1,16 @@
-﻿using CapaDatos.ConexionDB;
-using CapaDatos.Consultas.Usuario;
-using CapaEntidad.Equipo;
+﻿using CapaEntidad.Equipo;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos.Consultas.Equipo
 {
     public class datEquipo
     {
         private static readonly datEquipo _instancia = new datEquipo();
-        
+
 
         public static datEquipo Instancia
         {
@@ -68,7 +63,7 @@ namespace CapaDatos.Consultas.Equipo
         public List<entEquipo> extraer_top_five()
         {
             List<entEquipo> listaEquipos = new List<entEquipo>();
-          
+
             using (SqlConnection con = ConexionDB.ConexionDB.Instancia.Conectar())
             {
                 using (SqlCommand cmd = new SqlCommand("sp_ObtenerUltimosCincoEquipos", con))
@@ -96,14 +91,14 @@ namespace CapaDatos.Consultas.Equipo
                                     : reader["num_serie"].ToString();
 
                                 equipo.anio_fabricacion = reader["anio_fabricacion"] == DBNull.Value
-                                    ? 0  
+                                    ? 0
                                     : Convert.ToInt32(reader["anio_fabricacion"]);
                                 equipo.fecha_compra = reader["fecha_compra"] == DBNull.Value
-                                    ? DateTime.MinValue 
+                                    ? DateTime.MinValue
                                     : Convert.ToDateTime(reader["fecha_compra"]);
 
                                 equipo.fecha_registro = reader["fecha_registro"] == DBNull.Value
-                                    ? DateTime.MinValue 
+                                    ? DateTime.MinValue
                                     : Convert.ToDateTime(reader["fecha_registro"]);
                                 listaEquipos.Add(equipo);
                             }
@@ -117,7 +112,50 @@ namespace CapaDatos.Consultas.Equipo
             }
             return listaEquipos;
         }
-        public List<entEquipo> BuscarEquipos(string tipo, string marca, int? año, 
+
+        /// Actualiza un equipo existente en la base de datos y registra el cambio en la bitácora.
+        public bool ActualizarEquipo(entEquipo equipo, string usuarioEdito, string motivo)
+        {
+            bool actualizado = false;
+
+            using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarEquipoPorId", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_equipo", equipo.id_equipo);
+                    cmd.Parameters.AddWithValue("@codigo_flota", equipo.codigo_flota);
+                    cmd.Parameters.AddWithValue("@marca", equipo.marca);
+                    cmd.Parameters.AddWithValue("@modelo", equipo.modelo);
+                    cmd.Parameters.AddWithValue("@num_serie", (object)equipo.num_serie ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@tipo_equipo", equipo.tipo_equipo);
+                    cmd.Parameters.AddWithValue("@anio_fabricacion", equipo.anio_fabricacion);
+                    cmd.Parameters.AddWithValue("@horometro_inicial", equipo.horometro_inicial);
+                    cmd.Parameters.AddWithValue("@horometro_actual", equipo.horometro_actual);
+                    cmd.Parameters.AddWithValue("@fecha_compra", (object)equipo.fecha_compra ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@fecha_registro", (object)equipo.fecha_registro ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@estado", equipo.estado_equipo);
+
+                    // 🔹 Nuevos parámetros para bitácora
+                    cmd.Parameters.AddWithValue("@usuario_edito", usuarioEdito);
+                    cmd.Parameters.AddWithValue("@motivo", motivo);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        actualizado = true;
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine("Error SQL al actualizar el equipo: " + ex.Message);
+                    }
+                }
+            }
+
+            return actualizado;
+        }
+        public List<entEquipo> BuscarEquipos(string tipo, string marca, int? año,
                                             string modelo, string fecha, string num_serie)
         {
             List<entEquipo> lista = new List<entEquipo>();
@@ -165,7 +203,7 @@ namespace CapaDatos.Consultas.Equipo
                             anio_fabricacion = dr["Fabricacion"] == DBNull.Value ? 0 : Convert.ToInt32(dr["Fabricacion"]),
                             horometro_actual = dr["horometro_actual"] == DBNull.Value ? 0 : Convert.ToInt32(dr["horometro_actual"]),
                             estado_equipo = dr["estado"] == DBNull.Value ? false : Convert.ToBoolean(dr["estado"])
-                        };  
+                        };
                         lista.Add(equipo);
                     }
                 }
@@ -199,12 +237,12 @@ namespace CapaDatos.Consultas.Equipo
                         {
                             total_equipos = Convert.ToInt32(resultado);
                         }
-                    } 
-                } 
+                    }
+                }
             }
             catch (Exception ex)
             {
-             
+
                 throw new Exception("No se pudieron contar los equipos.", ex);
             }
 
@@ -260,6 +298,45 @@ namespace CapaDatos.Consultas.Equipo
             }
         }
 
+        public bool existe_bitacora(int id_equipo)
+        {
+            string query = "SELECT COUNT(*) FROM Bitacora_Equipo WHERE id_equipo = @id_equipo";
+
+            try
+            {
+                using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id_equipo", id_equipo);
+                        conn.Open();
+
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            { 
+                return false;
+            }
+        }
+        public bool dar_baja_equipo(int id_equipo)
+        {
+            string query = "UPDATE Equipo SET estado = 0 WHERE id_equipo = @id_equipo";
+            using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("id_equipo", SqlDbType.Int).Value = id_equipo;
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0;
+
+                }
+                ;
+            };
+        }
 
 
 
