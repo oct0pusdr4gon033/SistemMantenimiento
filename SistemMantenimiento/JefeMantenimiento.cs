@@ -113,18 +113,26 @@ namespace SistemMantenimiento
                     {
                         if (equipo_seleccionado != null)
                             AbrirFormularioEnPanel(new EditarEquipo(equipo_seleccionado, usuarioLogueado));
-                       
+                        else
+                            AbrirFormularioEnPanel(new EditarEquipo()); // ✅ abrir sin entidad
                     }
                 },
 
-                { "🔍 Consultar Equipos", () => AbrirFormularioEnPanel(new ConsultarEquipo(usuarioLogueado)) },
+                { "🔍 Consultar Equipos", () =>
+                    {
+                        if (usuarioLogueado != null)
+                            AbrirFormularioEnPanel(new ConsultarEquipo(usuarioLogueado));
+                        else
+                            AbrirFormularioEnPanel(new ConsultarEquipo()); // ✅ sin usuario
+                    }
+                },
 
                 { "⏱️ Actualizar Horómetro", () =>
                     {
                         if (equipo_seleccionado != null)
-                            AbrirFormularioEnPanel(new Horometros());
+                            AbrirFormularioEnPanel(new Horometros(equipo_seleccionado));
                         else
-                            MessageBox.Show("Selecciona un equipo antes de actualizar el horómetro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            AbrirFormularioEnPanel(new Horometros()); // ✅ constructor alternativo
                     }
                 },
 
@@ -133,7 +141,7 @@ namespace SistemMantenimiento
                         if (equipo_seleccionado != null)
                             AbrirFormularioEnPanel(new VerHistorialMantto(equipo_seleccionado));
                         else
-                            MessageBox.Show("Selecciona un equipo antes de ver su historial.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            AbrirFormularioEnPanel(new VerHistorialMantto()); // ✅ sin entidad
                     }
                 }
             };

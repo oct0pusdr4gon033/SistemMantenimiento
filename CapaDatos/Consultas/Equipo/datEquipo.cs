@@ -321,13 +321,14 @@ namespace CapaDatos.Consultas.Equipo
                 return false;
             }
         }
-        public bool dar_baja()
+        public bool dar_baja_equipo(int id_equipo)
         {
             string query = "UPDATE Equipo SET estado = 0 WHERE id_equipo = @id_equipo";
             using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
+                    cmd.Parameters.AddWithValue("id_equipo", SqlDbType.Int).Value = id_equipo;
                     conn.Open();
                     int rowsAffected = cmd.ExecuteNonQuery();
                     return rowsAffected > 0;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaEntidad.Usuario;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,12 @@ namespace SistemMantenimiento
 {
     public partial class PlannerMantto : Form
     {
-        public PlannerMantto()
+        entUsuarioLogueado usuarioLogueado = null; 
+
+        public PlannerMantto(entUsuarioLogueado usuario)
         {
             InitializeComponent();
+            usuarioLogueado = usuario;
         }
     }
 }

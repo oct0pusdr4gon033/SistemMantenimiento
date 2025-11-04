@@ -127,6 +127,11 @@ namespace CapaLogica.Equipo
             return datEquipo.Instancia.existe_bitacora(id_equipo);
         }
 
+        public bool dar_baja_equipo(int id_equipo)
+        {
+            return datEquipo.Instancia.dar_baja_equipo(id_equipo);
+        }
+
 
 
 

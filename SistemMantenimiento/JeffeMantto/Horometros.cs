@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntidad.Equipo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,16 @@ namespace SistemMantenimiento.JeffeMantto
 {
     public partial class Horometros : Form
     {
+        private entEquipo equipo_selecionado; 
+        public Horometros(entEquipo equipo)
+        {
+            InitializeComponent();
+            equipo_selecionado = equipo;
+        }
         public Horometros()
         {
             InitializeComponent();
+            this.equipo_selecionado = null;
         }
     }
 }
