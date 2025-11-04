@@ -147,6 +147,11 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MantenimientoDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MantenimientoDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PlannerMantto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +162,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="JefeLogistica.resx">
       <DependentUpon>JefeLogistica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JefeLogi\Proveedores\AgregarPro.resx">
+      <DependentUpon>AgregarPro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JefeMantenimiento.resx">
       <DependentUpon>JefeMantenimiento.cs</DependentUpon>
@@ -187,6 +195,17 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="MantenimientoDBDataSet.xsc">
+      <DependentUpon>MantenimientoDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MantenimientoDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MantenimientoDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MantenimientoDBDataSet.xss">
+      <DependentUpon>MantenimientoDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
