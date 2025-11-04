@@ -118,7 +118,7 @@ namespace SistemMantenimiento
                     //frm = new Gerente(usuario);
                     break;
                 case 3:
-                    //frm = new JefeLogistica(usuario);
+                    frm = new JefeLogistica();
                     break;
                 case 4:
                     frm = new PlannerMantto(usuario);
@@ -183,11 +183,6 @@ namespace SistemMantenimiento
                 MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-<<<<<<< HEAD
         }
-=======
-
-         }
->>>>>>> origin/main
     }
 }
