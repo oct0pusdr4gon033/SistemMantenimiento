@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConexionDB\ConexionDB.cs" />
     <Compile Include="Consultas\Equipo\datEquipo.cs" />
+    <Compile Include="Consultas\Proveedor\datProveedor.cs" />
     <Compile Include="Consultas\Usuario\datUsuario.cs" />
     <Compile Include="Consultas\Usuario\datUsuarioLogueado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
