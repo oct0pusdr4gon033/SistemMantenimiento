@@ -115,7 +115,7 @@ namespace SistemMantenimiento
                     frm = new JefeMantenimiento(usuario);
                     break;
                 case 2:
-                    //frm = new Gerente(usuario);
+                    //frm = new Gerente(usuario); aun no se ha creado el formulario de Gerente
                     break;
                 case 3:
                     frm = new JefeLogistica();
