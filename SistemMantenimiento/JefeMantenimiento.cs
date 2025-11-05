@@ -37,8 +37,6 @@ namespace SistemMantenimiento
         entUsuarioLogueado usuarioLogueado = null; 
         entEquipo equipo_seleccionado;
 
-
-
         public JefeMantenimiento(entUsuarioLogueado usuario)
         {
             InitializeComponent();

@@ -63,35 +63,11 @@
     <Compile Include="JefeLogistica.Designer.cs">
       <DependentUpon>JefeLogistica.cs</DependentUpon>
     </Compile>
-    <Compile Include="JefeLogi\Material\AgregarMaterial.cs">
+    <Compile Include="JefeLogi\frmMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JefeLogi\Material\AgregarMaterial.Designer.cs">
-      <DependentUpon>AgregarMaterial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="JefeLogi\Material\EditarMaterial.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="JefeLogi\Material\EditarMaterial.Designer.cs">
-      <DependentUpon>EditarMaterial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="JefeLogi\Proveedores\AgregarPro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="JefeLogi\Proveedores\AgregarPro.Designer.cs">
-      <DependentUpon>AgregarPro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="JefeLogi\Proveedores\EditarPro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="JefeLogi\Proveedores\EditarPro.Designer.cs">
-      <DependentUpon>EditarPro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="JefeLogi\Requerimiento_Interno\AgregarRe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="JefeLogi\Requerimiento_Interno\AgregarRe.Designer.cs">
-      <DependentUpon>AgregarRe.cs</DependentUpon>
+    <Compile Include="JefeLogi\frmMaterial.Designer.cs">
+      <DependentUpon>frmMaterial.cs</DependentUpon>
     </Compile>
     <Compile Include="JefeMantenimiento.cs">
       <SubType>Form</SubType>
@@ -157,6 +133,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="JefeLogistica.resx">
       <DependentUpon>JefeLogistica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JefeLogi\frmMaterial.resx">
+      <DependentUpon>frmMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JefeMantenimiento.resx">
       <DependentUpon>JefeMantenimiento.cs</DependentUpon>
