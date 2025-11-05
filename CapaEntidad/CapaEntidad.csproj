@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Equipo\Area.cs" />
+=======
+    <Compile Include="EntLogistica\entProveedor.cs" />
+>>>>>>> 6b613ccfedece86ec1af10dce6c03612c22f1314
     <Compile Include="Equipo\entEquipo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\entUsuario.cs" />
