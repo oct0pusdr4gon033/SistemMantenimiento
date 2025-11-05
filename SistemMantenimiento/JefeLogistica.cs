@@ -48,12 +48,11 @@ namespace SistemMantenimiento
                 "❌ Anular Nota de Salida"
             });
 
-            btn_materiales.Click += (s, e) => MostrarSubOpciones("Materiales", new List<string>
+            btn_materiales.Click += (s, e) =>
             {
-                "➕ Agregar Material",
-                "✏️ Modificar Material",
-                "🗑️ Eliminar Material"
-            });
+                AbrirFormularioHijo(new SistemMantenimiento.JefeLogi.frmMaterial());
+            };
+
 
             btn_proveedores.Click += (s, e) => MostrarSubOpciones("Proveedores", new List<string>
             {
@@ -221,5 +220,46 @@ namespace SistemMantenimiento
         {
             Application.Exit();
         }
+
+        private void AbrirFormularioHijo(Form nuevoFormulario)
+        {
+            // Si hay un formulario cargado en el panel
+            if (panel_form_hijo.Controls.Count > 0)
+            {
+                Form formActual = panel_form_hijo.Controls[0] as Form;
+
+                if (formActual != null)
+                {
+                    // Si es frmMaterial, verificar si tiene cambios sin guardar
+                    if (formActual is SistemMantenimiento.JefeLogi.frmMaterial frmMaterial)
+                    {
+                        bool salir = frmMaterial.ConfirmarSalidaConCambios();
+                        if (!salir)
+                            return; // cancelar cambio de vista
+                    }
+
+                    // Desuscribir eventos y destruir el form viejo
+                    formActual.Hide();
+                    formActual.Close();
+                    formActual.Dispose();
+                }
+
+                // Limpia completamente el contenedor
+                panel_form_hijo.Controls.Clear();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+
+            // Cargar el nuevo formulario
+            nuevoFormulario.TopLevel = false;
+            nuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            nuevoFormulario.Dock = DockStyle.Fill;
+            panel_form_hijo.Controls.Add(nuevoFormulario);
+            panel_form_hijo.Tag = nuevoFormulario;
+            nuevoFormulario.Show();
+        }
+
+
+
     }
 }

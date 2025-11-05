@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using SistemMantenimiento.JeffeMantto;
+=======
+﻿using SistemMantenimiento.JefeLogi;
+>>>>>>> origin/main
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +11,7 @@ using System.Windows.Forms;
 using CapaEntidad.Usuario;
 using SistemMantenimiento.JefeLogi;
 using SistemMantenimiento.JefeLogi.Proveedores;
+
 
 
 namespace SistemMantenimiento
@@ -40,6 +45,7 @@ namespace SistemMantenimiento
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+          
             Application.Run(new frmProveedor  ());
         }
     }

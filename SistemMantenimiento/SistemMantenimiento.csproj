@@ -63,6 +63,11 @@
     <Compile Include="JefeLogistica.Designer.cs">
       <DependentUpon>JefeLogistica.cs</DependentUpon>
     </Compile>
+    <Compile Include="JefeLogi\frmMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JefeLogi\frmMaterial.Designer.cs">
+      <DependentUpon>frmMaterial.cs</DependentUpon>
     <Compile Include="JefeLogi\frmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +139,8 @@
     <EmbeddedResource Include="JefeLogistica.resx">
       <DependentUpon>JefeLogistica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JefeLogi\frmMaterial.resx">
+      <DependentUpon>frmMaterial.cs</DependentUpon>
     <EmbeddedResource Include="JefeLogi\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
     </EmbeddedResource>

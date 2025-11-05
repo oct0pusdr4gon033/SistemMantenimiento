@@ -23,11 +23,12 @@
             this.lbl_descripcion = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_title = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_side_bar = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btn_requerimientos = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_proveedores = new Guna.UI2.WinForms.Guna2Button();
             this.btn_materiales = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_nota_salida = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_proveedores = new Guna.UI2.WinForms.Guna2Button();
             this.btn_nota_ingreso = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_nota_salida = new Guna.UI2.WinForms.Guna2Button();
             this.btn_inicio = new Guna.UI2.WinForms.Guna2Button();
             this.panel_superio = new Guna.UI2.WinForms.Guna2Panel();
             this.btn_rezise_max = new System.Windows.Forms.PictureBox();
@@ -35,16 +36,15 @@
             this.btn_minimizar = new System.Windows.Forms.PictureBox();
             this.btn_salir = new System.Windows.Forms.PictureBox();
             this.panel_form_hijo = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.content_titulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
             this.panel_side_bar.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel_superio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_rezise_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_resize_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // content_titulo
@@ -108,6 +108,19 @@
             this.panel_side_bar.TabIndex = 5;
             this.panel_side_bar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_side_bar_MouseDown);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_requerimientos);
+            this.panel1.Controls.Add(this.btn_materiales);
+            this.panel1.Controls.Add(this.btn_proveedores);
+            this.panel1.Controls.Add(this.btn_nota_ingreso);
+            this.panel1.Controls.Add(this.btn_nota_salida);
+            this.panel1.Location = new System.Drawing.Point(29, 197);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(208, 259);
+            this.panel1.TabIndex = 0;
+            // 
             // btn_requerimientos
             // 
             this.btn_requerimientos.BackColor = System.Drawing.Color.Transparent;
@@ -121,20 +134,6 @@
             this.btn_requerimientos.Size = new System.Drawing.Size(202, 45);
             this.btn_requerimientos.TabIndex = 10;
             this.btn_requerimientos.Text = "Requerimientos";
-            // 
-            // btn_proveedores
-            // 
-            this.btn_proveedores.BackColor = System.Drawing.Color.Transparent;
-            this.btn_proveedores.BorderColor = System.Drawing.Color.Transparent;
-            this.btn_proveedores.BorderRadius = 10;
-            this.btn_proveedores.FillColor = System.Drawing.Color.Transparent;
-            this.btn_proveedores.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btn_proveedores.ForeColor = System.Drawing.Color.White;
-            this.btn_proveedores.Location = new System.Drawing.Point(3, 159);
-            this.btn_proveedores.Name = "btn_proveedores";
-            this.btn_proveedores.Size = new System.Drawing.Size(202, 45);
-            this.btn_proveedores.TabIndex = 9;
-            this.btn_proveedores.Text = "Proveedores";
             // 
             // btn_materiales
             // 
@@ -150,19 +149,19 @@
             this.btn_materiales.TabIndex = 8;
             this.btn_materiales.Text = "Materiales";
             // 
-            // btn_nota_salida
+            // btn_proveedores
             // 
-            this.btn_nota_salida.BackColor = System.Drawing.Color.Transparent;
-            this.btn_nota_salida.BorderColor = System.Drawing.Color.Transparent;
-            this.btn_nota_salida.BorderRadius = 10;
-            this.btn_nota_salida.FillColor = System.Drawing.Color.Transparent;
-            this.btn_nota_salida.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btn_nota_salida.ForeColor = System.Drawing.Color.White;
-            this.btn_nota_salida.Location = new System.Drawing.Point(3, 57);
-            this.btn_nota_salida.Name = "btn_nota_salida";
-            this.btn_nota_salida.Size = new System.Drawing.Size(202, 45);
-            this.btn_nota_salida.TabIndex = 7;
-            this.btn_nota_salida.Text = "Nota de Salida";
+            this.btn_proveedores.BackColor = System.Drawing.Color.Transparent;
+            this.btn_proveedores.BorderColor = System.Drawing.Color.Transparent;
+            this.btn_proveedores.BorderRadius = 10;
+            this.btn_proveedores.FillColor = System.Drawing.Color.Transparent;
+            this.btn_proveedores.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_proveedores.ForeColor = System.Drawing.Color.White;
+            this.btn_proveedores.Location = new System.Drawing.Point(3, 159);
+            this.btn_proveedores.Name = "btn_proveedores";
+            this.btn_proveedores.Size = new System.Drawing.Size(202, 45);
+            this.btn_proveedores.TabIndex = 9;
+            this.btn_proveedores.Text = "Proveedores";
             // 
             // btn_nota_ingreso
             // 
@@ -177,6 +176,20 @@
             this.btn_nota_ingreso.Size = new System.Drawing.Size(202, 45);
             this.btn_nota_ingreso.TabIndex = 6;
             this.btn_nota_ingreso.Text = "Nota de Ingreso";
+            // 
+            // btn_nota_salida
+            // 
+            this.btn_nota_salida.BackColor = System.Drawing.Color.Transparent;
+            this.btn_nota_salida.BorderColor = System.Drawing.Color.Transparent;
+            this.btn_nota_salida.BorderRadius = 10;
+            this.btn_nota_salida.FillColor = System.Drawing.Color.Transparent;
+            this.btn_nota_salida.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_nota_salida.ForeColor = System.Drawing.Color.White;
+            this.btn_nota_salida.Location = new System.Drawing.Point(3, 57);
+            this.btn_nota_salida.Name = "btn_nota_salida";
+            this.btn_nota_salida.Size = new System.Drawing.Size(202, 45);
+            this.btn_nota_salida.TabIndex = 7;
+            this.btn_nota_salida.Text = "Nota de Salida";
             // 
             // btn_inicio
             // 
@@ -277,19 +290,6 @@
             this.panel_form_hijo.Size = new System.Drawing.Size(1100, 479);
             this.panel_form_hijo.TabIndex = 10;
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.btn_requerimientos);
-            this.panel1.Controls.Add(this.btn_materiales);
-            this.panel1.Controls.Add(this.btn_proveedores);
-            this.panel1.Controls.Add(this.btn_nota_ingreso);
-            this.panel1.Controls.Add(this.btn_nota_salida);
-            this.panel1.Location = new System.Drawing.Point(29, 197);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(208, 259);
-            this.panel1.TabIndex = 0;
-            // 
             // JefeLogistica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,12 +306,12 @@
             this.content_titulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).EndInit();
             this.panel_side_bar.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panel_superio.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_rezise_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_resize_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
