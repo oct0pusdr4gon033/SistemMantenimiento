@@ -68,6 +68,11 @@
     </Compile>
     <Compile Include="JefeLogi\frmMaterial.Designer.cs">
       <DependentUpon>frmMaterial.cs</DependentUpon>
+    <Compile Include="JefeLogi\frmProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JefeLogi\frmProveedor.Designer.cs">
+      <DependentUpon>frmProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="JefeMantenimiento.cs">
       <SubType>Form</SubType>
@@ -123,6 +128,16 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MantenimientoDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MantenimientoDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MantenimientoDBDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PlannerMantto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +151,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="JefeLogi\frmMaterial.resx">
       <DependentUpon>frmMaterial.cs</DependentUpon>
+    <EmbeddedResource Include="JefeLogi\frmProveedor.resx">
+      <DependentUpon>frmProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JefeMantenimiento.resx">
       <DependentUpon>JefeMantenimiento.cs</DependentUpon>
@@ -166,6 +183,28 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="MantenimientoDBDataSet.xsc">
+      <DependentUpon>MantenimientoDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MantenimientoDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MantenimientoDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MantenimientoDBDataSet.xss">
+      <DependentUpon>MantenimientoDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MantenimientoDBDataSet1.xsc">
+      <DependentUpon>MantenimientoDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="MantenimientoDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MantenimientoDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MantenimientoDBDataSet1.xss">
+      <DependentUpon>MantenimientoDBDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
