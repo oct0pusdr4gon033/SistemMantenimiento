@@ -139,9 +139,9 @@ namespace SistemMantenimiento
                 { "📜 Historial de Mantenimiento", () =>
                     {
                         if (equipo_seleccionado != null)
-                            AbrirFormularioEnPanel(new VerHistorialMantto(equipo_seleccionado));
+                            AbrirFormularioEnPanel(new GenerarPM(equipo_seleccionado));
                         else
-                            AbrirFormularioEnPanel(new VerHistorialMantto()); // ✅ sin entidad
+                            AbrirFormularioEnPanel(new GenerarPM()); // ✅ sin entidad
                     }
                 }
             };

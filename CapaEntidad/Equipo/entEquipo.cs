@@ -10,17 +10,17 @@ namespace CapaEntidad.Equipo
     {
         public int id_equipo { get; set; }
         public string codigo_flota { get; set; }
+        public string numero_serie { get; set; }
+        public decimal? horometro_inicial { get; set; }
+        public decimal? horometro_actual { get; set; }
         public string marca { get; set; }
         public string modelo { get; set; }
-        public string num_serie { get; set; }
+        public int? anio_fabricacion { get; set; }
+        public int? id_area { get; set; }
+        public string criticidad { get; set; } 
+        public string estado { get; set; }  // VARCHAR ahora
+        public DateTime? fecha_ingreso { get; set; } = DateTime.UtcNow;
         public string tipo_equipo { get; set; }
-        public int anio_fabricacion { get; set; }
-        public int horometro_inicial { get; set; }
-        public int horometro_actual { get; set; }
-        public DateTime fecha_compra { get; set; }
-        public DateTime fecha_registro { get; set; }
-
-        public bool estado_equipo { get; set; }
-
+        public bool activo { get; set; } 
     }
 }

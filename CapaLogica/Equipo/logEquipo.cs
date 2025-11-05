@@ -28,34 +28,25 @@ namespace CapaLogica.Equipo
             }
             catch (Exception ex)
             {
-               
                 throw new ApplicationException("Error en la capa lógica al registrar el equipo.", ex);
             }
         }
-        public List<entEquipo> ListarTop5Equipos()
-        {
-        
-            return objDatos.extraer_top_five();
-        }
+
         public List<entEquipo> BuscarEquipos(
              
-             string tipo,
-             string marca,
-             int? anio,
+             string codigo_flota,
              string modelo,
-             string fecha,
-             string num_serie)
+             string numero_serie,
+             int? anio_fabricacion)
         {
             try
             {
-                
                 return datEquipo.Instancia.BuscarEquipos(
-                    tipo,
-                    marca,
-                    anio,
+                    codigo_flota,
+
                     modelo,
-                    fecha,
-                    num_serie);
+                    numero_serie,
+                    anio_fabricacion);
             }
             catch (Exception ex)
             {
@@ -64,6 +55,19 @@ namespace CapaLogica.Equipo
             }
         }
 
+        public entEquipo ObtenerEquipoPorCodigo(string codigo_flota)
+        {
+            try
+            {
+                return datEquipo.Instancia.BuscarEquipoPorCodigoFlota(codigo_flota);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el equipo por código desde la capa lógica: " + ex.Message, ex);
+            }
+        }
+
+        /*
         public int ContarEquipos()
         {
             try
@@ -124,13 +128,15 @@ namespace CapaLogica.Equipo
 
         public bool existe_bitacora(int id_equipo)
         {
-            return datEquipo.Instancia.existe_bitacora(id_equipo);
+            //return datEquipo.Instancia.existe_bitacora(id_equipo);
         }
 
         public bool dar_baja_equipo(int id_equipo)
         {
-            return datEquipo.Instancia.dar_baja_equipo(id_equipo);
+            // return datEquipo.Instancia.dar_baja_equipo(id_equipo);
+            
         }
+        */
 
 
 

@@ -1,6 +1,6 @@
 ﻿namespace SistemMantenimiento.JeffeMantto
 {
-    partial class VerHistorialMantto
+    partial class GenerarPM
     {
         /// <summary>
         /// Required designer variable.

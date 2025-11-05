@@ -135,11 +135,11 @@
     <Compile Include="JeffeMantto\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="JeffeMantto\VerHistorialMantto.cs">
+    <Compile Include="JeffeMantto\GenerarPM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JeffeMantto\VerHistorialMantto.Designer.cs">
-      <DependentUpon>VerHistorialMantto.cs</DependentUpon>
+    <Compile Include="JeffeMantto\GenerarPM.Designer.cs">
+      <DependentUpon>GenerarPM.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

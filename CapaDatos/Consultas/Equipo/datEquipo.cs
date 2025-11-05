@@ -22,7 +22,6 @@ namespace CapaDatos.Consultas.Equipo
         ///Insertar equipo
         public entEquipo InsertarEquipo(entEquipo equipo)
         {
-
             using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
             {
                 try
@@ -32,19 +31,23 @@ namespace CapaDatos.Consultas.Equipo
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         cmd.Parameters.AddWithValue("@codigo_flota", equipo.codigo_flota);
-                        cmd.Parameters.AddWithValue("@marca", equipo.marca);
-                        cmd.Parameters.AddWithValue("@modelo", equipo.modelo);
-                        cmd.Parameters.AddWithValue("@tipo_equipo", equipo.tipo_equipo);
-                        cmd.Parameters.AddWithValue("@anio_fabricacion", equipo.anio_fabricacion);
-                        cmd.Parameters.AddWithValue("@horometro_inicial", equipo.horometro_inicial);
-                        cmd.Parameters.AddWithValue("@horometro_actual", equipo.horometro_actual);
-                        cmd.Parameters.AddWithValue("@fecha_registro", equipo.fecha_registro);
-                        cmd.Parameters.AddWithValue("@num_serie", equipo.num_serie);
-                        cmd.Parameters.AddWithValue("@fecha_compra", equipo.fecha_compra);
-                        cmd.Parameters.AddWithValue("@estado", equipo.estado_equipo);
+                        cmd.Parameters.AddWithValue("@numero_serie", (object)equipo.numero_serie ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@marca", (object)equipo.marca ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@modelo", (object)equipo.modelo ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@anio_fabricacion", (object)equipo.anio_fabricacion ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@horometro_inicial", (object)equipo.horometro_inicial ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@horometro_actual", (object)equipo.horometro_actual ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@id_area", (object)equipo.id_area ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@criticidad", equipo.criticidad ?? "MEDIA");
+                        cmd.Parameters.AddWithValue("@estado", equipo.estado ?? "OPERATIVO");
+                        cmd.Parameters.AddWithValue("@tipo_equipo", (object)equipo.tipo_equipo ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@activo", equipo.activo);
+
 
                         cn.Open();
-                        cmd.ExecuteNonQuery();
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                            equipo.id_equipo = Convert.ToInt32(result);
                     }
                 }
                 catch (SqlException sqlEx)
@@ -55,65 +58,121 @@ namespace CapaDatos.Consultas.Equipo
                 {
                     throw new ApplicationException("Error general al insertar el equipo: " + ex.Message, ex);
                 }
-
-                return equipo;
             }
-        }
-        ///////Estraer top 5 recientes 
-        public List<entEquipo> extraer_top_five()
-        {
-            List<entEquipo> listaEquipos = new List<entEquipo>();
 
-            using (SqlConnection con = ConexionDB.ConexionDB.Instancia.Conectar())
+            return equipo;
+        }
+        /// <summary>
+        /// busca equipos en la base de datos según los criterios proporcionados.
+        /// </summary>
+        /// <param name="codigo_flota"></param>
+        /// <param name="modelo"></param>
+        /// <param name="numero_serie"></param>
+        /// <param name="anio_fabricacion"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public List<entEquipo> BuscarEquipos(string codigo_flota, string modelo,
+                                    string numero_serie, int? anio_fabricacion)
+        {
+            List<entEquipo> lista = new List<entEquipo>();
+
+            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
             {
-                using (SqlCommand cmd = new SqlCommand("sp_ObtenerUltimosCincoEquipos", con))
+                try
                 {
+                    SqlCommand cmd = new SqlCommand("sp_BuscarEquipos", cn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    try
+                    // Parámetros para el SP
+                    cmd.Parameters.AddWithValue("@CodigoFlota",
+                        string.IsNullOrEmpty(codigo_flota) ? (object)DBNull.Value : codigo_flota);
+                    cmd.Parameters.AddWithValue("@Modelo",
+                        string.IsNullOrEmpty(modelo) ? (object)DBNull.Value : modelo);
+                    cmd.Parameters.AddWithValue("@NumeroSerie",
+                        string.IsNullOrEmpty(numero_serie) ? (object)DBNull.Value : numero_serie);
+                    cmd.Parameters.AddWithValue("@AnioFabricacion",
+                        anio_fabricacion.HasValue ? (object)anio_fabricacion.Value : (object)DBNull.Value);
+
+                    cn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
                     {
-                        con.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        entEquipo equipo = new entEquipo
                         {
-                            while (reader.Read())
-                            {
-                                entEquipo equipo = new entEquipo();
-                                equipo.estado_equipo = Convert.ToBoolean(reader["estado"]);
-                                equipo.codigo_flota = reader["codigo_flota"].ToString();
-                                equipo.marca = reader["marca"].ToString();
-                                equipo.modelo = reader["modelo"].ToString();
-                                equipo.tipo_equipo = reader["tipo_equipo"].ToString();
-                                equipo.horometro_inicial = Convert.ToInt32(reader["horometro_inicial"]);
-                                equipo.horometro_actual = Convert.ToInt32(reader["horometro_actual"]);
+                            id_equipo = dr["id_equipo"] == DBNull.Value ? 0 : Convert.ToInt32(dr["id_equipo"]),
+                            codigo_flota = dr["codigo_flota"] == DBNull.Value ? "" : dr["codigo_flota"].ToString(),
+                            numero_serie = dr["numero_serie"] == DBNull.Value ? "" : dr["numero_serie"].ToString(),
+                            horometro_inicial = dr["horometro_inicial"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dr["horometro_inicial"]),
+                            horometro_actual = dr["horometro_actual"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dr["horometro_actual"]),
+                            marca = dr["marca"] == DBNull.Value ? "" : dr["marca"].ToString(),
+                            modelo = dr["modelo"] == DBNull.Value ? "" : dr["modelo"].ToString(),
+                            anio_fabricacion = dr["anio_fabricacion"] == DBNull.Value ? (int?)null : Convert.ToInt32(dr["anio_fabricacion"]),
+                            id_area = dr["id_area"] == DBNull.Value ? (int?)null : Convert.ToInt32(dr["id_area"]),
+                            criticidad = dr["criticidad"] == DBNull.Value ? "MEDIA" : dr["criticidad"].ToString(),
+                            estado = dr["estado"] == DBNull.Value ? "OPERATIVO" : dr["estado"].ToString(),
+                            fecha_ingreso = dr["fecha_ingreso"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["fecha_ingreso"]),
+                            tipo_equipo = dr["tipo_equipo"] == DBNull.Value ? "" : dr["tipo_equipo"].ToString(),
+                            activo = dr["activo"] != DBNull.Value && Convert.ToBoolean(dr["activo"])
+                        };
 
-                                equipo.num_serie = reader["num_serie"] == DBNull.Value
-                                    ? null
-                                    : reader["num_serie"].ToString();
-
-                                equipo.anio_fabricacion = reader["anio_fabricacion"] == DBNull.Value
-                                    ? 0
-                                    : Convert.ToInt32(reader["anio_fabricacion"]);
-                                equipo.fecha_compra = reader["fecha_compra"] == DBNull.Value
-                                    ? DateTime.MinValue
-                                    : Convert.ToDateTime(reader["fecha_compra"]);
-
-                                equipo.fecha_registro = reader["fecha_registro"] == DBNull.Value
-                                    ? DateTime.MinValue
-                                    : Convert.ToDateTime(reader["fecha_registro"]);
-                                listaEquipos.Add(equipo);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("Error al extraer el top 5 de equipos: " + ex.Message);
+                        lista.Add(equipo);
                     }
                 }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al buscar equipos desde la capa de datos: " + ex.Message, ex);
+                }
             }
-            return listaEquipos;
+
+            return lista;
         }
 
+        public entEquipo BuscarEquipoPorCodigoFlota(string codigoFlota)
+        {
+            entEquipo equipo = null;
+
+            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+            {
+                SqlCommand cmd = new SqlCommand("sp_ObtenerEquipoPorCodigoFlota", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CodigoFlota", codigoFlota);
+
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    equipo = new entEquipo
+                    {
+                        id_equipo = Convert.ToInt32(dr["IdEquipo"]),
+                        codigo_flota = dr["CodigoFlota"].ToString(),
+                        numero_serie = dr["NumeroSerie"].ToString(),
+                        horometro_inicial = dr["HorometroInicial"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dr["HorometroInicial"]),
+                        horometro_actual = dr["HorometroActual"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(dr["HorometroActual"]),
+                        marca = dr["Marca"].ToString(),
+                        modelo = dr["Modelo"].ToString(),
+                        anio_fabricacion = dr["AnioFabricacion"] == DBNull.Value ? (int?)null : Convert.ToInt32(dr["AnioFabricacion"]),
+                        id_area = dr["IdArea"] == DBNull.Value ? (int?)null : Convert.ToInt32(dr["IdArea"]),
+                        criticidad = dr["Criticidad"].ToString(),
+                        estado = dr["Estado"].ToString(),
+                        fecha_ingreso = dr["FechaIngreso"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FechaIngreso"]),
+                        tipo_equipo = dr["TipoEquipo"].ToString(),
+                        activo = Convert.ToBoolean(dr["Activo"])
+                    };
+                }
+            }
+
+            return equipo;
+        }
+
+
+
+
+
+
         /// Actualiza un equipo existente en la base de datos y registra el cambio en la bitácora.
+        /*
         public bool ActualizarEquipo(entEquipo equipo, string usuarioEdito, string motivo)
         {
             bool actualizado = false;
@@ -155,67 +214,7 @@ namespace CapaDatos.Consultas.Equipo
 
             return actualizado;
         }
-        public List<entEquipo> BuscarEquipos(string tipo, string marca, int? año,
-                                            string modelo, string fecha, string num_serie)
-        {
-            List<entEquipo> lista = new List<entEquipo>();
-
-            // Conversión de fecha. Si 'fecha' no es válida, la dejamos como null
-            DateTime? fechaValida = null;
-            if (DateTime.TryParse(fecha, out DateTime tempFecha))
-            {
-                fechaValida = tempFecha;
-            }
-
-            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
-            {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand("sp_BuscarEquipos", cn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    // --- PARÁMETROS CORREGIDOS ---
-                    // Esta forma es más segura para manejar strings vacíos y nulos
-                    cmd.Parameters.AddWithValue("@Tipo", string.IsNullOrEmpty(tipo) ? (object)DBNull.Value : tipo);
-                    cmd.Parameters.AddWithValue("@Marca", string.IsNullOrEmpty(marca) ? (object)DBNull.Value : marca);
-                    cmd.Parameters.AddWithValue("@Anio", año.HasValue ? (object)año.Value : (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Modelo", string.IsNullOrEmpty(modelo) ? (object)DBNull.Value : modelo);
-                    cmd.Parameters.AddWithValue("@FechaIngreso", fechaValida.HasValue ? (object)fechaValida.Value : (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@NumSerie", string.IsNullOrEmpty(num_serie) ? (object)DBNull.Value : num_serie);
-                    cn.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    // --- LECTOR A PRUEBA DE CRASHES ---
-                    while (dr.Read())
-                    {
-                        // Usamos el operador ternario (condición ? si_verdadero : si_falso)
-                        // para comprobar si el valor es DBNull ANTES de convertirlo.
-                        entEquipo equipo = new entEquipo
-                        {
-                            // ¡Llenamos la entidad completa!
-                            id_equipo = dr["id_equipo"] == DBNull.Value ? 0 : Convert.ToInt32(dr["id_equipo"]),
-                            codigo_flota = dr["codigo_flota"] == DBNull.Value ? "" : dr["codigo_flota"].ToString(),
-                            tipo_equipo = dr["TipoEquipo"] == DBNull.Value ? "" : dr["TipoEquipo"].ToString(),
-                            marca = dr["Marca"] == DBNull.Value ? "" : dr["Marca"].ToString(),
-                            modelo = dr["Modelo"] == DBNull.Value ? "" : dr["Modelo"].ToString(),
-                            num_serie = dr["num_serie"] == DBNull.Value ? "" : dr["num_serie"].ToString(),
-                            fecha_registro = dr["FechaIngreso"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dr["FechaIngreso"]),
-                            anio_fabricacion = dr["Fabricacion"] == DBNull.Value ? 0 : Convert.ToInt32(dr["Fabricacion"]),
-                            horometro_actual = dr["horometro_actual"] == DBNull.Value ? 0 : Convert.ToInt32(dr["horometro_actual"]),
-                            estado_equipo = dr["estado"] == DBNull.Value ? false : Convert.ToBoolean(dr["estado"])
-                        };
-                        lista.Add(equipo);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Es buena idea lanzar el error para que la capa de lógica lo vea
-                    throw new Exception("Error al buscar equipos desde la capa de datos: " + ex.Message, ex);
-                }
-            }
-
-            return lista;
-        }
+        
 
         //////Metodo conteo de equipos --Funcion para contar el total de equipos de la BD--
         public int contar_equipos()
@@ -337,6 +336,7 @@ namespace CapaDatos.Consultas.Equipo
                 ;
             };
         }
+        */
 
 
 
