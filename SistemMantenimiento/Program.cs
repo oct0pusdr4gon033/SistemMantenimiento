@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+﻿using SistemMantenimiento.JeffeMantto;
+=======
 ﻿using SistemMantenimiento.JefeLogi;
+>>>>>>> origin/main
 using System;
 using System.Collections.Generic;
 using System.Linq;

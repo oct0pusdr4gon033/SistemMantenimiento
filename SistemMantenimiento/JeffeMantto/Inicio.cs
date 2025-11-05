@@ -44,13 +44,13 @@ namespace SistemMantenimiento.JeffeMantto
         private void CargarTarjetasDashboard(FlowLayoutPanel panelContenedor)
         {
             panelContenedor.Controls.Clear();
-            var card1 = new TarjetaKPI_Emoji(conteo_equipos(logEquipo.Instancia.ContarEquipos()), "Total Equipos", Color.FromArgb(0, 128, 128), "⚙️");
+            //var card1 = new TarjetaKPI_Emoji(conteo_equipos(logEquipo.Instancia.ContarEquipos()), "Total Equipos", Color.FromArgb(0, 128, 128), "⚙️");
             var card2 = new TarjetaKPI_Emoji("42", "Trabajos Completados", Color.FromArgb(40, 167, 69), "✅");
             var card3 = new TarjetaKPI_Emoji("18", "En Progreso", Color.FromArgb(108, 117, 125), "⌛");
             var card4 = new TarjetaKPI_Emoji("5", "Urgentes", Color.FromArgb(255, 128, 0), "⚠️");
             var card5 = new TarjetaKPI_Emoji("3", "Urgentes de la semana", Color.FromArgb(255, 128, 0), "⚠️");
 
-            panelContenedor.Controls.Add(card1.PanelTarjeta);
+           // panelContenedor.Controls.Add(card1.PanelTarjeta);
             panelContenedor.Controls.Add(card2.PanelTarjeta);
             panelContenedor.Controls.Add(card3.PanelTarjeta);
             panelContenedor.Controls.Add(card4.PanelTarjeta);

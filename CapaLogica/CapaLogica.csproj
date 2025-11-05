@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Equipo\logArea.cs" />
     <Compile Include="Equipo\logEquipo.cs" />
     <Compile Include="Material\logMaterial.cs" />
     <Compile Include="Proveedor\logProveedor.cs" />

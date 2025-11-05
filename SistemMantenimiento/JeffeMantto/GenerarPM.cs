@@ -11,18 +11,18 @@ using System.Windows.Forms;
 
 namespace SistemMantenimiento.JeffeMantto
 {
-    public partial class VerHistorialMantto : Form
+    public partial class GenerarPM : Form
     {
         private entEquipo _equipo;
 
-        public VerHistorialMantto(entEquipo equipo)
+        public GenerarPM(entEquipo equipo)
         {
             InitializeComponent();
             _equipo = equipo;
            
            
         }
-        public VerHistorialMantto()
+        public GenerarPM()
         {
             InitializeComponent();
             this._equipo = null;

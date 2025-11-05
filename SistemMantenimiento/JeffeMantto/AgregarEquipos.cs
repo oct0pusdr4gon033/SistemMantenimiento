@@ -19,131 +19,111 @@ namespace SistemMantenimiento.JeffeMantto
         public AgregarEquipos()
         {
             InitializeComponent();
-            top_cinco(flp_top);
+            extraer_areas();
         }
         
-        public void top_cinco(FlowLayoutPanel flp_top_cinco)
-        {
-           
-            flp_top_cinco.Controls.Clear();
-            flp_top_cinco.FlowDirection = FlowDirection.TopDown;
-            flp_top_cinco.Padding = new Padding(10);
-
-            try
-            {
-             
-                List<entEquipo> listaTopEquipos = objLogica.ListarTop5Equipos();
-                if (listaTopEquipos.Count > 0)
-                {
-
-                    foreach (entEquipo equipo in listaTopEquipos)
-                    {
-                        Label lbl = new Label();
-
-
-                        lbl.AutoSize = false;
-                        lbl.Width = flp_top_cinco.Width - 25; // Ancho del panel menos el padding
-                        lbl.Height = 30; // Altura fija
-
-
-                        lbl.BackColor = Color.Transparent;
-
-                        // 2. Cambiamos el color del texto a un gris oscuro
-                        lbl.ForeColor = Color.DimGray; // 'DimGray' es un color muy similar al de tu foto
-
-
-                        lbl.TextAlign = ContentAlignment.MiddleLeft;
-
-
-                        lbl.Font = new Font("Segoe UI", 10, FontStyle.Regular); // Segoe UI es estándar en WinForms
-
-                        // 5. Asignamos el texto
-                        lbl.Text = equipo.codigo_flota + " - " + equipo.marca;
-
-                        // 6. Añadimos el ToolTip que vimos antes (¡sigue siendo útil!)
-                        ToolTip tt = new ToolTip();
-                        tt.SetToolTip(lbl, "Modelo: " + equipo.modelo + "\nTipo: " + equipo.tipo_equipo);
-
-                        // 7. Añadimos el Label al panel
-                        flp_top_cinco.Controls.Add(lbl);
-                    }
-                }
-                else
-                {
-                
-                    Label lblVacio = new Label();
-                    lblVacio.Name = "lbl_vacio";
-                    lblVacio.BackColor = Color.Gray; // Color diferente
-                    lblVacio.Size = new Size(150, 30);
-                    lblVacio.Text = "No hay equipos";
-                    lblVacio.ForeColor = Color.White;
-                    lblVacio.TextAlign = ContentAlignment.MiddleCenter;
-
-                    flp_top_cinco.Controls.Add(lblVacio);
-                }
-                // --- FIN DE LA CONEXIÓN A LA LÓGICA ---
-            }
-            catch (Exception ex)
-            {
-                
-                Label lblError = new Label();
-                lblError.Name = "lbl_error";
-                lblError.BackColor = Color.Black;
-                lblError.Size = new Size(150, 60); // Más alto para el error
-                lblError.Text = "Error al cargar:\n" + ex.Message;
-                lblError.ForeColor = Color.Yellow;
-                lblError.TextAlign = ContentAlignment.MiddleCenter;
-
-                flp_top_cinco.Controls.Add(lblError);
-            }
-        }
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-                 List<string> listaDeErrores = ValidarDatos();
+            List<string> listaDeErrores = ValidarDatos();
 
             if (listaDeErrores.Count > 0)
             {
                 string mensajeCompleto = "Por favor, corrija los siguientes errores:\n\n";
                 mensajeCompleto += string.Join("\n", listaDeErrores);
                 MessageBox.Show(this, mensajeCompleto, "Errores de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            try
             {
-                try
+                // Conversión segura de tipos numéricos (compatible con .NET 4.7)
+                decimal? horometroInicial = null;
+                decimal valorHorometroInicial;
+                if (decimal.TryParse(txb_horometro_inicial.Text, out valorHorometroInicial))
+                    horometroInicial = valorHorometroInicial;
+
+                decimal? horometroActual = null;
+                decimal valorHorometroActual;
+                if (decimal.TryParse(txb_horometro_actual.Text, out valorHorometroActual))
+                    horometroActual = valorHorometroActual;
+
+                int? anioFabricacion = null;
+                int valorAnio;
+                if (int.TryParse(txb_anio_fabricacion.Text, out valorAnio))
+                    anioFabricacion = valorAnio;
+                // Crear entidad
+                entEquipo nuevoEquipo = new entEquipo()
                 {
-                    entEquipo nuevoEquipo = new entEquipo()
-                    {
-                        codigo_flota = txb_codigo_flota.Text.Trim(),
-                        marca = cmb_marca.GetItemText(cmb_marca.SelectedItem),
-                        modelo = txb_modelo.Text.Trim(),
-                        num_serie = txb_numero_serie.Text.Trim(),
-                        tipo_equipo = cmb_tipo_equipo.GetItemText(cmb_tipo_equipo.SelectedItem),
-                        anio_fabricacion = int.Parse(txb_anio_fabricacion.Text),
-                        horometro_inicial = int.Parse(txb_horometro_inicial.Text),
-                        horometro_actual = int.Parse(txb_horometro_actual.Text),
-                        fecha_registro = dtp_fecha_compra.Value,
-                        fecha_compra = dtp_fecha_registro.Value,
-                        estado_equipo = get_estado_bool(cmb_estado.GetItemText(cmb_estado.SelectedItem))
+                    codigo_flota = txb_codigo_flota.Text.Trim(),
+                    marca = cmb_marca.GetItemText(cmb_marca.SelectedItem),
+                    modelo = txb_modelo.Text.Trim(),
+                    numero_serie = txb_numero_serie.Text.Trim(),
+                    anio_fabricacion = anioFabricacion,
+                    horometro_inicial = horometroInicial,
+                    horometro_actual = horometroActual,
+                    id_area = ObtenerIdAreaSeleccionada(),
+                    criticidad = cmb_criticidad.GetItemText(cmb_criticidad.SelectedItem),
+                    estado = cmb_estado.GetItemText(cmb_estado.SelectedItem), // ✅ varchar ahora
+                    fecha_ingreso = dtp_fecha_registro.Value,
+                    activo = cmb_estado.GetItemText(cmb_estado.SelectedItem) == "Activo",
+                    tipo_equipo = cmb_tipo_equipo.GetItemText(cmb_tipo_equipo.SelectedItem)
+                }; 
 
-                    };
+                entEquipo equipoRegistrado = logEquipo.Instancia.insertar_equipo(nuevoEquipo);
 
-                    logEquipo.Instancia.insertar_equipo(nuevoEquipo);
+                if (equipoRegistrado != null && equipoRegistrado.id_equipo > 0)
                     MessageBox.Show("Equipo guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocurrió un error:\n" + ex.Message,
-                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                else
+                    MessageBox.Show("No se pudo registrar el equipo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-
-        private bool get_estado_bool(string estado)
+        private int ObtenerIdAreaSeleccionada()
         {
-            
-            return string.Equals(estado?.Trim(), "Activo", StringComparison.OrdinalIgnoreCase);
+            if (cmb_area.SelectedItem is Area areaSeleccionada)
+            {
+                return areaSeleccionada.IdArea;
+            }
+            else
+            {
+                throw new InvalidOperationException("No se ha seleccionado un área válida.");
+            }
+        }
+
+        public void LimpiarCampos()
+        {
+            txb_codigo_flota.Clear();
+            txb_numero_serie.Clear();
+            cmb_marca.SelectedIndex = -1;
+            txb_modelo.Clear();
+            txb_anio_fabricacion.Clear();
+            txb_horometro_inicial.Clear();
+            txb_horometro_actual.Clear();
+            cmb_area.SelectedIndex = -1;
+            cmb_criticidad.SelectedIndex = -1;
+            cmb_estado.SelectedIndex = -1;
+          
+        }
+        private void extraer_areas()
+        {
+            try
+            {
+                List<Area> listaAreas = logArea.Instancia.ObtenerAreas();
+
+                cmb_area.DataSource = listaAreas;
+                cmb_area.DisplayMember = "Nombre";   // ✅ coincide con la propiedad de la clase
+                cmb_area.ValueMember = "IdArea";     // ✅ coincide con la propiedad de la clase
+                cmb_area.SelectedIndex = -1;         // ✅ sin selección inicial
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las áreas: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //////Funcion para validacion 
@@ -201,9 +181,13 @@ namespace SistemMantenimiento.JeffeMantto
                 errores.Add("El 'Horómetro Actual' no puede ser menor que el 'Horómetro Inicial'.");
             }
 
-            if (dtp_fecha_registro.Value < dtp_fecha_compra.Value)
+            // Es mejor usar DateTime.Today que ya viene sin la hora.
+            DateTime fechaActual = DateTime.Today;
+
+            if (dtp_fecha_registro.Value.Date != fechaActual)
             {
-                errores.Add("La 'Fecha de Ingreso' no puede ser anterior a la 'Fecha de Registro'.");
+                // Este mensaje de error es más claro para el usuario.
+                errores.Add("La 'Fecha de Ingreso' debe ser la fecha de hoy.");
             }
 
             // --- 4. Devolver la lista de errores ---

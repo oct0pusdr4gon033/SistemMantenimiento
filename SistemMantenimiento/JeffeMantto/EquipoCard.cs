@@ -14,11 +14,11 @@ namespace SistemMantenimiento.JeffeMantto
     public partial class EquipoCard : UserControl
     {
         // EVENTO que notifica al formulario padre
-        public event EventHandler<int> TarjetaClickeada;
+        public event EventHandler<string> TarjetaClickeada;
         public entEquipo Equipo { get; set; }
 
 
-        public int IdEquipo { get; private set; }
+        public string codigo_flota { get; private set; }
 
         public EquipoCard()
         {
@@ -30,6 +30,7 @@ namespace SistemMantenimiento.JeffeMantto
 
         public void CargarDatos(
             int id_equipo,
+            string codigoFlota,
             string tipoEquipo,
             string num_serie,
             string marca,
@@ -37,10 +38,11 @@ namespace SistemMantenimiento.JeffeMantto
             DateTime fechaIngreso,
             int anioFabricacion)
         {
-            IdEquipo = id_equipo;
+            
 
             // Asignamos los valores a los Labels
             lbl_id_equipo.Text = id_equipo.ToString();
+            lbl_codigo_flota.Text = codigoFlota;
             lblTipoEquipo.Text = tipoEquipo;
             lblMarca.Text = marca;
             lblModelo.Text = modelo;
@@ -121,7 +123,7 @@ namespace SistemMantenimiento.JeffeMantto
             if (parent is EquipoCard tarjeta)
             {
                 // Disparar el evento para que el formulario padre lo maneje
-                TarjetaClickeada?.Invoke(this, tarjeta.IdEquipo);
+                TarjetaClickeada?.Invoke(this, tarjeta.codigo_flota);
             }
         }
     }

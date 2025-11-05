@@ -28,7 +28,7 @@ namespace SistemMantenimiento.JeffeMantto
         {
             InitializeComponent();
             usuarioLogueado = usuario;
-            RealizarBusqueda(null, null, null, null, null, null);
+            RealizarBusqueda(null, null, null, null);
             panel_opciones.Visible = false;
             panel_form_hijo.Visible = false;
        
@@ -70,7 +70,7 @@ namespace SistemMantenimiento.JeffeMantto
 
             if (string.IsNullOrEmpty(valor))
             {
-                RealizarBusqueda(null, null, null, null, null, null);
+                //RealizarBusqueda(null, null, null, null, null, null);
                 return;
             }
 
@@ -84,21 +84,21 @@ namespace SistemMantenimiento.JeffeMantto
             }
 
             // 3. Preparamos todas las variables como 'null' por defecto
-            string tipo = null;
-            string marca = null;
-            int? anio = null;
+            string codigo_flota = null;
             string modelo = null;
-            string fecha = null;
+            int ? anio = null;
             string num_serie = null;
+
+
 
             // 4. Usamos un 'switch' para asignar el 'valor' al parámetro correcto
             switch (filtroSeleccionado)
             {
-                case "Marca de Equipo":
-                    marca = valor;
+                case "Codigo de Flota":
+                    codigo_flota = valor;
                     break;
-                case "Tipo de Equipo":
-                    tipo = valor;
+                case "Modelo de Equipo":
+                    modelo = valor;
                     break;
                 case "Año de Fabricacion":
                     int anioTemp;
@@ -112,15 +112,13 @@ namespace SistemMantenimiento.JeffeMantto
                         return;
                     }
                     break;
-                case "Buscar por Modelo":
-                    modelo = valor;
-                    break;
-                case "Buscar por Serie":
+                case "Número por Serie":
                     num_serie = valor;
                     break;
             }
 
-            RealizarBusqueda(tipo, marca, anio, modelo, fecha, num_serie);
+            RealizarBusqueda( codigo_flota,  modelo,  anio,
+                                       num_serie);
             limpiarBuscador();
         }
         private void limpiarBuscador()
@@ -129,17 +127,25 @@ namespace SistemMantenimiento.JeffeMantto
             cmb_tipo_filtro.SelectedIndex = -1;
 
         }
-
-        // Función maestra de búsqueda y dibujado
-        private void RealizarBusqueda(string tipo, string marca, int? anio,
-                                    string modelo, string fecha, string num_serie)
+        
+        /// <summary>
+        /// Función maestra de búsqueda y dibujado
+        /// </summary>
+        /// <param name="tipo"></param>
+        /// <param name="marca"></param>
+        /// <param name="anio"></param>
+        /// <param name="modelo"></param>
+        /// <param name="fecha"></param>
+        /// <param name="num_serie"></param>
+        private void RealizarBusqueda(string codigo_flota, string modelo, int? anio,
+                                      string num_serie)
         {
             DesactivarPanelDeAcciones();
             flp_equipos_buscados.Controls.Clear();
 
             try
             {
-                List<entEquipo> resultados = logEquipo.Instancia.BuscarEquipos(tipo, marca, anio, modelo, fecha, num_serie);
+                List<entEquipo> resultados = logEquipo.Instancia.BuscarEquipos(codigo_flota, modelo, num_serie,anio);
 
                 if (resultados.Count == 0)
                 {
@@ -154,15 +160,14 @@ namespace SistemMantenimiento.JeffeMantto
 
                     nuevaTarjeta.CargarDatos(
                         equipo.id_equipo,
-                        equipo.tipo_equipo,
-                        equipo.num_serie,
+                        equipo.codigo_flota,
+                        equipo.tipo_equipo, // Argumento 3: tipoEquipo (string)
+                        equipo.numero_serie,
                         equipo.marca,
                         equipo.modelo,
-                        equipo.fecha_registro,
-                        equipo.anio_fabricacion
-                        
+                        equipo.fecha_ingreso.HasValue ? equipo.fecha_ingreso.Value : DateTime.MinValue,
+                        equipo.anio_fabricacion.HasValue ? equipo.anio_fabricacion.Value : 0 // Argumento 8: anioFabricacion (int)
                     );
-
                     // ¡CORREGIDO! Suscribirse al evento antes de agregar
                     nuevaTarjeta.TarjetaClickeada += Tarjeta_Click_Handler;
 
@@ -175,12 +180,13 @@ namespace SistemMantenimiento.JeffeMantto
             }
         }
         // Manejador del evento de clic en tarjeta
-        private void Tarjeta_Click_Handler(object sender, int idEquipo)
+        private void Tarjeta_Click_Handler(object sender, string codigo_flota)
         {
             try
             {
                 // Cargar la entidad desde la BD
-                equipo_seleccionado = logEquipo.Instancia.ObtenerEquipoPorId(idEquipo);
+                equipo_seleccionado = logEquipo.Instancia.BuscarEquipos(codigo_flota, null, null, null)
+                                        .FirstOrDefault();
 
                 if (equipo_seleccionado == null)
                 {
@@ -204,8 +210,6 @@ namespace SistemMantenimiento.JeffeMantto
             }
         }
 
-       
-        
         private void DesactivarPanelDeAcciones()
         {
             equipo_seleccionado = null;
@@ -230,13 +234,7 @@ namespace SistemMantenimiento.JeffeMantto
             }
         }
 
-
-        private void ConsultarEquipo_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_editar_Click(object sender, EventArgs e)
+        private void btn_editar_Click_1(object sender, EventArgs e)
         {
             if (equipo_seleccionado == null)
             {
@@ -244,18 +242,7 @@ namespace SistemMantenimiento.JeffeMantto
                 return;
             }
 
-            AbrirFormularioEnPanel(new EditarEquipo(equipo_seleccionado,usuarioLogueado));
-        }
-
-        private void btn_historial_Click(object sender, EventArgs e)
-        {
-            if (equipo_seleccionado == null)
-            {
-                MessageBox.Show("Seleccione un equipo antes de ver el historial.");
-                return;
-            }
-
-            AbrirFormularioEnPanel(new VerHistorialMantto(equipo_seleccionado));
+            AbrirFormularioEnPanel(new EditarEquipo(equipo_seleccionado, usuarioLogueado));
         }
     }
 }

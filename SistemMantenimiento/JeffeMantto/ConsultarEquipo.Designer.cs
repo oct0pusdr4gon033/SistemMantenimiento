@@ -153,11 +153,10 @@
             this.cmb_tipo_filtro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmb_tipo_filtro.ItemHeight = 30;
             this.cmb_tipo_filtro.Items.AddRange(new object[] {
-            "Marca de Equipo",
-            "Tipo de Equipo",
+            "Codigo de Flota",
+            "Modelo de Equipo",
             "Año de Fabricacion",
-            "Buscar por Modelo",
-            "Buscar por Serie"});
+            "Número de Serie"});
             this.cmb_tipo_filtro.Location = new System.Drawing.Point(3, 26);
             this.cmb_tipo_filtro.Name = "cmb_tipo_filtro";
             this.cmb_tipo_filtro.Size = new System.Drawing.Size(308, 36);
@@ -214,7 +213,7 @@
             this.btn_editar.TabIndex = 10;
             this.btn_editar.Text = "Editar";
             this.btn_editar.UseWaitCursor = true;
-            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click_1);
             // 
             // btn_plan_mantto
             // 
@@ -255,7 +254,6 @@
             this.btn_historial.TabIndex = 12;
             this.btn_historial.Text = "Ver Historial";
             this.btn_historial.UseWaitCursor = true;
-            this.btn_historial.Click += new System.EventHandler(this.btn_historial_Click);
             // 
             // btn_generar_ot
             // 
@@ -357,7 +355,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConsultarEquipo";
             this.Text = "ConsultarEquipo";
-            this.Load += new System.EventHandler(this.ConsultarEquipo_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);

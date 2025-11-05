@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,42 +18,124 @@ namespace SistemMantenimiento.JeffeMantto
     {
         entEquipo equipo = new entEquipo();
         entUsuarioLogueado usuarioEdito =null;
+        Area area = null; 
+        
+
         public EditarEquipo(entEquipo _equipo, entUsuarioLogueado usuarioLogueado)
         {
             InitializeComponent();
+            
             equipo = _equipo;
             usuarioEdito = usuarioLogueado;
-            txb_id_editar.Text = equipo.id_equipo.ToString();
-            txb_modelo.Text = equipo.modelo;
-            txb_numero_serie.Text = equipo.num_serie;
-            txb_tipo_equipo.Text = equipo.tipo_equipo;
-            txb_marca.Text = equipo.marca;
-            txb_anio_fabricacion.Text = equipo.anio_fabricacion.ToString();
-            txb_horometro_inicial.Text = equipo.horometro_inicial.ToString();
-            txb_horometro_actual.Text = equipo.horometro_actual.ToString();
-            dtp_fecha_registro.Value = equipo.fecha_registro;
-            cmb_estado.Text = equipo.estado_equipo ? "Activo" : "Inactivo";
-            dtp_fecha_compra.Value = equipo.fecha_compra;
-            txb_codigo_flota.Text = equipo.codigo_flota;
+
+            // Asignar valores
+            equipo = _equipo;
+            usuarioEdito = usuarioLogueado;
+
+            // Cargar las áreas antes de asignar valores
+            CargarAreas();
+
+            // Llenar los campos con la información del equipo
+            CargarDatosEquipo();
+
 
         }
         public EditarEquipo()
         {
             InitializeComponent();
-            this.usuarioEdito = null; 
-            this.equipo = null;
-            txb_id_editar.Enabled = true;
-            editables(); 
+            usuarioEdito = null;
+            equipo = null;
+
+            // Cargar áreas incluso si es un nuevo registro
+            CargarAreas();
+
+            txb_buscar_flota.Enabled = true;
         }
+
+        // 🔹 Método para cargar las áreas en el ComboBox
+        private void CargarAreas()
+        {
+            try
+            {
+                List<Area> listaAreas = logArea.Instancia.ObtenerAreas();
+                cmb_area.DataSource = listaAreas;
+                cmb_area.DisplayMember = "Nombre";
+                cmb_area.ValueMember = "IdArea";
+                cmb_area.SelectedIndex = -1; // sin selección inicial
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las áreas: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // 🔹 Método que llena los campos con la información del equipo
+        private void CargarDatosEquipo()
+        {
+            if (equipo == null) return;
+
+            txb_buscar_flota.Text = equipo.id_equipo.ToString();
+            txb_codigo_flota.Text = equipo.codigo_flota;
+            txb_numero_serie.Text = equipo.numero_serie;
+            cmb_marca.Text = equipo.marca;
+            txb_modelo.Text = equipo.modelo;
+            txb_anio_fabricacion.Text = equipo.anio_fabricacion?.ToString() ?? "";
+            cmb_tipo_equipo.Text = equipo.tipo_equipo;
+            txb_horometro_actual.Text = equipo.horometro_actual?.ToString() ?? "";
+            txb_horometro_inicial.Text = equipo.horometro_inicial?.ToString() ?? "";
+            cmb_estado.Text = equipo.estado;
+            cmb_criticidad.Text = equipo.criticidad;
+            dtp_fecha_registro.Value = equipo.fecha_ingreso ?? DateTime.Now;
+
+            // Si el equipo tiene área, seleccionarla en el combo
+            if (equipo.id_area.HasValue)
+            {
+                cmb_area.SelectedValue = equipo.id_area.Value;
+            }
+        }
+
+        // 🔹 Bloquear campos no editables
         private void no_editables()
         {
-            txb_id_editar.Enabled = false;
+            txb_buscar_flota.Enabled = false;
             dtp_fecha_registro.Enabled = false;
         }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (cmb_area.SelectedValue == null)
+                {
+                    MessageBox.Show("Seleccione un área primero.",
+                                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int idAreaSeleccionada = Convert.ToInt32(cmb_area.SelectedValue);
+                Area areaSeleccionada = logArea.Instancia.ObtenerAreaPorId(idAreaSeleccionada);
+                
+                if (areaSeleccionada != null)
+                {
+                    MessageBox.Show($"Área seleccionada:\n\nNombre: {areaSeleccionada.Nombre}\nCódigo: {areaSeleccionada.Codigo}",
+                                    "Área encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener el área: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        /*
         public bool validar_existencia_bitacora(int id_equipo)
         {
-            return logEquipo.Instancia.existe_bitacora(id_equipo);
+          return logEquipo.Instancia.existe_bitacora(id_equipo);
         }
+        */
+        /*
        public void desactivar_botones()
         {
             try
@@ -66,7 +149,7 @@ namespace SistemMantenimiento.JeffeMantto
                     return;
                 }
 
-                bool existeBitacora = validar_existencia_bitacora(equipo.id_equipo);
+               // bool existeBitacora = validar_existencia_bitacora(equipo.id_equipo);
 
                 if (existeBitacora)
                 {
@@ -162,20 +245,19 @@ namespace SistemMantenimiento.JeffeMantto
                 codigo_flota = txb_codigo_flota.Text.Trim(),
                 marca = txb_marca.Text.Trim(),
                 modelo = txb_modelo.Text.Trim(),
-                num_serie = txb_numero_serie.Text.Trim(),
+                numero_serie = txb_numero_serie.Text.Trim(),
                 tipo_equipo = txb_tipo_equipo.Text.Trim(),
                 anio_fabricacion = int.Parse(txb_anio_fabricacion.Text),
                 horometro_inicial = int.Parse(txb_horometro_inicial.Text),
                 horometro_actual = int.Parse(txb_horometro_actual.Text),
-                fecha_registro = dtp_fecha_registro.Value,
-                fecha_compra = dtp_fecha_compra.Value,
-                estado_equipo = estado
+                fecha_ingreso = dtp_fecha_registro.Value,
+                estado = cmb_estado.SelectedItem.ToString(),
             }; 
         }
         private void GuardarCambios()
         {
             // Obtener el registro original desde la base
-            entEquipo original = logEquipo.Instancia.ObtenerEquipoPorId(equipo.id_equipo);
+            //entEquipo original = logEquipo.Instancia.ObtenerEquipoPorId(equipo.id_equipo);
             entEquipo actualizado = ObtenerDatosFormulario();
 
             // Comparar campo por campo
@@ -187,8 +269,8 @@ namespace SistemMantenimiento.JeffeMantto
             if (original.modelo != actualizado.modelo)
                 cambios.Add(("Modelo", original.modelo, actualizado.modelo));
 
-            if (original.num_serie != actualizado.num_serie)
-                cambios.Add(("Número de Serie", original.num_serie, actualizado.num_serie));
+            if (original.numero_serie != actualizado.numero_serie)
+                cambios.Add(("Número de Serie", original.numero_serie, actualizado.numero_serie));
 
             if (original.tipo_equipo != actualizado.tipo_equipo)
                 cambios.Add(("Tipo de Equipo", original.tipo_equipo, actualizado.tipo_equipo));
@@ -202,9 +284,9 @@ namespace SistemMantenimiento.JeffeMantto
             if (original.horometro_actual != actualizado.horometro_actual)
                 cambios.Add(("Horómetro Actual", original.horometro_actual.ToString(), actualizado.horometro_actual.ToString()));
 
-            if (original.estado_equipo != actualizado.estado_equipo)
-                cambios.Add(("Estado", original.estado_equipo ? "Activo" : "Inactivo",
-                                             actualizado.estado_equipo ? "Activo" : "Inactivo"));
+            //if (original.estado != actualizado.estado)
+              //  cambios.Add(("Estado", original.estado ? "Activo" : "Inactivo",
+                //                             actualizado.estado ? "Activo" : "Inactivo"));
 
             if (cambios.Count == 0)
             {
@@ -217,7 +299,7 @@ namespace SistemMantenimiento.JeffeMantto
             string usuario = $"{nombre} {apellido}";
 
             string motivo = rch_observacion.Text.Trim();
-            logEquipo.Instancia.ActualizarEquipo(actualizado, usuario, motivo);
+            //logEquipo.Instancia.ActualizarEquipo(actualizado, usuario, motivo);
 
             MessageBox.Show("Cambios guardados correctamente y registrados en la bitácora automáticamente.",
                             "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -235,7 +317,7 @@ namespace SistemMantenimiento.JeffeMantto
             if (result == DialogResult.Yes)
             {
                 // 👉 Acción si el usuario acepta
-                logEquipo.Instancia.dar_baja_equipo(equipo.id_equipo);
+                //logEquipo.Instancia.dar_baja_equipo(equipo.id_equipo);
                 MessageBox.Show("El equipo ha sido dado de baja correctamente.",
                                 "Acción completada",
                                 MessageBoxButtons.OK,
@@ -251,5 +333,6 @@ namespace SistemMantenimiento.JeffeMantto
             }
 
         }
+        */
     }
 }
