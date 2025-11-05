@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Equipo\logEquipo.cs" />
+    <Compile Include="Material\logMaterial.cs" />
     <Compile Include="Proveedor\logProveedor.cs" />
     <Compile Include="Usuario\logUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +58,10 @@
       <Project>{de0a74ba-56b5-452d-aeba-7ce13ec69453}</Project>
       <Name>CapaEntidad</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Proveedor\" />
+    <Folder Include="Req_Interno\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,14 +22,10 @@ namespace CapaDatos.ConexionDB
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = conn.ConnectionString = 
                 "Data Source=localhost;" +
-                "Initial Catalog=DB_Mantto;" +
+                "Initial Catalog=MantenimientoDB;" +
                 "Integrated Security=True;";
             return conn;
 
         }
-
-
-
-
     }
 }
