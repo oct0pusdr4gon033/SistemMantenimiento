@@ -17,24 +17,12 @@ namespace CapaLogica
             get { return logUsuario._instancia; }
         }
 
-        public bool Login(entUsuario usuario)
+        public entUsuario Login(string username, string password)
         {
-            usuario.password = segEncriptacion.EncriptarSHA256(usuario.password);
-            return datUsuario.Instancia.Login(usuario);
+            return datUsuario.Instancia.Login(username, password);
         }
         // 🔹 Este método DEBE devolver un objeto entUsuarioLogueado
-        public entUsuarioLogueado CargarUsuarioLogueado(string dni, int idRol)
-        {
-            try
-            {
-                // Llama al método de la capa de datos y lo devuelve
-                return datUsuarioLogueado.Instancia.ObtenerDatosUsuario(dni, idRol);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al cargar datos del usuario logueado", ex);
-            }
-        }
+       
 
 
     }

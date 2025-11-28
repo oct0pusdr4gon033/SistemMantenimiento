@@ -51,6 +51,9 @@
     <Compile Include="Usuario\segHash.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Req_Interno\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
       <Project>{bf27f811-78be-4715-8c0e-38dfab8d3769}</Project>
       <Name>CapaDatos</Name>
@@ -59,10 +62,6 @@
       <Project>{de0a74ba-56b5-452d-aeba-7ce13ec69453}</Project>
       <Name>CapaEntidad</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Proveedor\" />
-    <Folder Include="Req_Interno\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

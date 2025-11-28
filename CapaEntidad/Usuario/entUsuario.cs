@@ -8,10 +8,10 @@ namespace CapaEntidad
 {
     public class entUsuario
     {
-        public string dni { get; set;  }
-        public string password { get; set; }
-        public int id_rol { get; set; }
-
+        public int id_empleado { get; set; }
+        public string username { get; set;  }
+        public string contrasena { get; set; }
+        public string rol { get; set; }
 
     }
 }

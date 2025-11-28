@@ -29,27 +29,73 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
+            this.panel_derecho = new System.Windows.Forms.Panel();
+            this.btn_minimizar = new System.Windows.Forms.PictureBox();
+            this.btn_salir = new System.Windows.Forms.PictureBox();
+            this.lbl_copy = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_izquiero = new System.Windows.Forms.Panel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_titulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_login = new System.Windows.Forms.Panel();
             this.txb_password = new Guna.UI2.WinForms.Guna2TextBox();
             this.txb_usuario = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_rol = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.cmb_rol = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbl_usuario = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_contraseña = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btn_ingresar = new Guna.UI2.WinForms.Guna2Button();
-            this.panel_derecho = new System.Windows.Forms.Panel();
-            this.btn_minimizar = new System.Windows.Forms.PictureBox();
-            this.lbl_copy = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btn_salir = new System.Windows.Forms.PictureBox();
-            this.panel_izquiero.SuspendLayout();
-            this.panel_login.SuspendLayout();
             this.panel_derecho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
+            this.panel_izquiero.SuspendLayout();
+            this.panel_login.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel_derecho
+            // 
+            this.panel_derecho.BackColor = System.Drawing.Color.Transparent;
+            this.panel_derecho.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_derecho.BackgroundImage")));
+            this.panel_derecho.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel_derecho.Controls.Add(this.btn_minimizar);
+            this.panel_derecho.Controls.Add(this.btn_salir);
+            this.panel_derecho.Controls.Add(this.lbl_copy);
+            this.panel_derecho.ForeColor = System.Drawing.Color.Teal;
+            this.panel_derecho.Location = new System.Drawing.Point(499, 0);
+            this.panel_derecho.Name = "panel_derecho";
+            this.panel_derecho.Size = new System.Drawing.Size(390, 462);
+            this.panel_derecho.TabIndex = 1;
+            this.panel_derecho.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_derecho_MouseDown);
+            // 
+            // btn_minimizar
+            // 
+            this.btn_minimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_minimizar.BackgroundImage")));
+            this.btn_minimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_minimizar.Location = new System.Drawing.Point(297, -1);
+            this.btn_minimizar.Name = "btn_minimizar";
+            this.btn_minimizar.Size = new System.Drawing.Size(46, 49);
+            this.btn_minimizar.TabIndex = 3;
+            this.btn_minimizar.TabStop = false;
+            this.btn_minimizar.Click += new System.EventHandler(this.btn_minimizar_Click);
+            // 
+            // btn_salir
+            // 
+            this.btn_salir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_salir.BackgroundImage")));
+            this.btn_salir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_salir.Location = new System.Drawing.Point(340, -1);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(50, 50);
+            this.btn_salir.TabIndex = 2;
+            this.btn_salir.TabStop = false;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
+            // 
+            // lbl_copy
+            // 
+            this.lbl_copy.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_copy.ForeColor = System.Drawing.Color.MintCream;
+            this.lbl_copy.Location = new System.Drawing.Point(33, 436);
+            this.lbl_copy.Name = "lbl_copy";
+            this.lbl_copy.Size = new System.Drawing.Size(189, 15);
+            this.lbl_copy.TabIndex = 1;
+            this.lbl_copy.Text = "Copyright © 2025 Horus Systems";
             // 
             // panel_izquiero
             // 
@@ -60,11 +106,10 @@
             this.panel_izquiero.Controls.Add(this.panel_login);
             this.panel_izquiero.Controls.Add(this.btn_ingresar);
             this.panel_izquiero.ForeColor = System.Drawing.Color.Transparent;
-            this.panel_izquiero.Location = new System.Drawing.Point(-1, -1);
+            this.panel_izquiero.Location = new System.Drawing.Point(-4, -5);
             this.panel_izquiero.Name = "panel_izquiero";
             this.panel_izquiero.Size = new System.Drawing.Size(502, 468);
-            this.panel_izquiero.TabIndex = 0;
-            this.panel_izquiero.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_izquiero_MouseDown);
+            this.panel_izquiero.TabIndex = 2;
             // 
             // guna2HtmlLabel2
             // 
@@ -92,13 +137,11 @@
             // 
             this.panel_login.Controls.Add(this.txb_password);
             this.panel_login.Controls.Add(this.txb_usuario);
-            this.panel_login.Controls.Add(this.lbl_rol);
-            this.panel_login.Controls.Add(this.cmb_rol);
             this.panel_login.Controls.Add(this.lbl_usuario);
             this.panel_login.Controls.Add(this.lbl_contraseña);
-            this.panel_login.Location = new System.Drawing.Point(70, 78);
+            this.panel_login.Location = new System.Drawing.Point(59, 116);
             this.panel_login.Name = "panel_login";
-            this.panel_login.Size = new System.Drawing.Size(386, 303);
+            this.panel_login.Size = new System.Drawing.Size(386, 207);
             this.panel_login.TabIndex = 3;
             this.panel_login.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_login_MouseDown);
             // 
@@ -140,38 +183,6 @@
             this.txb_usuario.Size = new System.Drawing.Size(336, 36);
             this.txb_usuario.TabIndex = 6;
             // 
-            // lbl_rol
-            // 
-            this.lbl_rol.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_rol.ForeColor = System.Drawing.Color.Teal;
-            this.lbl_rol.Location = new System.Drawing.Point(31, 205);
-            this.lbl_rol.Name = "lbl_rol";
-            this.lbl_rol.Size = new System.Drawing.Size(35, 22);
-            this.lbl_rol.TabIndex = 5;
-            this.lbl_rol.Text = "Rol:";
-            // 
-            // cmb_rol
-            // 
-            this.cmb_rol.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_rol.BorderRadius = 10;
-            this.cmb_rol.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_rol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_rol.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_rol.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_rol.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_rol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_rol.ItemHeight = 30;
-            this.cmb_rol.Items.AddRange(new object[] {
-            "Jefe de Mantenimiento",
-            "Planner de Mantenimiento",
-            "Gerente de Mantenimiento",
-            "Jefe Logistica"});
-            this.cmb_rol.Location = new System.Drawing.Point(31, 236);
-            this.cmb_rol.Name = "cmb_rol";
-            this.cmb_rol.Size = new System.Drawing.Size(336, 36);
-            this.cmb_rol.TabIndex = 4;
-            // 
             // lbl_usuario
             // 
             this.lbl_usuario.BackColor = System.Drawing.Color.Transparent;
@@ -206,101 +217,50 @@
             this.btn_ingresar.FillColor = System.Drawing.Color.DarkGray;
             this.btn_ingresar.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ingresar.ForeColor = System.Drawing.Color.Teal;
-            this.btn_ingresar.Location = new System.Drawing.Point(161, 399);
+            this.btn_ingresar.Location = new System.Drawing.Point(161, 355);
             this.btn_ingresar.Name = "btn_ingresar";
             this.btn_ingresar.PressedColor = System.Drawing.Color.Transparent;
             this.btn_ingresar.Size = new System.Drawing.Size(161, 50);
             this.btn_ingresar.TabIndex = 2;
             this.btn_ingresar.Text = "Ingresar";
-            this.btn_ingresar.Click += new System.EventHandler(this.btn_ingresar_Click);
-            // 
-            // panel_derecho
-            // 
-            this.panel_derecho.BackColor = System.Drawing.Color.Transparent;
-            this.panel_derecho.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_derecho.BackgroundImage")));
-            this.panel_derecho.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel_derecho.Controls.Add(this.btn_minimizar);
-            this.panel_derecho.Controls.Add(this.btn_salir);
-            this.panel_derecho.Controls.Add(this.lbl_copy);
-            this.panel_derecho.ForeColor = System.Drawing.Color.Teal;
-            this.panel_derecho.Location = new System.Drawing.Point(499, 0);
-            this.panel_derecho.Name = "panel_derecho";
-            this.panel_derecho.Size = new System.Drawing.Size(390, 462);
-            this.panel_derecho.TabIndex = 1;
-            this.panel_derecho.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_derecho_MouseDown);
-            // 
-            // btn_minimizar
-            // 
-            this.btn_minimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_minimizar.BackgroundImage")));
-            this.btn_minimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_minimizar.Location = new System.Drawing.Point(297, -1);
-            this.btn_minimizar.Name = "btn_minimizar";
-            this.btn_minimizar.Size = new System.Drawing.Size(46, 49);
-            this.btn_minimizar.TabIndex = 3;
-            this.btn_minimizar.TabStop = false;
-            this.btn_minimizar.Click += new System.EventHandler(this.btn_minimizar_Click);
-            // 
-            // lbl_copy
-            // 
-            this.lbl_copy.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_copy.ForeColor = System.Drawing.Color.MintCream;
-            this.lbl_copy.Location = new System.Drawing.Point(33, 436);
-            this.lbl_copy.Name = "lbl_copy";
-            this.lbl_copy.Size = new System.Drawing.Size(189, 15);
-            this.lbl_copy.TabIndex = 1;
-            this.lbl_copy.Text = "Copyright © 2025 Horus Systems";
-            // 
-            // btn_salir
-            // 
-            this.btn_salir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_salir.BackgroundImage")));
-            this.btn_salir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_salir.Location = new System.Drawing.Point(340, -1);
-            this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(50, 50);
-            this.btn_salir.TabIndex = 2;
-            this.btn_salir.TabStop = false;
-            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
+            this.btn_ingresar.Click += new System.EventHandler(this.btn_ingresar_Click_1);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 462);
-            this.Controls.Add(this.panel_derecho);
             this.Controls.Add(this.panel_izquiero);
+            this.Controls.Add(this.panel_derecho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.Text = "frm_Login";
-            this.panel_izquiero.ResumeLayout(false);
-            this.panel_izquiero.PerformLayout();
-            this.panel_login.ResumeLayout(false);
-            this.panel_login.PerformLayout();
             this.panel_derecho.ResumeLayout(false);
             this.panel_derecho.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
+            this.panel_izquiero.ResumeLayout(false);
+            this.panel_izquiero.PerformLayout();
+            this.panel_login.ResumeLayout(false);
+            this.panel_login.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel_izquiero;
         private System.Windows.Forms.Panel panel_derecho;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_copy;
-        private Guna.UI2.WinForms.Guna2Button btn_ingresar;
-        private System.Windows.Forms.Panel panel_login;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_contraseña;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_usuario;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_rol;
-        private Guna.UI2.WinForms.Guna2ComboBox cmb_rol;
+        private System.Windows.Forms.PictureBox btn_minimizar;
+        private System.Windows.Forms.PictureBox btn_salir;
+        private System.Windows.Forms.Panel panel_izquiero;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_titulo;
-        private System.Windows.Forms.PictureBox btn_minimizar;
-        private Guna.UI2.WinForms.Guna2TextBox txb_usuario;
+        private System.Windows.Forms.Panel panel_login;
         private Guna.UI2.WinForms.Guna2TextBox txb_password;
-        private System.Windows.Forms.PictureBox btn_salir;
+        private Guna.UI2.WinForms.Guna2TextBox txb_usuario;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_usuario;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_contraseña;
+        private Guna.UI2.WinForms.Guna2Button btn_ingresar;
     }
 }
 

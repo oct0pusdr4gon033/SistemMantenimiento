@@ -244,5 +244,10 @@ namespace SistemMantenimiento.JeffeMantto
 
             AbrirFormularioEnPanel(new EditarEquipo(equipo_seleccionado, usuarioLogueado));
         }
+
+        private void btn_generar_ot_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

@@ -17,12 +17,12 @@ namespace CapaLogica.Usuario
         public static logUsuarioLogueado Instancia => _instancia;
 
         // 🔹 Este método DEBE devolver un objeto entUsuarioLogueado
-        public entUsuarioLogueado CargarUsuarioLogueado(string dni, int idRol)
+        public entUsuarioLogueado CargarUsuarioLogueado(string usuario, string contrasena)
         {
             try
             {
                 // Llama al método de la capa de datos y lo devuelve
-                return datUsuarioLogueado.Instancia.ObtenerDatosUsuario(dni, idRol);
+                return datUsuarioLogueado.Instancia.login(usuario, contrasena);
             }
             catch (Exception ex)
             {

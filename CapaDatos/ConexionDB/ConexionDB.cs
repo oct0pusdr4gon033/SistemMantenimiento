@@ -22,7 +22,7 @@ namespace CapaDatos.ConexionDB
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = conn.ConnectionString = 
                 "Data Source=localhost;" +
-                "Initial Catalog=MantenimientoDB;" +
+                "Initial Catalog=Mantenimiento_v4;" +
                 "Integrated Security=True;";
             return conn;
 

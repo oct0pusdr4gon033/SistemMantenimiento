@@ -1,4 +1,5 @@
-﻿using CapaEntidad.Equipo;
+﻿using CapaEntidad;
+using CapaEntidad.Equipo;
 using CapaEntidad.Usuario;
 using CapaLogica.Equipo;
 using Guna.UI2.WinForms;
@@ -141,7 +142,11 @@ namespace SistemMantenimiento
                         else
                             AbrirFormularioEnPanel(new GenerarPM()); // ✅ sin entidad
                     }
+                },
+                { 
+                    "Registrar Datos", () => AbrirFormularioEnPanel(new RegistroMultiples()) 
                 }
+
             };
 
             subMenuEquipos = new SubMenuManager(
@@ -182,7 +187,6 @@ namespace SistemMantenimiento
         private void btn_inicio_Click(object sender, EventArgs e)
         {
             AbrirFormularioEnPanel(new frm_Inicio(usuarioLogueado));
-  
         }
 
     }

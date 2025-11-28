@@ -22,47 +22,34 @@ namespace CapaDatos.Consultas.Usuario
             get { return datUsuarioLogueado._instancia; }
         }
 
-        public entUsuarioLogueado ObtenerDatosUsuario(string dni, int idRol)
+        public entUsuarioLogueado login(string usuario, string contrasena)
         {
-            SqlCommand cmd = null;
-            entUsuarioLogueado usuario = null;
+            entUsuarioLogueado entidad = null;
 
-            try
+            using (SqlConnection conn =ConexionDB.ConexionDB.Instancia.Conectar() )
+            using (SqlCommand cmd = new SqlCommand("sp_InfoUsuario", conn))
             {
-                using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@username", usuario);
+                cmd.Parameters.AddWithValue("@contrasena", contrasena);
+
+                conn.Open();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
                 {
-                    cmd = new SqlCommand("sp_ObtenerInfoUsuario", cn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@dni", dni);
-                    cmd.Parameters.AddWithValue("@id_rol", idRol);
-
-                    cn.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
-
                     if (dr.Read())
                     {
-                        usuario = new entUsuarioLogueado()
+                        entidad = new entUsuarioLogueado
                         {
-                            IdUsuario = Convert.ToInt32(dr["idUsuario"]),
-                            Nombre = dr["nombre"].ToString(),
-                            Apellido = dr["apellido"].ToString(),
-                            Rol = dr["Rol"].ToString()
+                            IdUsuario = dr.GetInt32(dr.GetOrdinal("IdUsuario")),
+                            Nombre = dr.GetString(dr.GetOrdinal("Nombre")),
+                            Apellido = dr.GetString(dr.GetOrdinal("Apellido")),
+                            Rol = dr.GetString(dr.GetOrdinal("Rol"))
                         };
                     }
-                    dr.Close();
                 }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (cmd != null) cmd.Dispose();
-            }
-
-            return usuario;
+            return entidad;
         }
     }
 }

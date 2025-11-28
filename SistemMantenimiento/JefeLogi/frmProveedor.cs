@@ -36,7 +36,7 @@ namespace SistemMantenimiento.JefeLogi.Proveedores
         private void AgregarPro_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'mantenimientoDBDataSet1.Proveedor' Puede moverla o quitarla según sea necesario.
-            this.proveedorTableAdapter1.Fill(this.mantenimientoDBDataSet1.Proveedor);
+           
             ListarProveedores();
             ConfigurarEstado("inicial");
             HabilitarControles(false);

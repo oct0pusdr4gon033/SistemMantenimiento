@@ -119,7 +119,7 @@ namespace SistemMantenimiento.JefeLogi
             this.groupBoxDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.groupBoxDatos.Location = new System.Drawing.Point(40, 70);
             this.groupBoxDatos.Name = "groupBoxDatos";
-            this.groupBoxDatos.Size = new System.Drawing.Size(1000, 340);
+            this.groupBoxDatos.Size = new System.Drawing.Size(1000, 302);
             this.groupBoxDatos.TabIndex = 1;
             this.groupBoxDatos.Text = "Datos del Material";
             // 
@@ -137,7 +137,7 @@ namespace SistemMantenimiento.JefeLogi
             this.txtId.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtId.DefaultText = "";
             this.txtId.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtId.Location = new System.Drawing.Point(150, 40);
+            this.txtId.Location = new System.Drawing.Point(150, 43);
             this.txtId.Name = "txtId";
             this.txtId.PlaceholderText = "";
             this.txtId.ReadOnly = true;

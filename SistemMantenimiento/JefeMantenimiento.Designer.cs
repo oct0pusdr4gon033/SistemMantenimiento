@@ -44,6 +44,7 @@
             this.btn_minimizar = new System.Windows.Forms.PictureBox();
             this.btn_salir = new System.Windows.Forms.PictureBox();
             this.panel_form_hijo = new System.Windows.Forms.Panel();
+            this.btn_generar_ot = new Guna.UI2.WinForms.Guna2Button();
             this.content_titulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
             this.panel_side_bar.SuspendLayout();
@@ -108,13 +109,14 @@
             this.panel_side_bar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel_side_bar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.panel_side_bar.Controls.Add(this.btn_generar_ot);
             this.panel_side_bar.Controls.Add(this.btn_inicio);
             this.panel_side_bar.Controls.Add(this.panel_sub_menu_equipos);
             this.panel_side_bar.Controls.Add(this.btn_equipos);
             this.panel_side_bar.Controls.Add(this.content_titulo);
             this.panel_side_bar.Location = new System.Drawing.Point(-2, -2);
             this.panel_side_bar.Name = "panel_side_bar";
-            this.panel_side_bar.Size = new System.Drawing.Size(270, 562);
+            this.panel_side_bar.Size = new System.Drawing.Size(270, 661);
             this.panel_side_bar.TabIndex = 5;
             this.panel_side_bar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_side_bar_MouseDown);
             // 
@@ -142,7 +144,7 @@
             this.panel_sub_menu_equipos.Controls.Add(this.flp_sub_menu_equipos);
             this.panel_sub_menu_equipos.Location = new System.Drawing.Point(11, 232);
             this.panel_sub_menu_equipos.Name = "panel_sub_menu_equipos";
-            this.panel_sub_menu_equipos.Size = new System.Drawing.Size(246, 253);
+            this.panel_sub_menu_equipos.Size = new System.Drawing.Size(246, 298);
             this.panel_sub_menu_equipos.TabIndex = 4;
             // 
             // flp_sub_menu_equipos
@@ -150,7 +152,7 @@
             this.flp_sub_menu_equipos.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp_sub_menu_equipos.Location = new System.Drawing.Point(15, 3);
             this.flp_sub_menu_equipos.Name = "flp_sub_menu_equipos";
-            this.flp_sub_menu_equipos.Size = new System.Drawing.Size(228, 243);
+            this.flp_sub_menu_equipos.Size = new System.Drawing.Size(228, 286);
             this.flp_sub_menu_equipos.TabIndex = 0;
             // 
             // btn_equipos
@@ -182,7 +184,7 @@
             this.panel_superio.Controls.Add(this.btn_salir);
             this.panel_superio.Location = new System.Drawing.Point(268, 0);
             this.panel_superio.Name = "panel_superio";
-            this.panel_superio.Size = new System.Drawing.Size(1120, 46);
+            this.panel_superio.Size = new System.Drawing.Size(990, 46);
             this.panel_superio.TabIndex = 6;
             this.panel_superio.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_superio_MouseDown);
             // 
@@ -191,7 +193,7 @@
             this.btn_rezise_max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_rezise_max.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_rezise_max.BackgroundImage")));
             this.btn_rezise_max.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_rezise_max.Location = new System.Drawing.Point(1031, 0);
+            this.btn_rezise_max.Location = new System.Drawing.Point(901, 0);
             this.btn_rezise_max.Name = "btn_rezise_max";
             this.btn_rezise_max.Size = new System.Drawing.Size(43, 45);
             this.btn_rezise_max.TabIndex = 10;
@@ -203,7 +205,7 @@
             this.btn_resize_min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_resize_min.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_resize_min.BackgroundImage")));
             this.btn_resize_min.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_resize_min.Location = new System.Drawing.Point(1031, 1);
+            this.btn_resize_min.Location = new System.Drawing.Point(901, 1);
             this.btn_resize_min.Name = "btn_resize_min";
             this.btn_resize_min.Size = new System.Drawing.Size(43, 45);
             this.btn_resize_min.TabIndex = 12;
@@ -215,7 +217,7 @@
             this.btn_minimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_minimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_minimizar.BackgroundImage")));
             this.btn_minimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_minimizar.Location = new System.Drawing.Point(987, 1);
+            this.btn_minimizar.Location = new System.Drawing.Point(857, 1);
             this.btn_minimizar.Name = "btn_minimizar";
             this.btn_minimizar.Size = new System.Drawing.Size(43, 45);
             this.btn_minimizar.TabIndex = 11;
@@ -227,7 +229,7 @@
             this.btn_salir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_salir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_salir.BackgroundImage")));
             this.btn_salir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_salir.Location = new System.Drawing.Point(1074, 0);
+            this.btn_salir.Location = new System.Drawing.Point(944, 0);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(43, 45);
             this.btn_salir.TabIndex = 6;
@@ -241,14 +243,32 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_form_hijo.Location = new System.Drawing.Point(275, 49);
             this.panel_form_hijo.Name = "panel_form_hijo";
-            this.panel_form_hijo.Size = new System.Drawing.Size(1100, 479);
+            this.panel_form_hijo.Size = new System.Drawing.Size(970, 578);
             this.panel_form_hijo.TabIndex = 10;
+            // 
+            // btn_generar_ot
+            // 
+            this.btn_generar_ot.BackColor = System.Drawing.Color.Transparent;
+            this.btn_generar_ot.BorderColor = System.Drawing.Color.Transparent;
+            this.btn_generar_ot.BorderRadius = 10;
+            this.btn_generar_ot.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_generar_ot.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_generar_ot.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_generar_ot.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_generar_ot.FillColor = System.Drawing.Color.Transparent;
+            this.btn_generar_ot.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_generar_ot.ForeColor = System.Drawing.Color.White;
+            this.btn_generar_ot.Location = new System.Drawing.Point(14, 536);
+            this.btn_generar_ot.Name = "btn_generar_ot";
+            this.btn_generar_ot.Size = new System.Drawing.Size(246, 45);
+            this.btn_generar_ot.TabIndex = 6;
+            this.btn_generar_ot.Text = "Generar OT";
             // 
             // JefeMantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 531);
+            this.ClientSize = new System.Drawing.Size(1256, 630);
             this.Controls.Add(this.panel_form_hijo);
             this.Controls.Add(this.panel_superio);
             this.Controls.Add(this.panel_side_bar);
@@ -287,5 +307,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_equipos;
         private Guna.UI2.WinForms.Guna2Button btn_inicio;
         private System.Windows.Forms.Panel panel_form_hijo;
+        private Guna.UI2.WinForms.Guna2Button btn_generar_ot;
     }
 }

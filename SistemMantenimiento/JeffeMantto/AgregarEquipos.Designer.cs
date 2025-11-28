@@ -33,30 +33,26 @@
             this.lbl_titulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_principal = new Guna.UI2.WinForms.Guna2Panel();
             this.gp_agregar = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txb_anio_fabricacion = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txb_codigo_flota = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cmb_modelo = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmb_tipo_e = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmb_area = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmb_marca = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btn_agregar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.cmb_criticidad = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.cmb_area = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.dtp_fecha_registro = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.cmb_estado = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lbl_estado = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txb_horometro_actual = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txb_horometro_inicial = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txb_anio_fabricacion = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cmb_tipo_equipo = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbl_horometro_act = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_horometro_inicial = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_anio_fabricacion = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_tipo_equipo = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txb_numero_serie = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_num_serie = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txb_modelo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cmb_marca = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbl_modelo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_marca = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txb_codigo_flota = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_codigo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel1.SuspendLayout();
             this.panel_principal.SuspendLayout();
@@ -67,9 +63,9 @@
             // 
             this.panel1.Controls.Add(this.lbl_subtitulo);
             this.panel1.Controls.Add(this.lbl_titulo);
-            this.panel1.Location = new System.Drawing.Point(306, 10);
+            this.panel1.Location = new System.Drawing.Point(28, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(506, 68);
+            this.panel1.Size = new System.Drawing.Size(508, 68);
             this.panel1.TabIndex = 1;
             // 
             // lbl_subtitulo
@@ -108,100 +104,184 @@
             // gp_agregar
             // 
             this.gp_agregar.AutoScroll = true;
-            this.gp_agregar.Controls.Add(this.guna2HtmlLabel3);
+            this.gp_agregar.Controls.Add(this.guna2DateTimePicker1);
+            this.gp_agregar.Controls.Add(this.guna2TextBox3);
+            this.gp_agregar.Controls.Add(this.guna2TextBox2);
+            this.gp_agregar.Controls.Add(this.txb_anio_fabricacion);
+            this.gp_agregar.Controls.Add(this.guna2TextBox1);
+            this.gp_agregar.Controls.Add(this.txb_codigo_flota);
+            this.gp_agregar.Controls.Add(this.cmb_modelo);
+            this.gp_agregar.Controls.Add(this.cmb_tipo_e);
+            this.gp_agregar.Controls.Add(this.cmb_area);
+            this.gp_agregar.Controls.Add(this.cmb_marca);
             this.gp_agregar.Controls.Add(this.btn_agregar);
             this.gp_agregar.Controls.Add(this.guna2HtmlLabel2);
-            this.gp_agregar.Controls.Add(this.cmb_criticidad);
-            this.gp_agregar.Controls.Add(this.cmb_area);
-            this.gp_agregar.Controls.Add(this.dtp_fecha_registro);
             this.gp_agregar.Controls.Add(this.guna2HtmlLabel1);
-            this.gp_agregar.Controls.Add(this.cmb_estado);
-            this.gp_agregar.Controls.Add(this.lbl_estado);
-            this.gp_agregar.Controls.Add(this.txb_horometro_actual);
-            this.gp_agregar.Controls.Add(this.txb_horometro_inicial);
-            this.gp_agregar.Controls.Add(this.txb_anio_fabricacion);
-            this.gp_agregar.Controls.Add(this.cmb_tipo_equipo);
             this.gp_agregar.Controls.Add(this.lbl_horometro_act);
             this.gp_agregar.Controls.Add(this.lbl_horometro_inicial);
             this.gp_agregar.Controls.Add(this.lbl_anio_fabricacion);
             this.gp_agregar.Controls.Add(this.lbl_tipo_equipo);
-            this.gp_agregar.Controls.Add(this.txb_numero_serie);
             this.gp_agregar.Controls.Add(this.lbl_num_serie);
-            this.gp_agregar.Controls.Add(this.txb_modelo);
-            this.gp_agregar.Controls.Add(this.cmb_marca);
             this.gp_agregar.Controls.Add(this.lbl_modelo);
             this.gp_agregar.Controls.Add(this.lbl_marca);
-            this.gp_agregar.Controls.Add(this.txb_codigo_flota);
             this.gp_agregar.Controls.Add(this.lbl_codigo);
             this.gp_agregar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gp_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.gp_agregar.Location = new System.Drawing.Point(26, 102);
+            this.gp_agregar.Location = new System.Drawing.Point(9, 102);
             this.gp_agregar.Name = "gp_agregar";
-            this.gp_agregar.Size = new System.Drawing.Size(894, 451);
+            this.gp_agregar.Size = new System.Drawing.Size(601, 469);
             this.gp_agregar.TabIndex = 4;
             this.gp_agregar.Text = "Agregar Equipos";
             // 
-            // guna2HtmlLabel3
+            // guna2DateTimePicker1
             // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(317, 376);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(53, 17);
-            this.guna2HtmlLabel3.TabIndex = 27;
-            this.guna2HtmlLabel3.Text = "Criticidad";
+            this.guna2DateTimePicker1.BorderRadius = 10;
+            this.guna2DateTimePicker1.Checked = true;
+            this.guna2DateTimePicker1.FillColor = System.Drawing.Color.Black;
+            this.guna2DateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.guna2DateTimePicker1.Location = new System.Drawing.Point(320, 336);
+            this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.guna2DateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
+            this.guna2DateTimePicker1.Size = new System.Drawing.Size(253, 36);
+            this.guna2DateTimePicker1.TabIndex = 42;
+            this.guna2DateTimePicker1.Value = new System.DateTime(2025, 11, 22, 5, 37, 42, 626);
             // 
-            // btn_agregar
+            // guna2TextBox3
             // 
-            this.btn_agregar.Animated = true;
-            this.btn_agregar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_agregar.BorderRadius = 10;
-            this.btn_agregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_agregar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_agregar.FillColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_agregar.Location = new System.Drawing.Point(621, 376);
-            this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_agregar.Size = new System.Drawing.Size(193, 45);
-            this.btn_agregar.TabIndex = 3;
-            this.btn_agregar.Text = "Agregar";
-            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
+            this.guna2TextBox3.BorderRadius = 10;
+            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox3.DefaultText = "";
+            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox3.Location = new System.Drawing.Point(320, 271);
+            this.guna2TextBox3.Name = "guna2TextBox3";
+            this.guna2TextBox3.PlaceholderText = "";
+            this.guna2TextBox3.SelectedText = "";
+            this.guna2TextBox3.Size = new System.Drawing.Size(253, 36);
+            this.guna2TextBox3.TabIndex = 41;
             // 
-            // guna2HtmlLabel2
+            // guna2TextBox2
             // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(317, 177);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(30, 17);
-            this.guna2HtmlLabel2.TabIndex = 26;
-            this.guna2HtmlLabel2.Text = "Area:";
+            this.guna2TextBox2.BorderRadius = 10;
+            this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox2.DefaultText = "";
+            this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox2.Location = new System.Drawing.Point(320, 204);
+            this.guna2TextBox2.Name = "guna2TextBox2";
+            this.guna2TextBox2.PlaceholderText = "";
+            this.guna2TextBox2.SelectedText = "";
+            this.guna2TextBox2.Size = new System.Drawing.Size(253, 36);
+            this.guna2TextBox2.TabIndex = 40;
             // 
-            // cmb_criticidad
+            // txb_anio_fabricacion
             // 
-            this.cmb_criticidad.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_criticidad.BorderRadius = 10;
-            this.cmb_criticidad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_criticidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_criticidad.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_criticidad.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_criticidad.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_criticidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_criticidad.ItemHeight = 30;
-            this.cmb_criticidad.Items.AddRange(new object[] {
-            "Alta",
-            "Media",
-            "Baja"});
-            this.cmb_criticidad.Location = new System.Drawing.Point(317, 399);
-            this.cmb_criticidad.Name = "cmb_criticidad";
-            this.cmb_criticidad.Size = new System.Drawing.Size(247, 36);
-            this.cmb_criticidad.TabIndex = 24;
+            this.txb_anio_fabricacion.BorderRadius = 10;
+            this.txb_anio_fabricacion.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_anio_fabricacion.DefaultText = "";
+            this.txb_anio_fabricacion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_anio_fabricacion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_anio_fabricacion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_anio_fabricacion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_anio_fabricacion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_anio_fabricacion.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_anio_fabricacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_anio_fabricacion.Location = new System.Drawing.Point(320, 137);
+            this.txb_anio_fabricacion.Name = "txb_anio_fabricacion";
+            this.txb_anio_fabricacion.PlaceholderText = "";
+            this.txb_anio_fabricacion.SelectedText = "";
+            this.txb_anio_fabricacion.Size = new System.Drawing.Size(253, 36);
+            this.txb_anio_fabricacion.TabIndex = 39;
+            // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.BorderRadius = 10;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Location = new System.Drawing.Point(320, 70);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderText = "";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(253, 36);
+            this.guna2TextBox1.TabIndex = 38;
+            // 
+            // txb_codigo_flota
+            // 
+            this.txb_codigo_flota.BorderRadius = 10;
+            this.txb_codigo_flota.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_codigo_flota.DefaultText = "";
+            this.txb_codigo_flota.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_codigo_flota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_codigo_flota.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_codigo_flota.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_codigo_flota.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_codigo_flota.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_codigo_flota.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_codigo_flota.Location = new System.Drawing.Point(4, 336);
+            this.txb_codigo_flota.Name = "txb_codigo_flota";
+            this.txb_codigo_flota.PlaceholderText = "";
+            this.txb_codigo_flota.SelectedText = "";
+            this.txb_codigo_flota.Size = new System.Drawing.Size(248, 36);
+            this.txb_codigo_flota.TabIndex = 34;
+            // 
+            // cmb_modelo
+            // 
+            this.cmb_modelo.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_modelo.BorderRadius = 10;
+            this.cmb_modelo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_modelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_modelo.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_modelo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_modelo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_modelo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_modelo.ItemHeight = 30;
+            this.cmb_modelo.Items.AddRange(new object[] {
+            "Crear",
+            "Actualizar",
+            "Eliminar"});
+            this.cmb_modelo.Location = new System.Drawing.Point(4, 271);
+            this.cmb_modelo.Name = "cmb_modelo";
+            this.cmb_modelo.Size = new System.Drawing.Size(248, 36);
+            this.cmb_modelo.TabIndex = 37;
+            // 
+            // cmb_tipo_e
+            // 
+            this.cmb_tipo_e.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_tipo_e.BorderRadius = 10;
+            this.cmb_tipo_e.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_tipo_e.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_tipo_e.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_tipo_e.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_tipo_e.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_tipo_e.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_tipo_e.ItemHeight = 30;
+            this.cmb_tipo_e.Items.AddRange(new object[] {
+            "Crear",
+            "Actualizar",
+            "Eliminar"});
+            this.cmb_tipo_e.Location = new System.Drawing.Point(4, 204);
+            this.cmb_tipo_e.Name = "cmb_tipo_e";
+            this.cmb_tipo_e.Size = new System.Drawing.Size(248, 36);
+            this.cmb_tipo_e.TabIndex = 36;
             // 
             // cmb_area
             // 
@@ -215,271 +295,13 @@
             this.cmb_area.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmb_area.ItemHeight = 30;
             this.cmb_area.Items.AddRange(new object[] {
-            "Caterpillar (CAT)",
-            "Komatsu",
-            "Volvo",
-            "JCB",
-            "Liebherr"});
-            this.cmb_area.Location = new System.Drawing.Point(317, 200);
+            "Crear",
+            "Actualizar",
+            "Eliminar"});
+            this.cmb_area.Location = new System.Drawing.Point(4, 137);
             this.cmb_area.Name = "cmb_area";
-            this.cmb_area.Size = new System.Drawing.Size(247, 36);
-            this.cmb_area.TabIndex = 23;
-            // 
-            // dtp_fecha_registro
-            // 
-            this.dtp_fecha_registro.BackColor = System.Drawing.Color.White;
-            this.dtp_fecha_registro.BorderRadius = 10;
-            this.dtp_fecha_registro.Checked = true;
-            this.dtp_fecha_registro.FillColor = System.Drawing.Color.White;
-            this.dtp_fecha_registro.FocusedColor = System.Drawing.Color.White;
-            this.dtp_fecha_registro.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtp_fecha_registro.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtp_fecha_registro.Location = new System.Drawing.Point(317, 332);
-            this.dtp_fecha_registro.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtp_fecha_registro.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtp_fecha_registro.Name = "dtp_fecha_registro";
-            this.dtp_fecha_registro.Size = new System.Drawing.Size(247, 36);
-            this.dtp_fecha_registro.TabIndex = 22;
-            this.dtp_fecha_registro.Value = new System.DateTime(2025, 10, 30, 2, 27, 45, 40);
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(317, 309);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(77, 17);
-            this.guna2HtmlLabel1.TabIndex = 21;
-            this.guna2HtmlLabel1.Text = "Fecha Ingreso";
-            // 
-            // cmb_estado
-            // 
-            this.cmb_estado.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_estado.BorderRadius = 10;
-            this.cmb_estado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_estado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_estado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_estado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_estado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_estado.ItemHeight = 30;
-            this.cmb_estado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cmb_estado.Location = new System.Drawing.Point(317, 267);
-            this.cmb_estado.Name = "cmb_estado";
-            this.cmb_estado.Size = new System.Drawing.Size(247, 36);
-            this.cmb_estado.TabIndex = 20;
-            // 
-            // lbl_estado
-            // 
-            this.lbl_estado.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_estado.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_estado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_estado.Location = new System.Drawing.Point(317, 244);
-            this.lbl_estado.Name = "lbl_estado";
-            this.lbl_estado.Size = new System.Drawing.Size(41, 17);
-            this.lbl_estado.TabIndex = 19;
-            this.lbl_estado.Text = "Estado:";
-            // 
-            // txb_horometro_actual
-            // 
-            this.txb_horometro_actual.BackColor = System.Drawing.Color.Transparent;
-            this.txb_horometro_actual.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_horometro_actual.BorderRadius = 10;
-            this.txb_horometro_actual.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_horometro_actual.DefaultText = "";
-            this.txb_horometro_actual.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_horometro_actual.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_horometro_actual.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_horometro_actual.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_horometro_actual.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_horometro_actual.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_horometro_actual.ForeColor = System.Drawing.Color.Black;
-            this.txb_horometro_actual.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_horometro_actual.Location = new System.Drawing.Point(317, 66);
-            this.txb_horometro_actual.Name = "txb_horometro_actual";
-            this.txb_horometro_actual.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_horometro_actual.PlaceholderText = "";
-            this.txb_horometro_actual.SelectedText = "";
-            this.txb_horometro_actual.Size = new System.Drawing.Size(247, 36);
-            this.txb_horometro_actual.TabIndex = 17;
-            // 
-            // txb_horometro_inicial
-            // 
-            this.txb_horometro_inicial.BackColor = System.Drawing.Color.Transparent;
-            this.txb_horometro_inicial.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_horometro_inicial.BorderRadius = 10;
-            this.txb_horometro_inicial.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_horometro_inicial.DefaultText = "";
-            this.txb_horometro_inicial.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_horometro_inicial.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_horometro_inicial.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_horometro_inicial.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_horometro_inicial.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_horometro_inicial.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_horometro_inicial.ForeColor = System.Drawing.Color.Black;
-            this.txb_horometro_inicial.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_horometro_inicial.Location = new System.Drawing.Point(317, 133);
-            this.txb_horometro_inicial.Name = "txb_horometro_inicial";
-            this.txb_horometro_inicial.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_horometro_inicial.PlaceholderText = "";
-            this.txb_horometro_inicial.SelectedText = "";
-            this.txb_horometro_inicial.Size = new System.Drawing.Size(247, 36);
-            this.txb_horometro_inicial.TabIndex = 16;
-            // 
-            // txb_anio_fabricacion
-            // 
-            this.txb_anio_fabricacion.BackColor = System.Drawing.Color.Transparent;
-            this.txb_anio_fabricacion.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_anio_fabricacion.BorderRadius = 10;
-            this.txb_anio_fabricacion.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_anio_fabricacion.DefaultText = "";
-            this.txb_anio_fabricacion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_anio_fabricacion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_anio_fabricacion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_anio_fabricacion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_anio_fabricacion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_anio_fabricacion.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_anio_fabricacion.ForeColor = System.Drawing.Color.Black;
-            this.txb_anio_fabricacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_anio_fabricacion.Location = new System.Drawing.Point(4, 332);
-            this.txb_anio_fabricacion.Name = "txb_anio_fabricacion";
-            this.txb_anio_fabricacion.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_anio_fabricacion.PlaceholderText = "";
-            this.txb_anio_fabricacion.SelectedText = "";
-            this.txb_anio_fabricacion.Size = new System.Drawing.Size(247, 36);
-            this.txb_anio_fabricacion.TabIndex = 15;
-            // 
-            // cmb_tipo_equipo
-            // 
-            this.cmb_tipo_equipo.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_tipo_equipo.BorderRadius = 10;
-            this.cmb_tipo_equipo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_tipo_equipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_tipo_equipo.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_tipo_equipo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_tipo_equipo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_tipo_equipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_tipo_equipo.ItemHeight = 30;
-            this.cmb_tipo_equipo.Items.AddRange(new object[] {
-            "Motoniveladora",
-            "Excavadora",
-            "Cargador Frontal",
-            "Tractor Oruga",
-            "Bulldozer",
-            "Moto Niveladora",
-            "Dumper",
-            "Volquete",
-            "Tractor Oruga",
-            "Manipulador Telescópico",
-            "Camion Cisterna"});
-            this.cmb_tipo_equipo.Location = new System.Drawing.Point(4, 399);
-            this.cmb_tipo_equipo.Name = "cmb_tipo_equipo";
-            this.cmb_tipo_equipo.Size = new System.Drawing.Size(247, 36);
-            this.cmb_tipo_equipo.TabIndex = 14;
-            // 
-            // lbl_horometro_act
-            // 
-            this.lbl_horometro_act.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_horometro_act.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.lbl_horometro_act.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_horometro_act.Location = new System.Drawing.Point(317, 43);
-            this.lbl_horometro_act.Name = "lbl_horometro_act";
-            this.lbl_horometro_act.Size = new System.Drawing.Size(116, 19);
-            this.lbl_horometro_act.TabIndex = 12;
-            this.lbl_horometro_act.Text = "Horometro Actual:";
-            // 
-            // lbl_horometro_inicial
-            // 
-            this.lbl_horometro_inicial.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_horometro_inicial.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.lbl_horometro_inicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_horometro_inicial.Location = new System.Drawing.Point(317, 108);
-            this.lbl_horometro_inicial.Name = "lbl_horometro_inicial";
-            this.lbl_horometro_inicial.Size = new System.Drawing.Size(112, 19);
-            this.lbl_horometro_inicial.TabIndex = 11;
-            this.lbl_horometro_inicial.Text = "Horometro Inicial:";
-            // 
-            // lbl_anio_fabricacion
-            // 
-            this.lbl_anio_fabricacion.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_anio_fabricacion.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_anio_fabricacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_anio_fabricacion.Location = new System.Drawing.Point(4, 309);
-            this.lbl_anio_fabricacion.Name = "lbl_anio_fabricacion";
-            this.lbl_anio_fabricacion.Size = new System.Drawing.Size(108, 17);
-            this.lbl_anio_fabricacion.TabIndex = 10;
-            this.lbl_anio_fabricacion.Text = "Año de Fabricación:";
-            // 
-            // lbl_tipo_equipo
-            // 
-            this.lbl_tipo_equipo.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_tipo_equipo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.lbl_tipo_equipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_tipo_equipo.Location = new System.Drawing.Point(4, 374);
-            this.lbl_tipo_equipo.Name = "lbl_tipo_equipo";
-            this.lbl_tipo_equipo.Size = new System.Drawing.Size(97, 19);
-            this.lbl_tipo_equipo.TabIndex = 9;
-            this.lbl_tipo_equipo.Text = "Tipo de Equipo:";
-            // 
-            // txb_numero_serie
-            // 
-            this.txb_numero_serie.BackColor = System.Drawing.Color.Transparent;
-            this.txb_numero_serie.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_numero_serie.BorderRadius = 10;
-            this.txb_numero_serie.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_numero_serie.DefaultText = "";
-            this.txb_numero_serie.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_numero_serie.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_numero_serie.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_numero_serie.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_numero_serie.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_numero_serie.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_numero_serie.ForeColor = System.Drawing.Color.Black;
-            this.txb_numero_serie.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_numero_serie.Location = new System.Drawing.Point(4, 133);
-            this.txb_numero_serie.Name = "txb_numero_serie";
-            this.txb_numero_serie.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_numero_serie.PlaceholderText = "";
-            this.txb_numero_serie.SelectedText = "";
-            this.txb_numero_serie.Size = new System.Drawing.Size(247, 36);
-            this.txb_numero_serie.TabIndex = 8;
-            // 
-            // lbl_num_serie
-            // 
-            this.lbl_num_serie.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_num_serie.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.lbl_num_serie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_num_serie.Location = new System.Drawing.Point(4, 108);
-            this.lbl_num_serie.Name = "lbl_num_serie";
-            this.lbl_num_serie.Size = new System.Drawing.Size(108, 19);
-            this.lbl_num_serie.TabIndex = 7;
-            this.lbl_num_serie.Text = "Número de Serie: ";
-            // 
-            // txb_modelo
-            // 
-            this.txb_modelo.BackColor = System.Drawing.Color.Transparent;
-            this.txb_modelo.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_modelo.BorderRadius = 10;
-            this.txb_modelo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_modelo.DefaultText = "";
-            this.txb_modelo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_modelo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_modelo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_modelo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_modelo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_modelo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_modelo.ForeColor = System.Drawing.Color.Black;
-            this.txb_modelo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_modelo.Location = new System.Drawing.Point(4, 267);
-            this.txb_modelo.Name = "txb_modelo";
-            this.txb_modelo.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_modelo.PlaceholderText = "";
-            this.txb_modelo.SelectedText = "";
-            this.txb_modelo.Size = new System.Drawing.Size(247, 36);
-            this.txb_modelo.TabIndex = 6;
+            this.cmb_area.Size = new System.Drawing.Size(248, 36);
+            this.cmb_area.TabIndex = 35;
             // 
             // cmb_marca
             // 
@@ -493,22 +315,117 @@
             this.cmb_marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmb_marca.ItemHeight = 30;
             this.cmb_marca.Items.AddRange(new object[] {
-            "Caterpillar (CAT)",
-            "Komatsu",
-            "Volvo",
-            "JCB",
-            "Liebherr"});
-            this.cmb_marca.Location = new System.Drawing.Point(4, 200);
+            "Crear",
+            "Actualizar",
+            "Eliminar"});
+            this.cmb_marca.Location = new System.Drawing.Point(3, 70);
             this.cmb_marca.Name = "cmb_marca";
-            this.cmb_marca.Size = new System.Drawing.Size(247, 36);
-            this.cmb_marca.TabIndex = 5;
+            this.cmb_marca.Size = new System.Drawing.Size(249, 36);
+            this.cmb_marca.TabIndex = 34;
+            // 
+            // btn_agregar
+            // 
+            this.btn_agregar.Animated = true;
+            this.btn_agregar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_agregar.BorderRadius = 10;
+            this.btn_agregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_agregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_agregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_agregar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_agregar.FillColor = System.Drawing.Color.DarkGray;
+            this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btn_agregar.Location = new System.Drawing.Point(334, 391);
+            this.btn_agregar.Name = "btn_agregar";
+            this.btn_agregar.PressedColor = System.Drawing.Color.Transparent;
+            this.btn_agregar.Size = new System.Drawing.Size(193, 45);
+            this.btn_agregar.TabIndex = 3;
+            this.btn_agregar.Text = "Agregar";
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(4, 114);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(30, 17);
+            this.guna2HtmlLabel2.TabIndex = 26;
+            this.guna2HtmlLabel2.Text = "Area:";
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(320, 313);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(77, 17);
+            this.guna2HtmlLabel1.TabIndex = 21;
+            this.guna2HtmlLabel1.Text = "Fecha Ingreso";
+            // 
+            // lbl_horometro_act
+            // 
+            this.lbl_horometro_act.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_horometro_act.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lbl_horometro_act.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_horometro_act.Location = new System.Drawing.Point(320, 179);
+            this.lbl_horometro_act.Name = "lbl_horometro_act";
+            this.lbl_horometro_act.Size = new System.Drawing.Size(126, 19);
+            this.lbl_horometro_act.TabIndex = 12;
+            this.lbl_horometro_act.Text = "Horometro Compra:";
+            // 
+            // lbl_horometro_inicial
+            // 
+            this.lbl_horometro_inicial.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_horometro_inicial.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lbl_horometro_inicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_horometro_inicial.Location = new System.Drawing.Point(320, 246);
+            this.lbl_horometro_inicial.Name = "lbl_horometro_inicial";
+            this.lbl_horometro_inicial.Size = new System.Drawing.Size(124, 19);
+            this.lbl_horometro_inicial.TabIndex = 11;
+            this.lbl_horometro_inicial.Text = "Horometro Ingreso:";
+            // 
+            // lbl_anio_fabricacion
+            // 
+            this.lbl_anio_fabricacion.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_anio_fabricacion.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_anio_fabricacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_anio_fabricacion.Location = new System.Drawing.Point(320, 114);
+            this.lbl_anio_fabricacion.Name = "lbl_anio_fabricacion";
+            this.lbl_anio_fabricacion.Size = new System.Drawing.Size(108, 17);
+            this.lbl_anio_fabricacion.TabIndex = 10;
+            this.lbl_anio_fabricacion.Text = "Año de Fabricación:";
+            // 
+            // lbl_tipo_equipo
+            // 
+            this.lbl_tipo_equipo.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_tipo_equipo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lbl_tipo_equipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_tipo_equipo.Location = new System.Drawing.Point(4, 179);
+            this.lbl_tipo_equipo.Name = "lbl_tipo_equipo";
+            this.lbl_tipo_equipo.Size = new System.Drawing.Size(97, 19);
+            this.lbl_tipo_equipo.TabIndex = 9;
+            this.lbl_tipo_equipo.Text = "Tipo de Equipo:";
+            // 
+            // lbl_num_serie
+            // 
+            this.lbl_num_serie.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_num_serie.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lbl_num_serie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.lbl_num_serie.Location = new System.Drawing.Point(320, 45);
+            this.lbl_num_serie.Name = "lbl_num_serie";
+            this.lbl_num_serie.Size = new System.Drawing.Size(108, 19);
+            this.lbl_num_serie.TabIndex = 7;
+            this.lbl_num_serie.Text = "Número de Serie: ";
             // 
             // lbl_modelo
             // 
             this.lbl_modelo.BackColor = System.Drawing.Color.Transparent;
             this.lbl_modelo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.lbl_modelo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_modelo.Location = new System.Drawing.Point(4, 242);
+            this.lbl_modelo.Location = new System.Drawing.Point(3, 246);
             this.lbl_modelo.Name = "lbl_modelo";
             this.lbl_modelo.Size = new System.Drawing.Size(52, 19);
             this.lbl_modelo.TabIndex = 4;
@@ -519,41 +436,18 @@
             this.lbl_marca.BackColor = System.Drawing.Color.Transparent;
             this.lbl_marca.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.lbl_marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_marca.Location = new System.Drawing.Point(4, 175);
+            this.lbl_marca.Location = new System.Drawing.Point(4, 45);
             this.lbl_marca.Name = "lbl_marca";
             this.lbl_marca.Size = new System.Drawing.Size(43, 19);
             this.lbl_marca.TabIndex = 2;
             this.lbl_marca.Text = "Marca:";
-            // 
-            // txb_codigo_flota
-            // 
-            this.txb_codigo_flota.BackColor = System.Drawing.Color.Transparent;
-            this.txb_codigo_flota.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_codigo_flota.BorderRadius = 10;
-            this.txb_codigo_flota.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_codigo_flota.DefaultText = "";
-            this.txb_codigo_flota.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_codigo_flota.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_codigo_flota.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_codigo_flota.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_codigo_flota.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_codigo_flota.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_codigo_flota.ForeColor = System.Drawing.Color.Black;
-            this.txb_codigo_flota.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_codigo_flota.Location = new System.Drawing.Point(4, 66);
-            this.txb_codigo_flota.Name = "txb_codigo_flota";
-            this.txb_codigo_flota.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_codigo_flota.PlaceholderText = "";
-            this.txb_codigo_flota.SelectedText = "";
-            this.txb_codigo_flota.Size = new System.Drawing.Size(247, 36);
-            this.txb_codigo_flota.TabIndex = 1;
             // 
             // lbl_codigo
             // 
             this.lbl_codigo.BackColor = System.Drawing.Color.Transparent;
             this.lbl_codigo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_codigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.lbl_codigo.Location = new System.Drawing.Point(4, 43);
+            this.lbl_codigo.Location = new System.Drawing.Point(3, 313);
             this.lbl_codigo.Name = "lbl_codigo";
             this.lbl_codigo.Size = new System.Drawing.Size(89, 17);
             this.lbl_codigo.TabIndex = 0;
@@ -586,29 +480,25 @@
         private Guna.UI2.WinForms.Guna2Panel panel_principal;
         private Guna.UI2.WinForms.Guna2Button btn_agregar;
         private Guna.UI2.WinForms.Guna2GroupBox gp_agregar;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbl_estado;
-        private Guna.UI2.WinForms.Guna2TextBox txb_horometro_actual;
-        private Guna.UI2.WinForms.Guna2TextBox txb_horometro_inicial;
-        private Guna.UI2.WinForms.Guna2TextBox txb_anio_fabricacion;
-        private Guna.UI2.WinForms.Guna2ComboBox cmb_tipo_equipo;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_horometro_act;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_horometro_inicial;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_anio_fabricacion;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_tipo_equipo;
-        private Guna.UI2.WinForms.Guna2TextBox txb_numero_serie;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_num_serie;
-        private Guna.UI2.WinForms.Guna2TextBox txb_modelo;
-        private Guna.UI2.WinForms.Guna2ComboBox cmb_marca;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_modelo;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_marca;
-        private Guna.UI2.WinForms.Guna2TextBox txb_codigo_flota;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_codigo;
-        private Guna.UI2.WinForms.Guna2ComboBox cmb_estado;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtp_fecha_registro;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2ComboBox cmb_area;
-        private Guna.UI2.WinForms.Guna2ComboBox cmb_criticidad;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2TextBox txb_codigo_flota;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_modelo;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_tipo_e;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_area;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_marca;
+        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2TextBox txb_anio_fabricacion;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
     }
 }

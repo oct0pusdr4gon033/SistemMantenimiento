@@ -1,6 +1,6 @@
 ﻿using CapaDatos.ConexionDB;
 using CapaEntidad;
-using CapaEntidad; 
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,19 +22,18 @@ namespace CapaDatos.Consultas.Usuario
 
         #region metodos 
         /////////////////////////login
-        public bool Login(entUsuario usuario)
+        public entUsuario Login(string user, string pass)
         {
-            bool logea = false;
+           
 
             using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
-            using (SqlCommand cmd = new SqlCommand("sp_Login", cn))
+            using (SqlCommand cmd = new SqlCommand("sp_LoginUsuario", cn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 // Parámetros — nombres deben coincidir EXACTAMENTE con los del SP
-                cmd.Parameters.AddWithValue("@dni", usuario.dni);
-                cmd.Parameters.AddWithValue("@hash", usuario.password);
-                cmd.Parameters.AddWithValue("@id_rol", usuario.id_rol);
+                cmd.Parameters.AddWithValue("@username", user);
+                cmd.Parameters.AddWithValue("@contrasena", pass);
 
                 try
                 {
@@ -43,8 +42,17 @@ namespace CapaDatos.Consultas.Usuario
 
                     if (dr.Read())
                     {
-                        // Si el SP devuelve un registro, el usuario existe
-                        logea = true;
+                        string estado = dr["estado"].ToString();
+
+                        if (estado == "OK")
+                        {
+                            return new entUsuario()
+                            {
+                                id_empleado = Convert.ToInt32(dr["id_empleado"]),
+                                username = user,
+                                rol = dr["rol"].ToString()
+                            };
+                        }
                     }
                     dr.Close();
                 }
@@ -55,7 +63,7 @@ namespace CapaDatos.Consultas.Usuario
                 }
             }
 
-            return logea;
+            return null;
         }
         #endregion
 

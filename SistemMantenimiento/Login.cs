@@ -27,6 +27,7 @@ namespace SistemMantenimiento
         // Constantes para mover el formulario
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HTCAPTION = 0x2;
+        entUsuarioLogueado log = null;
         public Login()
         {
             InitializeComponent();
@@ -65,74 +66,8 @@ namespace SistemMantenimiento
             }
         }
 
-        private void panel_login_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture(); // libera el control del mouse
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0); // envía mensaje de "mover ventana"
-            }
-        }
-        public int GetId(string rol)
-        {
-            // Obtener el texto seleccionado del ComboBox
-            rol = cmb_rol.GetItemText(cmb_rol.SelectedItem)?.Trim();
 
-            int id=0;
-
-            switch (rol)
-            {
-                case "Jefe de Mantenimiento":
-                    id = 1;
-                    break;
-
-                case "Gerente de Mantenimiento":
-                    id = 2;
-                    break;
-
-                case "Planner de Mantenimiento":
-                    id = 4;
-                    break;
-
-                case "Jefe Logistica":
-                    id = 3;
-                    break;
-
-                default:
-                    id = 0; // Valor por defecto si no se encuentra el rol
-                    break;
-            }
-
-            return id;
-        }
-        private void AbrirFormularioPorRol(int idRol, entUsuarioLogueado usuario)
-        {
-            Form frm = null;
-
-            switch (idRol)
-            {
-                case 1:
-                    frm = new JefeMantenimiento(usuario);
-                    break;
-                case 2:
-                    //frm = new Gerente(usuario); aun no se ha creado el formulario de Gerente
-                    break;
-                case 3:
-                    frm = new JefeLogistica();
-                    break;
-                case 4:
-                    frm = new PlannerMantto(usuario);
-                    break;
-                default:
-                    MessageBox.Show("Rol no reconocido. Contacte con el administrador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-            }
-
-            frm.Show();
-            this.Hide();
-        }
-
-        private void btn_ingresar_Click(object sender, EventArgs e)
+        private void btn_ingresar_Click_1(object sender, EventArgs e)
         {
             string user = txb_usuario.Text.Trim();
             string password = txb_password.Text.Trim();
@@ -142,47 +77,57 @@ namespace SistemMantenimiento
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-           
-
-            int id_rol = GetId(cmb_rol.GetItemText(cmb_rol.SelectedItem));
-
-            // Crear entidad con el hash
-            entUsuario usuario = new entUsuario()
-            {
-                dni = user,
-                password = password,   // Aquí se pasa el hash
-                id_rol = id_rol
-            };
-
             try
             {
-                // Llamada a la capa lógica
-                bool logeado = logUsuario.Instancia.Login(usuario);
-
-                if (logeado)
+                entUsuario usuario = logUsuario.Instancia.Login(user, password);
+                log = logUsuarioLogueado.Instancia.CargarUsuarioLogueado(user, password);
+                if (usuario != null)
                 {
-                    // Puedes cargar los datos del usuario logueado aquí
-                    entUsuarioLogueado datosUsuario = logUsuarioLogueado.Instancia.CargarUsuarioLogueado(user, id_rol);
-                    SesionActual.UsuarioLogueado = datosUsuario;
+                    
+                    ventana_rol(usuario.rol);
 
-                    MessageBox.Show($"Inicio de sesión exitoso.\nBienvenido {datosUsuario.Nombre} {datosUsuario.Apellido}.",
-                                    "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Abrir formulario según el rol
-                    AbrirFormularioPorRol(id_rol, datosUsuario);
                 }
                 else
                 {
-                    MessageBox.Show("Credenciales incorrectas. Verifique su usuario, contraseña o rol.",
-                                    "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al iniciar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al iniciar sesión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        private void ventana_rol(string rol)
+        {
+            switch(rol)
+            {
+                case "Jefe Mantenimiento":
+                    JefeMantenimiento jefeMantenimiento = new JefeMantenimiento(log);
+                    jefeMantenimiento.Show();
+
+
+                    break;
+                case "Jefe Logistica":
+                    Form JefeLogistica = new Form();
+                    JefeLogistica.Show();
+
+                    break;
+                case "Planner Mantenimiento":
+                    Form PlannerMantenimiento = new Form();
+                    PlannerMantenimiento.Show();
+                    break; 
+            }
+        }
+
+        private void panel_login_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture(); // libera el control del mouse
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0); // envía mensaje de "mover ventana"
+            }
         }
     }
 }
