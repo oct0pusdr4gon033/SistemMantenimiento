@@ -16,8 +16,22 @@ namespace CapaLogica.Equipo
         {
             get { return logArea._instancia; }
         }
+        #region metodos
 
-        public List<Area> ObtenerAreas()
+        public entArea InsertarArea(entArea area)
+        {
+             
+            try
+            {
+                return datArea.Instancia.InsertarArea(area);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en la capa lógica al insertar el área.", ex);
+            }
+        }
+
+        public List<entArea> ObtenerAreas()
         {
             try
             {
@@ -28,19 +42,32 @@ namespace CapaLogica.Equipo
                 throw new ApplicationException("Error en la capa lógica al obtener las áreas.", ex);
             }
         }
-
-       public Area ObtenerAreaPorId(int idArea)
+        public List<entArea> BuscarArea(string nombreArea)
         {
             try
             {
                 var areas = datArea.Instancia.ObtenerAreas();
-                return areas.FirstOrDefault(a => a.IdArea == idArea);
+                return areas.Where(a => a.nombre_area.IndexOf(nombreArea, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en la capa lógica al buscar el área.", ex);
+            }
+        }
+
+        public entArea ObtenerAreaPorId(int idArea)
+        {
+            try
+            {
+                var areas = datArea.Instancia.ObtenerAreas();
+                return areas.FirstOrDefault(a => a.id_area == idArea);
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Error en la capa lógica al obtener el área por ID.", ex);
             }
         }
+        #endregion
 
 
     }

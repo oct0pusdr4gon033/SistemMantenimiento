@@ -55,7 +55,7 @@ namespace SistemMantenimiento.JeffeMantto
         {
             try
             {
-                List<Area> listaAreas = logArea.Instancia.ObtenerAreas();
+                List<entArea> listaAreas = logArea.Instancia.ObtenerAreas();
 
                 
             }

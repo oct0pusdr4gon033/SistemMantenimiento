@@ -18,7 +18,7 @@ namespace SistemMantenimiento.JeffeMantto
     {
         entEquipo equipo = new entEquipo();
         entUsuarioLogueado usuarioEdito =null;
-        Area area = null; 
+        entArea area = null; 
         
 
         public EditarEquipo(entEquipo _equipo, entUsuarioLogueado usuarioLogueado)
@@ -57,7 +57,7 @@ namespace SistemMantenimiento.JeffeMantto
         {
             try
             {
-                List<Area> listaAreas = logArea.Instancia.ObtenerAreas();
+                List<entArea> listaAreas = logArea.Instancia.ObtenerAreas();
                 cmb_area.DataSource = listaAreas;
                 cmb_area.DisplayMember = "Nombre";
                 cmb_area.ValueMember = "IdArea";
@@ -115,11 +115,11 @@ namespace SistemMantenimiento.JeffeMantto
                 }
 
                 int idAreaSeleccionada = Convert.ToInt32(cmb_area.SelectedValue);
-                Area areaSeleccionada = logArea.Instancia.ObtenerAreaPorId(idAreaSeleccionada);
+                entArea areaSeleccionada = logArea.Instancia.ObtenerAreaPorId(idAreaSeleccionada);
                 
                 if (areaSeleccionada != null)
                 {
-                    MessageBox.Show($"Área seleccionada:\n\nNombre: {areaSeleccionada.Nombre}\nCódigo: {areaSeleccionada.Codigo}",
+                    MessageBox.Show($"Área seleccionada:\n\nNombre: {areaSeleccionada.nombre_area}\nCódigo: {areaSeleccionada.id_area}",
                                     "Área encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

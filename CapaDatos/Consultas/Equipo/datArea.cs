@@ -19,15 +19,57 @@ namespace CapaDatos.Consultas.Equipo
             get { return datArea._instancia; }
         }
 
-        public List<Area> ObtenerAreas()
+        /// <summary>
+        /// Inserta un área en la base de datos
+        /// </summary>
+        /// <param name="area"></param>
+        /// <returns></returns>
+        public entArea InsertarArea(entArea area)
         {
-            List<Area> areas = new List<Area>();
+            using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarArea", conn))
+                {
+                    try
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@nombre_area", area.nombre_area);
+
+                        conn.Open();
+                        int filas_afectadas = cmd.ExecuteNonQuery();
+
+                        if (filas_afectadas> 0)
+                        {
+                            return area; 
+                        }else
+                        {
+
+                            return null; 
+                        }
+                    }catch(Exception ex)
+                    {
+                        throw ex; 
+                    }
+                }
+    
+            }
+
+        }
+        /// <summary>
+        /// Lista todas las áreas desde la base de datos
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public List<entArea> ObtenerAreas()
+        {
+            List<entArea> areas = new List<entArea>();
 
             try
             {
                 using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_ObtenerAreas", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_ListarAreas", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
@@ -37,15 +79,10 @@ namespace CapaDatos.Consultas.Equipo
                         {
                             while (reader.Read())
                             {
-                                Area area = new Area
+                                entArea area = new entArea
                                 {
-                                    IdArea = Convert.ToInt32(reader["IdArea"]),
-                                    Codigo = reader["Codigo"].ToString(),
-                                    Nombre = reader["Nombre"].ToString(),
-                                    Descripcion = reader["Descripcion"] != DBNull.Value
-                                        ? reader["Descripcion"].ToString()
-                                        : string.Empty,
-                                    Activo = Convert.ToBoolean(reader["Activo"])
+                                    id_area = Convert.ToInt32(reader["id_area"]),
+                                    nombre_area = reader["nombre_area"].ToString(),
                                 };
 
                                 areas.Add(area);
@@ -61,39 +98,58 @@ namespace CapaDatos.Consultas.Equipo
 
             return areas;
         }
-
-        public Area ObtenerAreaPorId(int idArea)
+        /// <summary>
+        /// Elimina un área de la base de datos
+        /// </summary>
+        /// <param name="id_area_eliminar"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public bool EliminarArea(int id_area_eliminar)
         {
-            Area area = null;
-            string query = "sp_ObtenerAreaPorId";
-
             using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                try
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_area", idArea);
-
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlCommand cmd = new SqlCommand("sp_EliminarArea", conn))
                     {
-                        if (reader.Read())
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id_area", id_area_eliminar);
+                        conn.Open();
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        if (filasAfectadas > 0)
                         {
-                            area = new Area
-                            {
-                                IdArea = Convert.ToInt32(reader["id_area"]),
-                                Codigo = reader["codigo"].ToString(),
-                                Nombre = reader["nombre"].ToString(),
-                                Descripcion = reader["descripcion"].ToString(),
-                                Activo = Convert.ToBoolean(reader["activo"])
-                            };
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
                         }
                     }
                 }
-            }
+                catch (SqlException ex)
+                {
 
-            return area;
+                    if (ex.Number == 547)
+                    {
+                        throw new Exception("No se puede eliminar el área porque" +
+                            " ya está siendo usada (tiene equipos asignados).");
+                    }
+                    else
+                    {
+
+                        throw ex;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Errores generales de C#
+                    throw ex;
+                }
+            }
         }
+       
+
+      
 
 
 
