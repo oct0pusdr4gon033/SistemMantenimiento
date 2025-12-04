@@ -11,7 +11,7 @@ namespace CapaLogica.Equipo
     public class logArea
     {
         private static readonly logArea _instancia = new logArea();
-       
+
         public static logArea Instancia
         {
             get { return logArea._instancia; }
@@ -20,7 +20,7 @@ namespace CapaLogica.Equipo
 
         public entArea InsertarArea(entArea area)
         {
-             
+
             try
             {
                 return datArea.Instancia.InsertarArea(area);
@@ -54,6 +54,17 @@ namespace CapaLogica.Equipo
                 throw new ApplicationException("Error en la capa lógica al buscar el área.", ex);
             }
         }
+        public bool EditarArea(entArea area_editar)
+        {
+            try
+            {
+                return datArea.Instancia.EditarArea(area_editar);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en la capa lógica al editar el área.", ex);
+            }
+        }
 
         public entArea ObtenerAreaPorId(int idArea)
         {
@@ -65,6 +76,18 @@ namespace CapaLogica.Equipo
             catch (Exception ex)
             {
                 throw new ApplicationException("Error en la capa lógica al obtener el área por ID.", ex);
+            }
+        }
+
+        public bool EliminarArea(int id_area_elimar)
+        {
+            try
+            {
+                return datArea.Instancia.EliminarArea(id_area_elimar);
+            }
+            catch (Exception )
+            {
+                throw; 
             }
         }
         #endregion

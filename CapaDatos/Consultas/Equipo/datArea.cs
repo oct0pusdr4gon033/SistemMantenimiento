@@ -98,22 +98,24 @@ namespace CapaDatos.Consultas.Equipo
 
             return areas;
         }
+
+
         /// <summary>
-        /// Elimina un área de la base de datos
+        /// Editar nombre del area
         /// </summary>
-        /// <param name="id_area_eliminar"></param>
+        /// <param name="area_editar"></param>
         /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        public bool EliminarArea(int id_area_eliminar)
+        public bool EditarArea(entArea area_editar)
         {
             using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
             {
                 try
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_EliminarArea", conn))
+                    using (SqlCommand cmd = new SqlCommand("sp_EditarArea", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@id_area", id_area_eliminar);
+                        cmd.Parameters.AddWithValue("@id_area", area_editar.id_area);
+                        cmd.Parameters.AddWithValue("@nombre_area", area_editar.nombre_area);
                         conn.Open();
                         int filasAfectadas = cmd.ExecuteNonQuery();
                         if (filasAfectadas > 0)
@@ -126,20 +128,6 @@ namespace CapaDatos.Consultas.Equipo
                         }
                     }
                 }
-                catch (SqlException ex)
-                {
-
-                    if (ex.Number == 547)
-                    {
-                        throw new Exception("No se puede eliminar el área porque" +
-                            " ya está siendo usada (tiene equipos asignados).");
-                    }
-                    else
-                    {
-
-                        throw ex;
-                    }
-                }
                 catch (Exception ex)
                 {
                     // Errores generales de C#
@@ -147,9 +135,52 @@ namespace CapaDatos.Consultas.Equipo
                 }
             }
         }
-       
+        /// <summary>
+        /// Elimina un área de la base de datos.
+        /// </summary>
+        /// <param name="id_area_eliminar">ID del área a eliminar</param>
+        /// <returns>True si se eliminó, False si no existe o no afectó filas</returns>
+        /// <exception cref="Exception"></exception>
+        public bool EliminarArea(int id_area_eliminar)
+        {
+            using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_EliminarArea", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id_area", id_area_eliminar);
 
-      
+                        conn.Open();
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+
+                        return filasAfectadas > 0;
+                    }
+                }
+                catch (SqlException ex) when (ex.Number == 547)
+                {
+                    // Error de restricción FK
+                    throw new Exception(
+                        "No se puede eliminar el área porque está siendo utilizada por otros registros."
+                    );
+                }
+                catch (SqlException)
+                {
+                    // Otros errores SQL — se relanzan sin perder el stack trace
+                    throw;
+                }
+                catch (Exception)
+                {
+                    // Errores generales de C#
+                    throw;
+                }
+            }
+        }
+
+
+
 
 
 

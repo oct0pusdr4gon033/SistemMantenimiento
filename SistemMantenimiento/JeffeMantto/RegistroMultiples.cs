@@ -26,6 +26,7 @@ namespace SistemMantenimiento.JeffeMantto
 
             InitializeComponent();
             txb_nombrePM.Enabled = false;
+            txb_id_area.Enabled = false;
 
         }
         private void RegistroMultiples_Load(object sender, EventArgs e)
@@ -182,7 +183,35 @@ namespace SistemMantenimiento.JeffeMantto
             if (texto_btn=="Editar")
             {
 
-
+                entArea editar_area = new entArea();
+                editar_area.id_area = int.Parse(txb_id_area.Text);
+                editar_area.nombre_area = txb_nombre_area.Text.Trim().ToUpper();
+                logArea.Instancia.EditarArea(editar_area);
+                DialogResult r = MessageBox.Show(
+                    "¿Estas seguro de editar esta area?",
+                    "Advertencia",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information
+                );
+                if (r == DialogResult.Yes)
+                {
+                    MessageBox.Show(
+                        "Área editada con éxito",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                    btn_edicion_area.Text = "Habilitar Edicion";
+                    cargarAreasdgv();
+                    dgv_area.Refresh();
+                    txb_id_area.Clear();
+                    txb_nombre_area.Clear();
+                }
+                else
+                {
+                    return;
+                }
+              
             }
             
 
@@ -243,7 +272,26 @@ namespace SistemMantenimiento.JeffeMantto
 
             // Extraer nombre y mostrarlo en el textbox
             txb_nombre_area.Text = fila.Cells["nombre_area"].Value.ToString();
+            txb_id_area.Text = fila.Cells["id_area"].Value.ToString();
 
+        }
+
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            int id= int.Parse(txb_id_area.Text);
+            try
+            {
+                logArea.Instancia.EliminarArea(id);
+            }catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Este campo esta relacionado en uno o mas campos de otra tabla " + ex.Message,
+                    "Advertencia",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    
+                );
+            }
         }
     }
 }
