@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Equipo\logArea.cs" />
     <Compile Include="Equipo\logEquipo.cs" />
+    <Compile Include="Equipo\logMarca.cs" />
+    <Compile Include="Equipo\logModelo.cs" />
     <Compile Include="Material\logMaterial.cs" />
     <Compile Include="Proveedor\logProveedor.cs" />
     <Compile Include="Usuario\logUsuario.cs" />

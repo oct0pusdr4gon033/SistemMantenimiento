@@ -14,6 +14,7 @@ using CapaEntidad;
 using CapaLogica;
 using CapaEntidad.Equipo;
 using CapaLogica.Equipo;
+using CapaLogica.Material;
 
 
 
@@ -27,11 +28,14 @@ namespace SistemMantenimiento.JeffeMantto
             InitializeComponent();
             txb_nombrePM.Enabled = false;
             txb_id_area.Enabled = false;
+            txb_id_marca_equipo.Enabled = false; 
 
         }
         private void RegistroMultiples_Load(object sender, EventArgs e)
         {
             cargarAreasdgv();
+            cargarMarcadgv();
+            cargarModelodgv();
         }
         private void extraer_archivo()
         {
@@ -293,5 +297,89 @@ namespace SistemMantenimiento.JeffeMantto
                 );
             }
         }
+        public void cargarMarcadgv()
+        {
+            // Cargar lista
+            List<entMarca> listarMarcas = logMarca.Instancia.ListarMarcas();
+
+            dgv_Marca.DataSource = null;
+            dgv_Marca.AutoGenerateColumns = true;   // Permite que aparezcan las propiedades
+            dgv_Marca.DataSource = listarMarcas;
+
+            // Cambiar encabezados
+            dgv_Marca.Columns["id_marca"].HeaderText = "ID";
+            dgv_Marca.Columns["nombre_marca"].HeaderText = "Marca";
+        }
+        public void cargarModelodgv()
+        {
+            // Cargar lista
+            List<entArea> listaAreas = logArea.Instancia.ObtenerAreas();
+
+            dgv_area.DataSource = null;
+            dgv_area.AutoGenerateColumns = true;   // Permite que aparezcan las propiedades
+            dgv_area.DataSource = listaAreas;
+
+            // Cambiar encabezados
+            dgv_area.Columns["id_area"].HeaderText = "ID";
+            dgv_area.Columns["nombre_area"].HeaderText = "NOMBRE";
+        }
+
+        private void btn_agregar_marca_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txb_marca.Text))
+            {
+                MessageBox.Show(
+                    "No se puede agregar un campo nulo",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return; 
+            }
+
+            DialogResult r = MessageBox.Show(
+                                "¿Estas seguro que quieres agregar esta marca?",
+                                "Advertencia",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Information
+                            );
+            if (r == DialogResult.Yes)
+            {
+                string nombre_marca = txb_marca.Text;
+
+                nombre_marca = nombre_marca.Trim().ToUpper();
+                entMarca marca = new entMarca();
+                marca.nombre_marca = nombre_marca;
+                entMarca resultado = logMarca.Instancia.InsertarMarca(marca);
+                MessageBox.Show(
+                    "Marca agregada con éxito",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                txb_marca.Clear();
+                cargarMarcadgv();
+            }else
+            {
+                return; 
+            }
+
+        }
+
+        private void dgv_Marca_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Evitar errores cuando se hace clic en el encabezado
+            if (e.RowIndex < 0)
+                return;
+
+            // Obtener fila seleccionada
+            DataGridViewRow fila = dgv_Marca.Rows[e.RowIndex];
+
+            // Extraer nombre y mostrarlo en el textbox
+            txb_marca.Text = fila.Cells["nombre_marca"].Value.ToString();
+            txb_id_marca_equipo.Text = fila.Cells["id_marca"].Value.ToString();
+        }
+
+       
     }
 }
