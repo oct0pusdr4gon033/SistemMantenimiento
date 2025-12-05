@@ -160,9 +160,9 @@ namespace CapaDatos.Consultas.Material
             return lista;
         }
 
-        public List<entUnidadMedida> ListarUnidades()
+        public List<entUnidadMedida_Producto> ListarUnidades()
         {
-            List<entUnidadMedida> lista = new List<entUnidadMedida>();
+            List<entUnidadMedida_Producto> lista = new List<entUnidadMedida_Producto>();
 
             using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
             {
@@ -172,7 +172,7 @@ namespace CapaDatos.Consultas.Material
 
                 while (dr.Read())
                 {
-                    lista.Add(new entUnidadMedida
+                    lista.Add(new entUnidadMedida_Producto
                     {
                         id_unidad = (int)dr["id_unidad"],
                         nombre_unidad = dr["nombre_unidad"].ToString(),

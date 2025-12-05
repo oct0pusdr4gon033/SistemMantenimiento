@@ -195,7 +195,9 @@ namespace SistemMantenimiento
             this.lbl_title.Text = "Logística";
             // 
             // panel_superio
-            // 
+            //
+            this.panel_superio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+|           System.Windows.Forms.AnchorStyles.Right)));   
             this.panel_superio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.panel_superio.Controls.Add(this.btn_rezise_max);
             this.panel_superio.Controls.Add(this.btn_resize_min);
@@ -210,8 +212,9 @@ namespace SistemMantenimiento
             // 
             // btn_rezise_max
             // 
+            this.btn_rezise_max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_rezise_max.Image = ((System.Drawing.Image)(resources.GetObject("btn_rezise_max.Image")));
-            this.btn_rezise_max.Location = new System.Drawing.Point(1177, 0);
+            this.btn_rezise_max.Location = new System.Drawing.Point(1169, 1);
             this.btn_rezise_max.Name = "btn_rezise_max";
             this.btn_rezise_max.Size = new System.Drawing.Size(43, 45);
             this.btn_rezise_max.TabIndex = 1;
@@ -220,8 +223,9 @@ namespace SistemMantenimiento
             // 
             // btn_resize_min
             // 
+            this.btn_resize_min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_resize_min.Image = ((System.Drawing.Image)(resources.GetObject("btn_resize_min.Image")));
-            this.btn_resize_min.Location = new System.Drawing.Point(1134, 0);
+            this.btn_resize_min.Location = new System.Drawing.Point(1169, 1);
             this.btn_resize_min.Name = "btn_resize_min";
             this.btn_resize_min.Size = new System.Drawing.Size(43, 45);
             this.btn_resize_min.TabIndex = 3;
@@ -231,8 +235,9 @@ namespace SistemMantenimiento
             // 
             // btn_minimizar
             // 
+            this.btn_minimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_minimizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_minimizar.Image")));
-            this.btn_minimizar.Location = new System.Drawing.Point(1087, 0);
+            this.btn_minimizar.Location = new System.Drawing.Point(1125, 2);
             this.btn_minimizar.Name = "btn_minimizar";
             this.btn_minimizar.Size = new System.Drawing.Size(43, 45);
             this.btn_minimizar.TabIndex = 0;
@@ -241,8 +246,9 @@ namespace SistemMantenimiento
             // 
             // btn_salir
             // 
+            this.btn_salir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_salir.Image = ((System.Drawing.Image)(resources.GetObject("btn_salir.Image")));
-            this.btn_salir.Location = new System.Drawing.Point(1223, 0);
+            this.btn_salir.Location = new System.Drawing.Point(1212, 2);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(43, 45);
             this.btn_salir.TabIndex = 2;

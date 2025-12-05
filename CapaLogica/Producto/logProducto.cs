@@ -96,7 +96,7 @@ namespace CapaLogica.Producto
             }
         }
 
-        public List<entUnidadMedida> ListarUnidades()
+        public List<entUnidadMedida_Producto> ListarUnidades()
         {
             try
             {
