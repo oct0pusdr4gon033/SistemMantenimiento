@@ -101,6 +101,12 @@
     <Compile Include="JefeLogi\frmProducto.Designer.cs">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="JefeLogi\frmRequerimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JefeLogi\frmRequerimiento.Designer.cs">
+      <DependentUpon>frmRequerimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="JefeLogi\frmUnidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="JefeLogi\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JefeLogi\frmRequerimiento.resx">
+      <DependentUpon>frmRequerimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JefeMantenimiento.resx">
       <DependentUpon>JefeMantenimiento.cs</DependentUpon>
