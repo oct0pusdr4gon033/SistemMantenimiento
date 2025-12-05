@@ -46,6 +46,7 @@
     <Compile Include="Equipo\entEquipo.cs" />
     <Compile Include="Equipo\entMarca.cs" />
     <Compile Include="Equipo\entModelo.cs" />
+    <Compile Include="Equipo\entTipoEquipo.cs" />
     <Compile Include="Material\entCategoriaMaterial.cs" />
     <Compile Include="Material\entClasificacionMaterial.cs" />
     <Compile Include="Material\entMaterial.cs" />

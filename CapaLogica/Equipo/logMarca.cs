@@ -27,6 +27,17 @@ namespace CapaLogica.Equipo
                 throw ex;
             }
         }
+        public List<entMarca> BuscarMarca(string marca_busqueda)
+        {
+            try
+            {
+                return datMarca.Instancia.BuscarMarca(marca_busqueda);
+            }
+            catch
+            {
+                throw; 
+            }
+        }
         public List<entMarca> ListarMarcas()
         {
             try

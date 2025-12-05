@@ -146,6 +146,48 @@ namespace CapaDatos.Consultas.Equipo
                 }
             }
         }
+        public List<entMarca> BuscarMarca(string marca_buscada)
+        {
+            List<entMarca> lista = new List<entMarca>();
+
+            using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_BuscarMarcaEquipo", conn))
+                {
+                    try
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Parámetro seguro
+                        cmd.Parameters.AddWithValue("@nombre_busqueda", marca_buscada);
+
+                        conn.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                entMarca marca = new entMarca()
+                                {
+                                    id_marca = Convert.ToInt32(reader["id_marca"]),
+                                    nombre_marca = reader["nombre_marca"].ToString()
+                                };
+
+                                lista.Add(marca);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Error al buscar la marca: " + ex.Message, ex);
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+
 
 
 

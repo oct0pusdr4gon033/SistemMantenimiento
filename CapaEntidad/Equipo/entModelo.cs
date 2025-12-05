@@ -8,8 +8,9 @@ namespace CapaEntidad.Equipo
 {
     public class entModelo
     {
-        public int id_modelo { get; set; }
+        public int id_modelo_equipo { get; set; }
         public int id_marca { get; set; }
         public string nombre_modelo { get; set; }
+        public string nombre_marca { get; set; }
     }
 }
