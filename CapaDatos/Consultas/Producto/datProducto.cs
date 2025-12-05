@@ -13,7 +13,8 @@ namespace CapaDatos.Consultas.Material
 
         private datProducto() { }
 
-        public List<entProducto> ListarMateriales()
+        // LISTAR PRODUCTOS
+        public List<entProducto> ListarProductos()
         {
             List<entProducto> lista = new List<entProducto>();
 
@@ -66,7 +67,8 @@ namespace CapaDatos.Consultas.Material
             return lista;
         }
 
-        public bool RegistrarMaterial(entProducto mat)
+        // REGISTRAR PRODUCTO
+        public bool RegistrarProducto(entProducto mat)
         {
             bool ok = false;
 
@@ -98,7 +100,8 @@ namespace CapaDatos.Consultas.Material
             return ok;
         }
 
-        public bool ActualizarMaterial(entProducto mat)
+        // ACTUALIZAR PRODUCTO
+        public bool ActualizarProducto(entProducto mat)
         {
             bool ok = false;
 
@@ -138,6 +141,7 @@ namespace CapaDatos.Consultas.Material
             return ok;
         }
 
+        // COMBOS
         public List<entMarca_Producto> ListarMarcas()
         {
             List<entMarca_Producto> lista = new List<entMarca_Producto>();

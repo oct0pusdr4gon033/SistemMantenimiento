@@ -97,6 +97,7 @@
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(25, 465);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
+            this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.Size = new System.Drawing.Size(1018, 262);
             this.guna2DataGridView1.TabIndex = 4;
@@ -113,7 +114,7 @@
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 15;
-            this.guna2DataGridView1.ThemeStyle.ReadOnly = false;
+            this.guna2DataGridView1.ThemeStyle.ReadOnly = true;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -168,6 +169,7 @@
             this.btn_cancelar.Size = new System.Drawing.Size(180, 45);
             this.btn_cancelar.TabIndex = 24;
             this.btn_cancelar.Text = "Cancelar";
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // btn_guardarCambios
             // 
@@ -187,6 +189,7 @@
             this.btn_guardarCambios.Size = new System.Drawing.Size(180, 45);
             this.btn_guardarCambios.TabIndex = 22;
             this.btn_guardarCambios.Text = "Guardar Cambios";
+            this.btn_guardarCambios.Click += new System.EventHandler(this.btn_guardarCambios_Click);
             // 
             // btn_editar
             // 
@@ -206,6 +209,7 @@
             this.btn_editar.Size = new System.Drawing.Size(180, 45);
             this.btn_editar.TabIndex = 21;
             this.btn_editar.Text = "Editar";
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
             // 
             // txt_stockMinimo
             // 
@@ -247,6 +251,7 @@
             this.btn_nuevo.Size = new System.Drawing.Size(180, 45);
             this.btn_nuevo.TabIndex = 19;
             this.btn_nuevo.Text = "Nuevo";
+            this.btn_nuevo.Click += new System.EventHandler(this.btn_nuevo_Click);
             // 
             // btn_agregar
             // 
@@ -266,6 +271,7 @@
             this.btn_agregar.Size = new System.Drawing.Size(180, 45);
             this.btn_agregar.TabIndex = 18;
             this.btn_agregar.Text = "Agregar";
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
             // guna2HtmlLabel7
             // 

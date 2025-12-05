@@ -14,7 +14,6 @@ namespace SistemMantenimiento.JefeLogi
         public frmProducto()
         {
             InitializeComponent();
-
             this.FormClosing += frmProducto_FormClosing;
             guna2DataGridView1.CellClick += dgvProducto_CellClick;
             this.Load += frmProducto_Load;
@@ -29,7 +28,8 @@ namespace SistemMantenimiento.JefeLogi
 
         private void InicializarFormulario()
         {
-            guna2GroupBox1.Enabled = false;
+            BloquearCampos();
+            LimpiarCampos();
 
             btn_nuevo.Enabled = true;
             btn_agregar.Enabled = false;
@@ -38,8 +38,39 @@ namespace SistemMantenimiento.JefeLogi
             btn_cancelar.Enabled = false;
 
             cambiosPendientes = false;
+        }
 
-            LimpiarCampos();
+        private void BloquearCampos()
+        {
+            txt_codigoProducto.Enabled = false;
+            txt_nombreProducto.Enabled = false;
+            txt_stockActual.Enabled = false;
+            txt_stockMinimo.Enabled = false;
+            cmb_marca.Enabled = false;
+            cmb_unidad.Enabled = false;
+            cmb_categoria.Enabled = false;
+        }
+
+        private void HabilitarCampos()
+        {
+            txt_codigoProducto.Enabled = true;
+            txt_nombreProducto.Enabled = true;
+            txt_stockActual.Enabled = true;
+            txt_stockMinimo.Enabled = true;
+            cmb_marca.Enabled = true;
+            cmb_unidad.Enabled = true;
+            cmb_categoria.Enabled = true;
+        }
+
+        private void LimpiarCampos()
+        {
+            txt_codigoProducto.Text = "";
+            txt_nombreProducto.Text = "";
+            txt_stockActual.Text = "0";
+            txt_stockMinimo.Text = "0";
+            cmb_marca.SelectedIndex = -1;
+            cmb_unidad.SelectedIndex = -1;
+            cmb_categoria.SelectedIndex = -1;
         }
 
         private void CargarCombos()
@@ -52,7 +83,7 @@ namespace SistemMantenimiento.JefeLogi
                 cmb_marca.SelectedIndex = -1;
 
                 cmb_unidad.DataSource = logProducto.Instancia.ListarUnidades();
-                cmb_unidad.DisplayMember = "nombre_unidad";
+                cmb_unidad.DisplayMember = "abreviatura";
                 cmb_unidad.ValueMember = "id_unidad";
                 cmb_unidad.SelectedIndex = -1;
 
@@ -79,6 +110,14 @@ namespace SistemMantenimiento.JefeLogi
                 guna2DataGridView1.Columns["id_unidad"].Visible = false;
                 guna2DataGridView1.Columns["id_categoria"].Visible = false;
 
+                guna2DataGridView1.Columns["codigo_producto"].HeaderText = "Código";
+                guna2DataGridView1.Columns["nombre"].HeaderText = "Producto";
+                guna2DataGridView1.Columns["stock_actual"].HeaderText = "Stock Actual";
+                guna2DataGridView1.Columns["stock_minimo"].HeaderText = "Stock Mínimo";
+                guna2DataGridView1.Columns["nombre_marca"].HeaderText = "Marca";
+                guna2DataGridView1.Columns["unidad_abreviatura"].HeaderText = "U.M.";
+                guna2DataGridView1.Columns["nombre_categoria"].HeaderText = "Categoría";
+
                 AplicarSemaforoStock();
             }
             catch (Exception ex)
@@ -102,31 +141,12 @@ namespace SistemMantenimiento.JefeLogi
             }
         }
 
-        private void LimpiarCampos()
-        {
-            txt_codigoProducto.Text = "";
-            txt_nombreProducto.Text = "";
-            txt_stockActual.Text = "0";
-            txt_stockMinimo.Text = "0";
-            cmb_marca.SelectedIndex = -1;
-            cmb_unidad.SelectedIndex = -1;
-            cmb_categoria.SelectedIndex = -1;
-        }
-
-        // ================== BOTONES ==================
-
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            guna2GroupBox1.Enabled = true;
+            HabilitarCampos();
             LimpiarCampos();
-
             btn_agregar.Enabled = true;
             btn_cancelar.Enabled = true;
-
-            btn_nuevo.Enabled = false;
-            btn_editar.Enabled = false;
-            btn_guardarCambios.Enabled = false;
-
             cambiosPendientes = true;
         }
 
@@ -157,15 +177,11 @@ namespace SistemMantenimiento.JefeLogi
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            guna2GroupBox1.Enabled = true;
-            cambiosPendientes = true;
-
+            HabilitarCampos();
             btn_guardarCambios.Enabled = true;
             btn_cancelar.Enabled = true;
-
-            btn_nuevo.Enabled = false;
             btn_agregar.Enabled = false;
-            btn_editar.Enabled = false;
+            cambiosPendientes = true;
         }
 
         private void btn_guardarCambios_Click(object sender, EventArgs e)
@@ -178,9 +194,7 @@ namespace SistemMantenimiento.JefeLogi
                     return;
                 }
 
-                int idProd = Convert.ToInt32(
-                    guna2DataGridView1.SelectedRows[0].Cells["id_producto"].Value
-                );
+                int idProd = Convert.ToInt32(guna2DataGridView1.SelectedRows[0].Cells["id_producto"].Value);
 
                 entProducto p = new entProducto
                 {
