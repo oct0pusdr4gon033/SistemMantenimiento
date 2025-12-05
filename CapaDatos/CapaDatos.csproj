@@ -48,6 +48,7 @@
     <Compile Include="Consultas\Equipo\datEquipo.cs" />
     <Compile Include="Consultas\Equipo\datMarca.cs" />
     <Compile Include="Consultas\Equipo\datModelo.cs" />
+    <Compile Include="Consultas\Equipo\datPM.cs" />
     <Compile Include="Consultas\Equipo\datTipoEquipo.cs" />
     <Compile Include="Consultas\Producto\datCategoria_Producto.cs" />
     <Compile Include="Consultas\Producto\datMarca_Producto.cs" />

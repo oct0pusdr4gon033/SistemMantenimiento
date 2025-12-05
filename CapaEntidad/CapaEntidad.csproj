@@ -49,10 +49,18 @@
     <Compile Include="Equipo\entMarca.cs" />
     <Compile Include="Equipo\entModelo.cs" />
     <Compile Include="Equipo\entTipoEquipo.cs" />
+<<<<<<< HEAD
     <Compile Include="Producto\entCategoria_Producto.cs" />
     <Compile Include="Producto\entMarca_Producto.cs" />
     <Compile Include="Producto\entProducto.cs" />
     <Compile Include="Producto\entUnidadMedida_Producto.cs" />
+=======
+    <Compile Include="Equipo\entPM.cs" />
+    <Compile Include="Material\entCategoriaMaterial.cs" />
+    <Compile Include="Material\entClasificacionMaterial.cs" />
+    <Compile Include="Material\entMaterial.cs" />
+    <Compile Include="Material\entUnidadMedida.cs" />
+>>>>>>> cbb0ba4 (SE AGREGAGO ENTIDAD PM Y DAT PM)
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requerimiento\entDetReqInt.cs" />
     <Compile Include="Requerimiento\entRequerimientoInterno.cs" />

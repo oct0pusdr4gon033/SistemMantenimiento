@@ -92,6 +92,16 @@ namespace SistemMantenimiento.JeffeMantto
                 MessageBox.Show("Advertencia", "No pueden haber campos vacios", MessageBoxButtons.OK);
                 return;
             }
+            try
+            {
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al agregar el PM:\n" +
+                    ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+
         }
 
         private void btn_registrar_pm_Click(object sender, EventArgs e)
