@@ -17,9 +17,9 @@ namespace CapaDatos.Consultas.Material
         private datUnidadMedida_Producto() { }
 
         // LISTAR UNIDADES
-        public List<entUnidadMedida> ListarUnidades()
+        public List<entUnidadMedida_Producto> ListarUnidades()
         {
-            List<entUnidadMedida> lista = new List<entUnidadMedida>();
+            List<entUnidadMedida_Producto> lista = new List<entUnidadMedida_Producto>();
 
             try
             {
@@ -31,7 +31,7 @@ namespace CapaDatos.Consultas.Material
 
                     while (dr.Read())
                     {
-                        lista.Add(new entUnidadMedida
+                        lista.Add(new entUnidadMedida_Producto
                         {
                             id_unidad = Convert.ToInt32(dr["id_unidad"]),
                             nombre_unidad = dr["nombre_unidad"].ToString(),
@@ -49,7 +49,7 @@ namespace CapaDatos.Consultas.Material
         }
 
         // REGISTRAR
-        public bool RegistrarUnidad(entUnidadMedida unidad)
+        public bool RegistrarUnidad(entUnidadMedida_Producto unidad)
         {
             bool ok = false;
 
@@ -77,7 +77,7 @@ namespace CapaDatos.Consultas.Material
         }
 
         // ACTUALIZAR
-        public bool ActualizarUnidad(entUnidadMedida unidad)
+        public bool ActualizarUnidad(entUnidadMedida_Producto unidad)
         {
             bool ok = false;
 

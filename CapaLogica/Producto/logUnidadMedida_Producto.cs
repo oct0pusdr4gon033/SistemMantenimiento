@@ -14,13 +14,13 @@ namespace CapaLogica.Producto
         public static logUnidadMedida_Producto Instancia => _instancia;
 
         // LISTAR
-        public List<entUnidadMedida> ListarUnidades()
+        public List<entUnidadMedida_Producto> ListarUnidades()
         {
             return datUnidadMedida_Producto.Instancia.ListarUnidades();
         }
 
         // REGISTRAR
-        public string RegistrarUnidad(entUnidadMedida unidad)
+        public string RegistrarUnidad(entUnidadMedida_Producto unidad)
         {
             if (string.IsNullOrWhiteSpace(unidad.nombre_unidad))
                 return "El nombre de la unidad no puede estar vacío.";
@@ -33,7 +33,7 @@ namespace CapaLogica.Producto
         }
 
         // ACTUALIZAR
-        public string ActualizarUnidad(entUnidadMedida unidad)
+        public string ActualizarUnidad(entUnidadMedida_Producto unidad)
         {
             if (unidad.id_unidad <= 0)
                 return "Debe seleccionar una unidad válida.";

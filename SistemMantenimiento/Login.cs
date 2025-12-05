@@ -110,8 +110,8 @@ namespace SistemMantenimiento
 
                     break;
                 case "Jefe Logistica":
-                    Form JefeLogistica = new Form();
-                    JefeLogistica.Show();
+                    JefeLogistica jefeLogistica = new JefeLogistica();
+                    jefeLogistica.Show();
 
                     break;
                 case "Planner Mantenimiento":
