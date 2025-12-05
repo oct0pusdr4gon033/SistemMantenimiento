@@ -14,7 +14,7 @@ using CapaEntidad;
 using CapaLogica;
 using CapaEntidad.Equipo;
 using CapaLogica.Equipo;
-using CapaLogica.Material;
+using CapaLogica.Producto;
 
 
 
