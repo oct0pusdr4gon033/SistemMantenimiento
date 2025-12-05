@@ -1,185 +1,123 @@
 ﻿using Guna.UI2.WinForms;
+using SistemMantenimiento.JefeLogi;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.InteropServices; // <--- IMPORTANTE: Añadido para los DllImport
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace SistemMantenimiento
 {
     public partial class JefeLogistica : Form
     {
-        // --- DLLIMPORTS PARA MOVER EL FORMULARIO ---
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
-
         [DllImport("user32.dll")]
         public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        // Constantes para movimiento de ventana
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HTCAPTION = 0x2;
+
+        private bool submenuProductoActivo = false;
 
         public JefeLogistica()
         {
             InitializeComponent();
             ConfigurarEventos();
+            CrearOpcionesSubMenuProductos(); // <-- Aquí se carga 1 sola vez
+            flp_sub_menu_productos.Visible = false;
+
         }
 
         private void JefeLogistica_Load(object sender, EventArgs e)
         {
+            flp_sub_menu_productos.Padding = new Padding(20, 5, 0, 5);
             LimpiarPanelCentral();
         }
 
-        // CONFIGURACIÓN DE BOTONES
+
         private void ConfigurarEventos()
         {
             btn_inicio.Click += (s, e) => LimpiarPanelCentral();
 
-            btn_nota_ingreso.Click += (s, e) => MostrarSubOpciones("Nota de Ingreso", new List<string>
-            {
-                "➕ Agregar Nota de Ingreso",
-                "❌ Anular Nota de Ingreso"
-            });
+            btn_nota_ingreso.Click += (s, e) => MostrarTitulo("Nota de Ingreso");
+            btn_nota_salida.Click += (s, e) => MostrarTitulo("Nota de Salida");
+            btn_proveedores.Click += (s, e) => MostrarTitulo("Proveedores");
+            btn_requerimientos.Click += (s, e) => MostrarTitulo("Requerimientos");
 
-            btn_nota_salida.Click += (s, e) => MostrarSubOpciones("Nota de Salida", new List<string>
-            {
-                "➕ Agregar Nota de Salida",
-                "❌ Anular Nota de Salida"
-            });
-
-            btn_materiales.Click += (s, e) =>
-            {
-                AbrirFormularioHijo(new SistemMantenimiento.JefeLogi.frmMaterial());
-            };
-
-
-            btn_proveedores.Click += (s, e) => MostrarSubOpciones("Proveedores", new List<string>
-            {
-                "➕ Agregar Proveedor",
-                "✏️ Modificar Proveedor",
-                "🗑️ Eliminar Proveedor"
-            });
-
-            btn_requerimientos.Click += (s, e) => MostrarSubOpciones("Requerimientos", new List<string>
-            {
-                "➕ Agregar Requerimiento",
-                "✏️ Modificar Requerimiento"
-            });
+            // ❌ ELIMINAR ESTA
+            // btn_producto.Click += btn_producto_Click;
         }
 
-        // CONSTRUCCIÓN DINÁMICA DE SUBMENÚS
-        private void MostrarSubOpciones(string titulo, List<string> subOpciones)
+
+        private void btn_producto_Click(object sender, EventArgs e)
         {
-            panel_form_hijo.Controls.Clear();
+            submenuProductoActivo = !submenuProductoActivo;
 
-            // Obtener el ancho del panel para centrar elementos
-            int panelWidth = panel_form_hijo.Width;
+            btn_producto.Text = submenuProductoActivo ? "Producto ▲" : "Producto ▼";
+            flp_sub_menu_productos.Visible = submenuProductoActivo;
+        }
 
-            // Título
-            var lblTitulo = new Label
+
+
+
+        private void CrearOpcionesSubMenuProductos()
+        {
+            flp_sub_menu_productos.Controls.Clear();
+
+            void Add(string texto, Action accion)
             {
-                Text = titulo,
-                Font = new Font("Segoe UI", 16F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(0, 77, 77),
-                AutoSize = true
-            };
-            lblTitulo.Location = new Point((panelWidth - lblTitulo.Width) / 2, 20);
-            panel_form_hijo.Controls.Add(lblTitulo);
-
-            int posY = 80;
-
-            foreach (var texto in subOpciones)
-            {
-                var subBtn = new Guna2Button
+                var btn = new Guna2Button
                 {
                     Text = texto,
-                    Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                     ForeColor = Color.White,
-                    FillColor = Color.FromArgb(0, 100, 100),
-                    Size = new Size(280, 40),
-                    BorderRadius = 6
+                    Font = new Font("Segoe UI Emoji", 9F, FontStyle.Bold),
+                    FillColor = Color.Transparent,
+                    Size = new Size(202, 35),
+                    BorderRadius = 6,
+                    Cursor = Cursors.Hand
                 };
-                subBtn.Location = new Point((panelWidth - subBtn.Width) / 2, posY);
-
-                // subBtn.Click += (s, e) => AbrirFormularioCorrespondiente(texto);
-                panel_form_hijo.Controls.Add(subBtn);
-                posY += 55;
+                btn.Click += (s, e) => accion();
+                flp_sub_menu_productos.Controls.Add(btn);
             }
 
-            // PANEL DE ÚLTIMAS INSERCIONES
-            var panelUltimos = new Guna2Panel
-            {
-                BorderColor = Color.Silver,
-                BorderThickness = 1,
-                BorderRadius = 10,
-                Size = new Size(550, 180),
-                FillColor = Color.WhiteSmoke
-            };
-            panelUltimos.Location = new Point((panelWidth - panelUltimos.Width) / 2, posY + 20);
-
-            var lblUltimos = new Label
-            {
-                Text = "🕒 Últimas 5 inserciones registradas",
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(64, 64, 64),
-                Location = new Point(15, 10),
-                AutoSize = true
-            };
-            panelUltimos.Controls.Add(lblUltimos);
-
-            // Crear etiquetas ficticias de registros
-            int itemY = 40;
-            for (int i = 1; i <= 5; i++)
-            {
-                var lblItem = new Label
-                {
-                    Text = $"{i}. Ejemplo de {titulo} agregada el {DateTime.Now.AddDays(-i):dd/MM/yyyy}",
-                    Font = new Font("Segoe UI", 9F, FontStyle.Regular),
-                    ForeColor = Color.DimGray,
-                    AutoSize = true,
-                    Location = new Point(20, itemY)
-                };
-                panelUltimos.Controls.Add(lblItem);
-                itemY += 25;
-            }
-
-            panel_form_hijo.Controls.Add(panelUltimos);
-
-            // Botón Volver
-            var btnVolver = new Guna2Button
-            {
-                Text = "⬅️ Volver",
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                ForeColor = Color.White,
-                FillColor = Color.Gray,
-                BorderRadius = 6,
-                Size = new Size(100, 35)
-            };
-            btnVolver.Location = new Point((panelWidth - btnVolver.Width) / 2, posY + 220);
-            btnVolver.Click += (s, e) => LimpiarPanelCentral();
-            panel_form_hijo.Controls.Add(btnVolver);
+            Add("📦 Gestión Productos", () => AbrirFormularioHijo(new frmProducto()));
+            Add("🏷 Marca", () => AbrirFormularioHijo(new frmMarcas()));
+            Add("📁 Categoría", () => AbrirFormularioHijo(new frmCategorias()));
+            Add("📐 Unidad de Medida", () => AbrirFormularioHijo(new frmUnidades()));
         }
 
 
-        // ESTADO INICIAL DEL PANEL CENTRAL
+        // Mostrar títulos simples
+        private void MostrarTitulo(string texto)
+        {
+            panel_form_hijo.Controls.Clear();
+            var label = new Label
+            {
+                Text = texto,
+                AutoSize = true,
+                Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(0, 77, 77),
+                Location = new Point(50, 50)
+            };
+            panel_form_hijo.Controls.Add(label);
+        }
+
         private void LimpiarPanelCentral()
         {
             panel_form_hijo.Controls.Clear();
-
-            var lblBienvenida = new Label
+            var label = new Label
             {
                 Text = "Seleccione una opción del menú lateral",
+                AutoSize = true,
                 Font = new Font("Segoe UI", 12F, FontStyle.Bold),
                 ForeColor = Color.Gray,
-                AutoSize = true,
                 Location = new Point(100, 100)
             };
-
-            panel_form_hijo.Controls.Add(lblBienvenida);
+            panel_form_hijo.Controls.Add(label);
         }
 
-        // MOVIMIENTO DE FORMULARIO
+        // Movimiento Form
         private void panel_side_bar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -188,7 +126,6 @@ namespace SistemMantenimiento
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
             }
         }
-
         private void panel_superio_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -198,17 +135,9 @@ namespace SistemMantenimiento
             }
         }
 
-        // BOTONES DE CONTROL DE VENTANA
-        private void btn_rezise_max_Click(object sender, EventArgs e)
+        private void btn_salir_Click(object sender, EventArgs e)
         {
-            this.WindowState = this.WindowState == FormWindowState.Maximized
-                ? FormWindowState.Normal
-                : FormWindowState.Maximized;
-        }
-
-        private void btn_resize_min_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
+            Application.Exit();
         }
 
         private void btn_minimizar_Click(object sender, EventArgs e)
@@ -216,50 +145,32 @@ namespace SistemMantenimiento
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btn_salir_Click(object sender, EventArgs e)
+        private void btn_resize_min_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.WindowState = FormWindowState.Normal;
+            btn_resize_min.Visible = false;
+            btn_rezise_max.Visible = true;
         }
 
-        private void AbrirFormularioHijo(Form nuevoFormulario)
+        private void btn_rezise_max_Click(object sender, EventArgs e)
         {
-            // Si hay un formulario cargado en el panel
-            if (panel_form_hijo.Controls.Count > 0)
-            {
-                Form formActual = panel_form_hijo.Controls[0] as Form;
-
-                if (formActual != null)
-                {
-                    // Si es frmMaterial, verificar si tiene cambios sin guardar
-                    if (formActual is SistemMantenimiento.JefeLogi.frmMaterial frmMaterial)
-                    {
-                        bool salir = frmMaterial.ConfirmarSalidaConCambios();
-                        if (!salir)
-                            return; // cancelar cambio de vista
-                    }
-
-                    // Desuscribir eventos y destruir el form viejo
-                    formActual.Hide();
-                    formActual.Close();
-                    formActual.Dispose();
-                }
-
-                // Limpia completamente el contenedor
-                panel_form_hijo.Controls.Clear();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-            }
-
-            // Cargar el nuevo formulario
-            nuevoFormulario.TopLevel = false;
-            nuevoFormulario.FormBorderStyle = FormBorderStyle.None;
-            nuevoFormulario.Dock = DockStyle.Fill;
-            panel_form_hijo.Controls.Add(nuevoFormulario);
-            panel_form_hijo.Tag = nuevoFormulario;
-            nuevoFormulario.Show();
+            this.WindowState = FormWindowState.Maximized;
+            btn_rezise_max.Visible = false;
+            btn_resize_min.Visible = true;
         }
 
+        // Abrir formularios dentro del panel
+        private void AbrirFormularioHijo(Form frm)
+        {
+            panel_form_hijo.Controls.Clear();
 
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+
+            panel_form_hijo.Controls.Add(frm);
+            frm.Show();
+        }
 
     }
 }
