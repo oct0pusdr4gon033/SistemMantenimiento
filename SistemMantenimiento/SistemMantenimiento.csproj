@@ -196,6 +196,9 @@
     <EmbeddedResource Include="JefeLogistica.resx">
       <DependentUpon>JefeLogistica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JefeLogi\frmProducto.resx">
+      <DependentUpon>frmProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JefeLogi\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
     </EmbeddedResource>

@@ -12,14 +12,12 @@ namespace CapaLogica.Producto
 
         private logProducto() { }
 
-        // ==============================
-        // LISTAR PRODUCTOS
-        // ==============================
+        // LISTAR
         public List<entProducto> ListarProductos()
         {
             try
             {
-                return datProducto.Instancia.ListarMateriales();
+                return datProducto.Instancia.ListarProductos();
             }
             catch (Exception ex)
             {
@@ -27,9 +25,7 @@ namespace CapaLogica.Producto
             }
         }
 
-        // ==============================
-        // REGISTRAR PRODUCTO
-        // ==============================
+        // REGISTRAR
         public bool RegistrarProducto(entProducto prod)
         {
             try
@@ -52,7 +48,7 @@ namespace CapaLogica.Producto
                 if (prod.stock_actual < 0)
                     throw new ArgumentException("El stock no puede ser negativo.");
 
-                return datProducto.Instancia.RegistrarMaterial(prod);
+                return datProducto.Instancia.RegistrarProducto(prod);
             }
             catch (Exception ex)
             {
@@ -60,9 +56,7 @@ namespace CapaLogica.Producto
             }
         }
 
-        // ==============================
-        // ACTUALIZAR PRODUCTO
-        // ==============================
+        // ACTUALIZAR
         public bool ActualizarProducto(entProducto prod)
         {
             try
@@ -73,7 +67,7 @@ namespace CapaLogica.Producto
                 if (prod.id_categoria <= 0)
                     throw new ArgumentException("Seleccione una categoría.");
 
-                return datProducto.Instancia.ActualizarMaterial(prod);
+                return datProducto.Instancia.ActualizarProducto(prod);
             }
             catch (Exception ex)
             {
@@ -81,43 +75,20 @@ namespace CapaLogica.Producto
             }
         }
 
-        // ==============================
         // COMBOS
-        // ==============================
         public List<entMarca_Producto> ListarMarcas()
         {
-            try
-            {
-                return datProducto.Instancia.ListarMarcas();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al listar marcas: " + ex.Message);
-            }
+            return datProducto.Instancia.ListarMarcas();
         }
 
         public List<entUnidadMedida_Producto> ListarUnidades()
         {
-            try
-            {
-                return datProducto.Instancia.ListarUnidades();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al listar unidades: " + ex.Message);
-            }
+            return datProducto.Instancia.ListarUnidades();
         }
 
         public List<entCategoria_Producto> ListarCategorias()
         {
-            try
-            {
-                return datProducto.Instancia.ListarCategorias();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al listar categorías: " + ex.Message);
-            }
+            return datProducto.Instancia.ListarCategorias();
         }
     }
 }
