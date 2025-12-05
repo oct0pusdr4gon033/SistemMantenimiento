@@ -52,6 +52,7 @@
     <Compile Include="Consultas\Producto\datProducto.cs" />
     <Compile Include="Consultas\Producto\datUnidadMedida_Producto.cs" />
     <Compile Include="Consultas\Proveedor\datProveedor.cs" />
+    <Compile Include="Consultas\Requerimiento\D_Requerimiento.cs" />
     <Compile Include="Consultas\Usuario\datUsuario.cs" />
     <Compile Include="Consultas\Usuario\datUsuarioLogueado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
