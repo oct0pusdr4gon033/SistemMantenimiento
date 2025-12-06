@@ -70,17 +70,17 @@ namespace SistemMantenimiento
         private void btn_ingresar_Click_1(object sender, EventArgs e)
         {
             string user = txb_usuario.Text.Trim();
-            string password = txb_password.Text.Trim();
+            string contrasena = txb_password.Text.Trim();
 
-            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(contrasena))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
-                entUsuario usuario = logUsuario.Instancia.Login(user, password);
-                log = logUsuarioLogueado.Instancia.CargarUsuarioLogueado(user, password);
+                entUsuario usuario = logUsuario.Instancia.Login(user, contrasena);
+                log = logUsuarioLogueado.Instancia.CargarUsuarioLogueado(user, contrasena);
                 if (usuario != null)
                 {
                     
@@ -118,6 +118,10 @@ namespace SistemMantenimiento
                     Form PlannerMantenimiento = new Form();
                     PlannerMantenimiento.Show();
                     break; 
+                case "Administrador":
+                    Administrador administrador = new Administrador();
+                    administrador.Show();
+                    break;
             }
         }
 

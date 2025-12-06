@@ -195,9 +195,7 @@ namespace SistemMantenimiento
             this.lbl_title.Text = "Logística";
             // 
             // panel_superio
-            //
-            this.panel_superio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-|           System.Windows.Forms.AnchorStyles.Right)));   
+            // 
             this.panel_superio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.panel_superio.Controls.Add(this.btn_rezise_max);
             this.panel_superio.Controls.Add(this.btn_resize_min);

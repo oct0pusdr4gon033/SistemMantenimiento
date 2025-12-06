@@ -37,57 +37,79 @@ namespace SistemMantenimiento.JefeLogi
 
         private void CargarMarcas()
         {
-            dgvMarcas.DataSource = logMarca_Producto.Instancia.ListarMarcas();
-            dgvMarcas.Columns["id_marca"].Visible = false;
+            try
+            {
+                dgvMarcas.DataSource = logMarca_Producto.Instancia.ListarMarcas();
+                if (dgvMarcas.Columns.Contains("id_marca"))
+                    dgvMarcas.Columns["id_marca"].Visible = false;
+
+                dgvMarcas.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar marcas: " + ex.Message);
+            }
         }
 
-        // Seleccionar fila para editar
+        private void Limpiar()
+        {
+            txtNombreMarca.Clear();
+            txtBuscarMarca.Clear();
+            idSeleccionado = 0;
+            modoEdicion = false;
+            btnEditar.Text = "Habilitar Edición";
+            btnAgregar.Text = "Agregar";
+            CargarMarcas();
+        }
+
+        // Seleccionar fila para edición
         private void DgvMarcas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                idSeleccionado = Convert.ToInt32(dgvMarcas.CurrentRow.Cells["id_marca"].Value);
+                idSeleccionado = Convert.ToInt32(
+                    dgvMarcas.CurrentRow.Cells["id_marca"].Value
+                );
+
                 txtNombreMarca.Text = dgvMarcas.CurrentRow.Cells["nombre_marca"].Value.ToString();
             }
         }
 
-        // AGREGAR / ACTUALIZAR
+        // AGREGAR / GUARDAR
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtNombreMarca.Text))
+                {
+                    MessageBox.Show("Ingrese un nombre válido.");
+                    return;
+                }
+
+                entMarca_Producto marca = new entMarca_Producto()
+                {
+                    id_marca = idSeleccionado,
+                    nombre_marca = txtNombreMarca.Text.Trim()
+                };
+
                 if (!modoEdicion)
                 {
-                    entMarca_Producto m = new entMarca_Producto
-                    {
-                        nombre_marca = txtNombreMarca.Text.Trim()
-                    };
-
-                    if (logMarca_Producto.Instancia.RegistrarMarca(m))
-                        MessageBox.Show("Marca registrada correctamente 👌");
-
+                    // Registrar
+                    logMarca_Producto.Instancia.RegistrarMarca(marca);
+                    MessageBox.Show("Marca registrada correctamente.");
                 }
                 else
                 {
-                    entMarca_Producto m = new entMarca_Producto
-                    {
-                        id_marca = idSeleccionado,
-                        nombre_marca = txtNombreMarca.Text.Trim()
-                    };
-
-                    if (logMarca_Producto.Instancia.ActualizarMarca(m))
-                        MessageBox.Show("Marca actualizada correctamente ✨");
-
-                    modoEdicion = false;
-                    btnEditar.Text = "Habilitar Edición";
+                    // Editar
+                    logMarca_Producto.Instancia.ActualizarMarca(marca);
+                    MessageBox.Show("Marca actualizada.");
                 }
 
-                txtNombreMarca.Clear();
-                CargarMarcas();
+                Limpiar();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
@@ -96,10 +118,14 @@ namespace SistemMantenimiento.JefeLogi
         {
             string filtro = txtBuscarMarca.Text.Trim().ToLower();
 
-            List<entMarca_Producto> lista = logMarca_Producto.Instancia.ListarMarcas();
-            dgvMarcas.DataSource = lista.FindAll(
-                x => x.nombre_marca.ToLower().Contains(filtro)
-            );
+            var lista = logMarca_Producto.Instancia.ListarMarcas()
+                .Where(m => m.nombre_marca.ToLower().Contains(filtro))
+                .ToList();
+
+            dgvMarcas.DataSource = lista;
+
+            if (lista.Count == 0)
+                MessageBox.Show("No se encontraron resultados.");
         }
 
         // ELIMINAR
@@ -107,34 +133,40 @@ namespace SistemMantenimiento.JefeLogi
         {
             if (idSeleccionado == 0)
             {
-                MessageBox.Show("Seleccione una marca primero ⚠️");
+                MessageBox.Show("Seleccione una marca para eliminar.");
                 return;
             }
 
             if (MessageBox.Show("¿Eliminar marca seleccionada?",
-                "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                "Confirmación", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                if (logMarca_Producto.Instancia.EliminarMarca(idSeleccionado))
-                {
-                    MessageBox.Show("Marca eliminada correctamente 🗑️");
-                    txtNombreMarca.Clear();
-                    idSeleccionado = 0;
-                    CargarMarcas();
-                }
+                logMarca_Producto.Instancia.EliminarMarca(idSeleccionado);
+                MessageBox.Show("Marca eliminada.");
+                Limpiar();
             }
         }
 
-        // Habilitar edición
+        // CAMBIAR A MODO EDICIÓN
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (idSeleccionado == 0)
             {
-                MessageBox.Show("Selecciona una marca para editar 😒");
+                MessageBox.Show("Seleccione una marca primero.");
                 return;
             }
 
             modoEdicion = !modoEdicion;
-            btnEditar.Text = modoEdicion ? "Cancelar Edición" : "Habilitar Edición";
+
+            if (modoEdicion)
+            {
+                btnEditar.Text = "Cancelar";
+                btnAgregar.Text = "Guardar Cambios";
+            }
+            else
+            {
+                Limpiar();
+            }
         }
     }
 }

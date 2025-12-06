@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using CapaEntidad.Producto;
 using CapaDatos.ConexionDB;
+using System.Data;
 
-namespace CapaDatos.Consultas.Material
+namespace CapaDatos.Consultas.Producto
 {
     public class datProducto
     {
@@ -21,25 +22,12 @@ namespace CapaDatos.Consultas.Material
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_ListarProducto", cn))
                 {
-                    SqlCommand cmd = new SqlCommand(@"
-                        SELECT 
-                            p.id_producto,
-                            p.codigo_producto,
-                            p.nombre,
-                            p.id_marca, m.nombre_marca,
-                            p.id_unidad, u.abreviatura,
-                            p.id_categoria, c.nombre_categoria,
-                            p.stock_actual,
-                            p.stock_minimo
-                        FROM Producto p
-                        INNER JOIN Marca m ON p.id_marca = m.id_marca
-                        INNER JOIN Unidad_Medida u ON p.id_unidad = u.id_unidad
-                        INNER JOIN Categoria c ON p.id_categoria = c.id_categoria", cn);
-
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cn.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
 
+                    SqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
                         lista.Add(new entProducto
@@ -48,13 +36,13 @@ namespace CapaDatos.Consultas.Material
                             codigo_producto = dr["codigo_producto"].ToString(),
                             nombre = dr["nombre"].ToString(),
                             id_marca = Convert.ToInt32(dr["id_marca"]),
-                            id_unidad = Convert.ToInt32(dr["id_unidad"]),
-                            id_categoria = Convert.ToInt32(dr["id_categoria"]),
-                            stock_actual = Convert.ToDecimal(dr["stock_actual"]),
-                            stock_minimo = Convert.ToSingle(dr["stock_minimo"]),
                             nombre_marca = dr["nombre_marca"].ToString(),
+                            id_unidad = Convert.ToInt32(dr["id_unidad"]),
                             unidad_abreviatura = dr["abreviatura"].ToString(),
-                            nombre_categoria = dr["nombre_categoria"].ToString()
+                            id_categoria = Convert.ToInt32(dr["id_categoria"]),
+                            nombre_categoria = dr["nombre_categoria"].ToString(),
+                            stock_actual = Convert.ToDecimal(dr["stock_actual"]),
+                            stock_minimo = Convert.ToSingle(dr["stock_minimo"]) // <<< cambio correcto
                         });
                     }
                 }
@@ -70,143 +58,79 @@ namespace CapaDatos.Consultas.Material
         // REGISTRAR PRODUCTO
         public bool RegistrarProducto(entProducto mat)
         {
-            bool ok = false;
-
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_RegistrarProducto", cn))
                 {
-                    SqlCommand cmd = new SqlCommand(@"
-                        INSERT INTO Producto(codigo_producto, nombre, id_categoria, id_unidad, id_marca, stock_actual, stock_minimo)
-                        VALUES (@codigo, @nombre, @categoria, @unidad, @marca, @stockA, @stockM)", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@codigo", mat.codigo_producto);
+                    cmd.Parameters.AddWithValue("@codigo_producto", mat.codigo_producto);
                     cmd.Parameters.AddWithValue("@nombre", mat.nombre);
-                    cmd.Parameters.AddWithValue("@categoria", mat.id_categoria);
-                    cmd.Parameters.AddWithValue("@unidad", mat.id_unidad);
-                    cmd.Parameters.AddWithValue("@marca", mat.id_marca);
-                    cmd.Parameters.AddWithValue("@stockA", mat.stock_actual);
-                    cmd.Parameters.AddWithValue("@stockM", mat.stock_minimo);
+                    cmd.Parameters.AddWithValue("@id_categoria", mat.id_categoria);
+                    cmd.Parameters.AddWithValue("@id_unidad", mat.id_unidad);
+                    cmd.Parameters.AddWithValue("@id_marca", mat.id_marca);
+                    cmd.Parameters.AddWithValue("@stock_actual", mat.stock_actual);
+                    cmd.Parameters.AddWithValue("@stock_minimo", mat.stock_minimo);
 
                     cn.Open();
-                    ok = cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al registrar producto: " + ex.Message);
             }
-
-            return ok;
         }
 
         // ACTUALIZAR PRODUCTO
         public bool ActualizarProducto(entProducto mat)
         {
-            bool ok = false;
-
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarProducto", cn))
                 {
-                    SqlCommand cmd = new SqlCommand(@"
-                        UPDATE Producto SET
-                            codigo_producto=@codigo,
-                            nombre=@nombre,
-                            id_categoria=@categoria,
-                            id_unidad=@unidad,
-                            id_marca=@marca,
-                            stock_actual=@stockA,
-                            stock_minimo=@stockM
-                        WHERE id_producto=@id", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@id", mat.id_producto);
-                    cmd.Parameters.AddWithValue("@codigo", mat.codigo_producto);
+                    cmd.Parameters.AddWithValue("@id_producto", mat.id_producto);
+                    cmd.Parameters.AddWithValue("@codigo_producto", mat.codigo_producto);
                     cmd.Parameters.AddWithValue("@nombre", mat.nombre);
-                    cmd.Parameters.AddWithValue("@categoria", mat.id_categoria);
-                    cmd.Parameters.AddWithValue("@unidad", mat.id_unidad);
-                    cmd.Parameters.AddWithValue("@marca", mat.id_marca);
-                    cmd.Parameters.AddWithValue("@stockA", mat.stock_actual);
-                    cmd.Parameters.AddWithValue("@stockM", mat.stock_minimo);
+                    cmd.Parameters.AddWithValue("@id_categoria", mat.id_categoria);
+                    cmd.Parameters.AddWithValue("@id_unidad", mat.id_unidad);
+                    cmd.Parameters.AddWithValue("@id_marca", mat.id_marca);
+                    cmd.Parameters.AddWithValue("@stock_actual", mat.stock_actual);
+                    cmd.Parameters.AddWithValue("@stock_minimo", mat.stock_minimo);
 
                     cn.Open();
-                    ok = cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al actualizar producto: " + ex.Message);
             }
-
-            return ok;
         }
 
-        // COMBOS
-        public List<entMarca_Producto> ListarMarcas()
+        // ELIMINAR PRODUCTO
+        public bool EliminarProducto(int id_producto)
         {
-            List<entMarca_Producto> lista = new List<entMarca_Producto>();
-
-            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+            try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Marca", cn);
-                cn.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
+                using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarProducto", cn))
                 {
-                    lista.Add(new entMarca_Producto
-                    {
-                        id_marca = (int)dr["id_marca"],
-                        nombre_marca = dr["nombre_marca"].ToString()
-                    });
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_producto", id_producto);
+
+                    cn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
-            return lista;
-        }
-
-        public List<entUnidadMedida_Producto> ListarUnidades()
-        {
-            List<entUnidadMedida_Producto> lista = new List<entUnidadMedida_Producto>();
-
-            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+            catch (Exception ex)
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Unidad_Medida", cn);
-                cn.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    lista.Add(new entUnidadMedida_Producto
-                    {
-                        id_unidad = (int)dr["id_unidad"],
-                        nombre_unidad = dr["nombre_unidad"].ToString(),
-                        abreviatura = dr["abreviatura"].ToString()
-                    });
-                }
+                throw new Exception("Error al eliminar producto: " + ex.Message);
             }
-            return lista;
-        }
-
-        public List<entCategoria_Producto> ListarCategorias()
-        {
-            List<entCategoria_Producto> lista = new List<entCategoria_Producto>();
-
-            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
-            {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Categoria", cn);
-                cn.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    lista.Add(new entCategoria_Producto
-                    {
-                        id_categoria = (int)dr["id_categoria"],
-                        nombre_categoria = dr["nombre_categoria"].ToString()
-                    });
-                }
-            }
-            return lista;
         }
     }
 }

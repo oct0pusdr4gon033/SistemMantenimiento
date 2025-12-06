@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace CapaDatos.Consultas.Usuario
 
         #region metodos 
         /////////////////////////login
-        public entUsuario Login(string user, string pass)
+        public entUsuario Login(string user, string contrasena)
         {
            
 
@@ -33,7 +34,7 @@ namespace CapaDatos.Consultas.Usuario
 
                 // Parámetros — nombres deben coincidir EXACTAMENTE con los del SP
                 cmd.Parameters.AddWithValue("@username", user);
-                cmd.Parameters.AddWithValue("@contrasena", pass);
+                cmd.Parameters.AddWithValue("@contrasena", contrasena);
 
                 try
                 {

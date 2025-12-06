@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CapaDatos.Consultas.Material;
+using CapaDatos.Consultas.Producto;
 using CapaEntidad.Producto;
 
 namespace CapaLogica.Producto
@@ -12,7 +12,7 @@ namespace CapaLogica.Producto
 
         private logProducto() { }
 
-        // LISTAR
+        // LISTAR PRODUCTOS
         public List<entProducto> ListarProductos()
         {
             try
@@ -25,70 +25,55 @@ namespace CapaLogica.Producto
             }
         }
 
-        // REGISTRAR
-        public bool RegistrarProducto(entProducto prod)
+        // REGISTRAR PRODUCTO
+        public string RegistrarProducto(entProducto prod)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(prod.codigo_producto))
-                    throw new ArgumentException("Debe ingresar un código.");
+            if (string.IsNullOrWhiteSpace(prod.codigo_producto))
+                return "Debe ingresar un código válido.";
 
-                if (string.IsNullOrWhiteSpace(prod.nombre))
-                    throw new ArgumentException("Debe ingresar un nombre.");
+            if (string.IsNullOrWhiteSpace(prod.nombre))
+                return "Debe ingresar un nombre válido.";
 
-                if (prod.id_marca <= 0)
-                    throw new ArgumentException("Seleccione una marca.");
+            if (prod.id_marca <= 0)
+                return "Debe seleccionar una marca válida.";
 
-                if (prod.id_unidad <= 0)
-                    throw new ArgumentException("Seleccione una unidad.");
+            if (prod.id_unidad <= 0)
+                return "Debe seleccionar una unidad válida.";
 
-                if (prod.id_categoria <= 0)
-                    throw new ArgumentException("Seleccione una categoría.");
+            if (prod.id_categoria <= 0)
+                return "Debe seleccionar una categoría válida.";
 
-                if (prod.stock_actual < 0)
-                    throw new ArgumentException("El stock no puede ser negativo.");
+            if (prod.stock_actual < 0)
+                return "El stock actual no puede ser negativo.";
 
-                return datProducto.Instancia.RegistrarProducto(prod);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al registrar producto: " + ex.Message);
-            }
+            bool ok = datProducto.Instancia.RegistrarProducto(prod);
+            return ok ? "Producto registrado correctamente." : "No se pudo registrar el producto.";
         }
 
-        // ACTUALIZAR
-        public bool ActualizarProducto(entProducto prod)
+        // ACTUALIZAR PRODUCTO
+        public string ActualizarProducto(entProducto prod)
         {
-            try
-            {
-                if (prod.id_producto <= 0)
-                    throw new ArgumentException("ID de producto inválido.");
+            if (prod.id_producto <= 0)
+                return "Seleccione un producto válido.";
 
-                if (prod.id_categoria <= 0)
-                    throw new ArgumentException("Seleccione una categoría.");
+            if (string.IsNullOrWhiteSpace(prod.nombre))
+                return "Debe ingresar un nombre válido.";
 
-                return datProducto.Instancia.ActualizarProducto(prod);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar producto: " + ex.Message);
-            }
+            if (prod.id_categoria <= 0)
+                return "Debe seleccionar una categoría válida.";
+
+            bool ok = datProducto.Instancia.ActualizarProducto(prod);
+            return ok ? "Producto actualizado correctamente." : "No se pudo actualizar el producto.";
         }
 
-        // COMBOS
-        public List<entMarca_Producto> ListarMarcas()
+        // ELIMINAR PRODUCTO
+        public string EliminarProducto(int id_producto)
         {
-            return datProducto.Instancia.ListarMarcas();
-        }
+            if (id_producto <= 0)
+                return "Seleccione un producto válido.";
 
-        public List<entUnidadMedida_Producto> ListarUnidades()
-        {
-            return datProducto.Instancia.ListarUnidades();
-        }
-
-        public List<entCategoria_Producto> ListarCategorias()
-        {
-            return datProducto.Instancia.ListarCategorias();
+            bool ok = datProducto.Instancia.EliminarProducto(id_producto);
+            return ok ? "Producto eliminado correctamente." : "No se pudo eliminar el producto.";
         }
     }
 }

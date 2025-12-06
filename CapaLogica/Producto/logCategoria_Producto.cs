@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CapaDatos.Consultas.Material;
+using CapaDatos.Consultas.Producto;
 using CapaEntidad.Producto;
 
 namespace CapaLogica.Producto
@@ -10,40 +10,76 @@ namespace CapaLogica.Producto
         private static readonly logCategoria_Producto _instancia = new logCategoria_Producto();
         public static logCategoria_Producto Instancia => _instancia;
 
-        // LISTAR TODAS LAS CATEGORÍAS
+        private logCategoria_Producto() { }
+
+        #region Métodos Lógicos
+
         public List<entCategoria_Producto> ListarCategorias()
         {
-            return datCategoria_Producto.Instancia.ListarCategorias();
+            try
+            {
+                return datCategoria_Producto.Instancia.ListarCategorias();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al listar categorías.", ex);
+            }
         }
 
-        // REGISTRAR CATEGORÍA
-        public bool RegistrarCategoria(entCategoria_Producto cat)
+        public bool RegistrarCategoria(entCategoria_Producto categoria)
         {
-            if (string.IsNullOrWhiteSpace(cat.nombre_categoria))
-                throw new ApplicationException("Debe ingresar un nombre de categoría");
+            try
+            {
+                if (categoria == null)
+                    throw new ArgumentNullException(nameof(categoria), "La categoría no puede ser nula");
 
-            return datCategoria_Producto.Instancia.RegistrarCategoria(cat);
+                if (string.IsNullOrWhiteSpace(categoria.nombre_categoria))
+                    throw new ApplicationException("Debe ingresar un nombre de categoría");
+
+                return datCategoria_Producto.Instancia.RegistrarCategoria(categoria);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al registrar la categoría.", ex);
+            }
         }
 
-        // ACTUALIZAR CATEGORÍA
-        public bool ActualizarCategoria(entCategoria_Producto cat)
+        public bool ActualizarCategoria(entCategoria_Producto categoria)
         {
-            if (cat.id_categoria <= 0)
-                throw new ApplicationException("ID no válido para actualizar");
+            try
+            {
+                if (categoria == null)
+                    throw new ArgumentNullException(nameof(categoria), "La categoría no puede ser nula");
 
-            if (string.IsNullOrWhiteSpace(cat.nombre_categoria))
-                throw new ApplicationException("Debe ingresar un nombre para actualizar");
+                if (categoria.id_categoria <= 0)
+                    throw new ApplicationException("ID inválido para actualizar");
 
-            return datCategoria_Producto.Instancia.ActualizarCategoria(cat);
+                if (string.IsNullOrWhiteSpace(categoria.nombre_categoria))
+                    throw new ApplicationException("Debe ingresar un nombre válido");
+
+                return datCategoria_Producto.Instancia.ActualizarCategoria(categoria);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al actualizar la categoría.", ex);
+            }
         }
 
-        // ELIMINAR CATEGORÍA
         public bool EliminarCategoria(int id)
         {
-            if (id <= 0)
-                throw new ApplicationException("Debe seleccionar una categoría válida para eliminar");
+            try
+            {
+                if (id <= 0)
+                    throw new ApplicationException("Debe seleccionar una categoría válida para eliminar");
 
-            return datCategoria_Producto.Instancia.EliminarCategoria(id);
+                return datCategoria_Producto.Instancia.EliminarCategoria(id);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error al eliminar la categoría.", ex);
+            }
         }
+
+        #endregion
     }
 }

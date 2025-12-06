@@ -17,9 +17,9 @@ namespace CapaLogica
             get { return logUsuario._instancia; }
         }
 
-        public entUsuario Login(string username, string password)
+        public entUsuario Login(string username, string contrasena)
         {
-            return datUsuario.Instancia.Login(username, password);
+            return datUsuario.Instancia.Login(username, contrasena);
         }
         // 🔹 Este método DEBE devolver un objeto entUsuarioLogueado
        

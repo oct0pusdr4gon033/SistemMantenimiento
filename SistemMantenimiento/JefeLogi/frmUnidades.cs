@@ -21,24 +21,28 @@ namespace SistemMantenimiento.JefeLogi
         {
             InitializeComponent();
             CargarUnidades();
-            dgvUnidades.CellClick += dgvUnidades_CellClick;
+            AsociarEventos();
+        }
 
+        private void AsociarEventos()
+        {
+            dgvUnidades.CellClick += dgvUnidades_CellClick;
             btnAgregar.Click += BtnAgregar_Click;
             btnBuscar.Click += BtnBuscar_Click;
             btnEliminar.Click += BtnEliminar_Click;
             btnEditar.Click += BtnEditar_Click;
         }
 
-        // Cargar lista al iniciar
         private void CargarUnidades()
         {
             dgvUnidades.DataSource = logUnidadMedida_Producto.Instancia.ListarUnidades();
             dgvUnidades.Columns["id_unidad"].Visible = false;
         }
 
-        // Selección del DataGrid
         private void dgvUnidades_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (modoEdicion) return;
+
             if (e.RowIndex >= 0)
             {
                 idSeleccionado = Convert.ToInt32(dgvUnidades.Rows[e.RowIndex].Cells["id_unidad"].Value);
@@ -47,7 +51,6 @@ namespace SistemMantenimiento.JefeLogi
             }
         }
 
-        // AGREGAR
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             entUnidadMedida_Producto unidad = new entUnidadMedida_Producto
@@ -56,14 +59,11 @@ namespace SistemMantenimiento.JefeLogi
                 abreviatura = txtAbreviatura.Text.Trim()
             };
 
-            string mensaje = logUnidadMedida_Producto.Instancia.RegistrarUnidad(unidad);
-            MessageBox.Show(mensaje);
-
+            MessageBox.Show(logUnidadMedida_Producto.Instancia.RegistrarUnidad(unidad));
             CargarUnidades();
-            LimpiarCampos();
+            Limpiar();
         }
 
-        // BUSCAR
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string filtro = txtBuscarUnidad.Text.Trim().ToLower();
@@ -75,30 +75,28 @@ namespace SistemMantenimiento.JefeLogi
             }
 
             var lista = logUnidadMedida_Producto.Instancia.ListarUnidades();
-            dgvUnidades.DataSource = lista.FindAll(x =>
-                x.nombre_unidad.ToLower().Contains(filtro) ||
-                x.abreviatura.ToLower().Contains(filtro)
-            );
+            dgvUnidades.DataSource = lista
+                .Where(x => x.nombre_unidad.ToLower().Contains(filtro) ||
+                            x.abreviatura.ToLower().Contains(filtro))
+                .ToList();
         }
 
-        // HABILITAR EDICIÓN
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (idSeleccionado <= 0)
             {
-                MessageBox.Show("Seleccione una unidad de la tabla primero.");
+                MessageBox.Show("Selecciona una unidad primero.");
                 return;
             }
 
-            modoEdicion = !modoEdicion;
-            btnAgregar.Enabled = !modoEdicion;
-            btnEliminar.Enabled = !modoEdicion;
-
-            btnEditar.Text = modoEdicion
-                ? "Guardar Cambios"
-                : "Habilitar Edición";
-
             if (!modoEdicion)
+            {
+                modoEdicion = true;
+                btnEditar.Text = "Guardar";
+                btnAgregar.Enabled = false;
+                btnEliminar.Enabled = false;
+            }
+            else
             {
                 entUnidadMedida_Producto unidad = new entUnidadMedida_Producto
                 {
@@ -107,43 +105,40 @@ namespace SistemMantenimiento.JefeLogi
                     abreviatura = txtAbreviatura.Text.Trim()
                 };
 
-                string mensaje = logUnidadMedida_Producto.Instancia.ActualizarUnidad(unidad);
-                MessageBox.Show(mensaje);
+                MessageBox.Show(logUnidadMedida_Producto.Instancia.ActualizarUnidad(unidad));
+                modoEdicion = false;
+                btnEditar.Text = "Editar";
+                btnAgregar.Enabled = true;
+                btnEliminar.Enabled = true;
 
                 CargarUnidades();
-                LimpiarCampos();
+                Limpiar();
             }
         }
 
-        // ELIMINAR
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             if (idSeleccionado <= 0)
             {
-                MessageBox.Show("Seleccione una unidad a eliminar.");
+                MessageBox.Show("Selecciona una unidad.");
                 return;
             }
 
-            var confirm = MessageBox.Show("¿Seguro que desea eliminar esta unidad?",
-                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (confirm == DialogResult.Yes)
+            if (MessageBox.Show("¿Seguro que deseas eliminar?",
+                "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                string mensaje = logUnidadMedida_Producto.Instancia.EliminarUnidad(idSeleccionado);
-                MessageBox.Show(mensaje);
-
+                MessageBox.Show(logUnidadMedida_Producto.Instancia.EliminarUnidad(idSeleccionado));
                 CargarUnidades();
-                LimpiarCampos();
+                Limpiar();
             }
         }
 
-        // LIMPIAR INPUTS
-        private void LimpiarCampos()
+        private void Limpiar()
         {
             idSeleccionado = 0;
-            txtNombreUnidad.Text = "";
-            txtAbreviatura.Text = "";
-            txtBuscarUnidad.Text = "";
+            txtNombreUnidad.Clear();
+            txtAbreviatura.Clear();
+            txtBuscarUnidad.Clear();
         }
     }
 }

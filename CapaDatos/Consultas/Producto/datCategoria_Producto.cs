@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using CapaEntidad.Producto;
-using CapaDatos.ConexionDB;
 
-namespace CapaDatos.Consultas.Material
+namespace CapaDatos.Consultas.Producto
 {
     public class datCategoria_Producto
     {
@@ -15,6 +15,8 @@ namespace CapaDatos.Consultas.Material
         public static datCategoria_Producto Instancia => _instancia;
 
         private datCategoria_Producto() { }
+
+        #region Métodos de acceso a datos
 
         // LISTAR CATEGORÍAS
         public List<entCategoria_Producto> ListarCategorias()
@@ -24,9 +26,11 @@ namespace CapaDatos.Consultas.Material
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_ListarCategoria", cn))
                 {
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM Categoria", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cn.Open();
+
                     SqlDataReader dr = cmd.ExecuteReader();
 
                     while (dr.Read())
@@ -41,89 +45,77 @@ namespace CapaDatos.Consultas.Material
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al listar categorías: " + ex.Message);
+                throw new ApplicationException("Error al listar categorías.", ex);
             }
 
             return lista;
         }
 
-        // REGISTRAR CATEGORÍA
+        // INSERTAR CATEGORÍA
         public bool RegistrarCategoria(entCategoria_Producto cat)
         {
-            bool ok = false;
-
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarCategoria", cn))
                 {
-                    SqlCommand cmd = new SqlCommand(
-                        "INSERT INTO Categoria(nombre_categoria) VALUES(@nombre)", cn);
-
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@nombre", cat.nombre_categoria);
 
                     cn.Open();
-                    ok = cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al registrar categoría: " + ex.Message);
+                throw new ApplicationException("Error al registrar la categoría.", ex);
             }
-
-            return ok;
         }
 
         // ACTUALIZAR CATEGORÍA
         public bool ActualizarCategoria(entCategoria_Producto cat)
         {
-            bool ok = false;
-
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_EditarCategoria", cn))
                 {
-                    SqlCommand cmd = new SqlCommand(
-                        "UPDATE Categoria SET nombre_categoria=@nombre WHERE id_categoria=@id", cn);
-
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", cat.id_categoria);
                     cmd.Parameters.AddWithValue("@nombre", cat.nombre_categoria);
 
                     cn.Open();
-                    ok = cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al actualizar categoría: " + ex.Message);
+                throw new ApplicationException("Error al actualizar la categoría.", ex);
             }
-
-            return ok;
         }
 
         // ELIMINAR CATEGORÍA
         public bool EliminarCategoria(int id)
         {
-            bool ok = false;
-
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarCategoria", cn))
                 {
-                    SqlCommand cmd = new SqlCommand(
-                        "DELETE FROM Categoria WHERE id_categoria=@id", cn);
-
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
 
                     cn.Open();
-                    ok = cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al eliminar categoría: " + ex.Message);
+                throw new ApplicationException("Error al eliminar la categoría.", ex);
             }
-
-            return ok;
         }
+
+        #endregion
     }
 }
+

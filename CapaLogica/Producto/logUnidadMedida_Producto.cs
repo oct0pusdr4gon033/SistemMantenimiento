@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CapaDatos.Consultas.Material;
+using CapaDatos.Consultas.Producto;
 using CapaEntidad.Producto;
 
 namespace CapaLogica.Producto

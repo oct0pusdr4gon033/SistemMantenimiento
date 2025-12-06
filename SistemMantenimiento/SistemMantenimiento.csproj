@@ -78,6 +78,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador.Designer.cs">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\frmCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmCargo.Designer.cs">
+      <DependentUpon>frmCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\frmEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmEmpleado.Designer.cs">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="FuncionesAuxiliares\Auxiliares.cs" />
     <Compile Include="FuncionesAuxiliares\AvatarRender.cs" />
     <Compile Include="FuncionesAuxiliares\KpiCard.cs" />
@@ -199,6 +217,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador.resx">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\frmEmpleado.resx">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JefeLogistica.resx">
       <DependentUpon>JefeLogistica.cs</DependentUpon>
     </EmbeddedResource>

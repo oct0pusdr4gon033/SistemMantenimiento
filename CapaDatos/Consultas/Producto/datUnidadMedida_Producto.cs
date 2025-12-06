@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using CapaEntidad.Producto;
 using CapaDatos.ConexionDB;
+using System.Data;
 
-namespace CapaDatos.Consultas.Material
+namespace CapaDatos.Consultas.Producto
 {
     public class datUnidadMedida_Producto
     {
@@ -16,7 +17,7 @@ namespace CapaDatos.Consultas.Material
 
         private datUnidadMedida_Producto() { }
 
-        // LISTAR UNIDADES
+        // LISTAR
         public List<entUnidadMedida_Producto> ListarUnidades()
         {
             List<entUnidadMedida_Producto> lista = new List<entUnidadMedida_Producto>();
@@ -24,11 +25,12 @@ namespace CapaDatos.Consultas.Material
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_ListarUnidadMedida", cn))
                 {
-                    SqlCommand cmd = new SqlCommand("SELECT id_unidad, nombre_unidad, abreviatura FROM Unidad_Medida", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cn.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
 
+                    SqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
                         lista.Add(new entUnidadMedida_Producto
@@ -42,7 +44,7 @@ namespace CapaDatos.Consultas.Material
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al listar unidades: " + ex.Message);
+                throw new Exception("No se pudieron listar las unidades. " + ex.Message);
             }
 
             return lista;
@@ -51,83 +53,67 @@ namespace CapaDatos.Consultas.Material
         // REGISTRAR
         public bool RegistrarUnidad(entUnidadMedida_Producto unidad)
         {
-            bool ok = false;
-
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_RegistrarUnidadMedida", cn))
                 {
-                    SqlCommand cmd = new SqlCommand(@"
-                        INSERT INTO Unidad_Medida(nombre_unidad, abreviatura)
-                        VALUES (@nombre, @abreviatura)", cn);
-
-                    cmd.Parameters.AddWithValue("@nombre", unidad.nombre_unidad);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@nombre_unidad", unidad.nombre_unidad);
                     cmd.Parameters.AddWithValue("@abreviatura", unidad.abreviatura);
 
                     cn.Open();
-                    ok = cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al registrar unidad: " + ex.Message);
+                throw new Exception("Error al registrar la unidad. " + ex.Message);
             }
-
-            return ok;
         }
 
         // ACTUALIZAR
         public bool ActualizarUnidad(entUnidadMedida_Producto unidad)
         {
-            bool ok = false;
-
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarUnidadMedida", cn))
                 {
-                    SqlCommand cmd = new SqlCommand(@"
-                        UPDATE Unidad_Medida SET
-                            nombre_unidad=@nombre,
-                            abreviatura=@abreviatura
-                        WHERE id_unidad=@id", cn);
-
-                    cmd.Parameters.AddWithValue("@id", unidad.id_unidad);
-                    cmd.Parameters.AddWithValue("@nombre", unidad.nombre_unidad);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_unidad", unidad.id_unidad);
+                    cmd.Parameters.AddWithValue("@nombre_unidad", unidad.nombre_unidad);
                     cmd.Parameters.AddWithValue("@abreviatura", unidad.abreviatura);
 
                     cn.Open();
-                    ok = cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al actualizar unidad: " + ex.Message);
+                throw new Exception("Error al actualizar la unidad. " + ex.Message);
             }
-
-            return ok;
         }
 
         // ELIMINAR
-        public bool EliminarUnidad(int id)
+        public bool EliminarUnidad(int id_unidad)
         {
-            bool ok = false;
-
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarUnidadMedida", cn))
                 {
-                    SqlCommand cmd = new SqlCommand("DELETE FROM Unidad_Medida WHERE id_unidad=@id", cn);
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_unidad", id_unidad);
+
                     cn.Open();
-                    ok = cmd.ExecuteNonQuery() > 0;
+                    return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al eliminar unidad: " + ex.Message);
+                throw new Exception("Error al eliminar la unidad. " + ex.Message);
             }
-
-            return ok;
         }
     }
 }

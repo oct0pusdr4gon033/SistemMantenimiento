@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CapaDatos.ConexionDB;
 
 
 namespace CapaDatos.Consultas.Usuario

@@ -1,64 +1,65 @@
-﻿using System;
+﻿using CapaDatos.ConexionDB;
+using CapaEntidad;
+using CapaEntidad.Empleado;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CapaEntidad.Producto;
-using System.Data.SqlClient;
-using CapaDatos.ConexionDB;
-using System.Data;
 
-namespace CapaDatos.Consultas.Producto
+namespace CapaDatos.ConsultasEmpleado
 {
-    public class datMarca_Producto
+    public class datCargo
     {
-        private static readonly datMarca_Producto _instancia = new datMarca_Producto();
-        public static datMarca_Producto Instancia => _instancia;
-        private datMarca_Producto() { }
+        private static readonly datCargo _instancia = new datCargo();
+        public static datCargo Instancia => _instancia;
+
+        private datCargo() { }
 
         // LISTAR
-        public List<entMarca_Producto> ListarMarcas()
+        public List<entCargo> Listar()
         {
-            List<entMarca_Producto> lista = new List<entMarca_Producto>();
+            List<entCargo> lista = new List<entCargo>();
 
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
-                using (SqlCommand cmd = new SqlCommand("sp_ListarMarca", cn))
+                using (SqlCommand cmd = new SqlCommand("sp_ListarCargo", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cn.Open();
 
                     SqlDataReader dr = cmd.ExecuteReader();
-
                     while (dr.Read())
                     {
-                        lista.Add(new entMarca_Producto
+                        lista.Add(new entCargo
                         {
-                            id_marca = Convert.ToInt32(dr["id_marca"]),
-                            nombre_marca = dr["nombre_marca"].ToString()
+                            id_cargo = Convert.ToInt32(dr["id_cargo"]),
+                            nombre_cargo = dr["nombre_cargo"].ToString()
                         });
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al listar marcas: " + ex.Message);
+                throw new Exception("Error al listar cargos: " + ex.Message);
             }
 
             return lista;
         }
 
         // INSERTAR
-        public bool RegistrarMarca(entMarca_Producto marca)
+        public bool Insertar(entCargo cargo)
         {
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
-                using (SqlCommand cmd = new SqlCommand("sp_RegistrarMarca", cn))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertarCargo", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@nombre_marca", marca.nombre_marca);
+                    cmd.Parameters.Add("@nombre_cargo", SqlDbType.VarChar).Value = cargo.nombre_cargo;
 
                     cn.Open();
                     return cmd.ExecuteNonQuery() > 0;
@@ -66,21 +67,21 @@ namespace CapaDatos.Consultas.Producto
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al registrar marca: " + ex.Message);
+                throw new Exception("Error al insertar cargo: " + ex.Message);
             }
         }
 
-        // ACTUALIZAR
-        public bool ActualizarMarca(entMarca_Producto marca)
+        // EDITAR
+        public bool Editar(entCargo cargo)
         {
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
-                using (SqlCommand cmd = new SqlCommand("sp_ActualizarMarca", cn))
+                using (SqlCommand cmd = new SqlCommand("sp_EditarCargo", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_marca", marca.id_marca);
-                    cmd.Parameters.AddWithValue("@nombre_marca", marca.nombre_marca);
+                    cmd.Parameters.Add("@id_cargo", SqlDbType.Int).Value = cargo.id_cargo;
+                    cmd.Parameters.Add("@nombre_cargo", SqlDbType.VarChar).Value = cargo.nombre_cargo;
 
                     cn.Open();
                     return cmd.ExecuteNonQuery() > 0;
@@ -88,20 +89,20 @@ namespace CapaDatos.Consultas.Producto
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al actualizar marca: " + ex.Message);
+                throw new Exception("Error al editar cargo: " + ex.Message);
             }
         }
 
         // ELIMINAR
-        public bool EliminarMarca(int id)
+        public bool Eliminar(int idCargo)
         {
             try
             {
                 using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
-                using (SqlCommand cmd = new SqlCommand("sp_EliminarMarca", cn))
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarCargo", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_marca", id);
+                    cmd.Parameters.Add("@id_cargo", SqlDbType.Int).Value = idCargo;
 
                     cn.Open();
                     return cmd.ExecuteNonQuery() > 0;
@@ -109,7 +110,7 @@ namespace CapaDatos.Consultas.Producto
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al eliminar marca: " + ex.Message);
+                throw new Exception("Error al eliminar cargo: " + ex.Message);
             }
         }
     }
