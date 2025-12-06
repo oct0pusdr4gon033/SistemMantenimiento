@@ -12,8 +12,6 @@ namespace CapaEntidad.Requerimiento
         public int id_requerimiento { get; set; }
         public int id_material { get; set; }
         public decimal cantidad { get; set; }
-
-        // Info adicional opcional (por si la necesitas en pantalla)
         public string nombre_material { get; set; }
         public string unidad_abreviatura { get; set; }
     }

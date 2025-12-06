@@ -101,6 +101,12 @@
     <Compile Include="FuncionesAuxiliares\KpiCard.cs" />
     <Compile Include="FuncionesAuxiliares\SubMenuManager.cs" />
     <Compile Include="FuncionesAuxiliares\TarjetaOrdenTrabajo.cs" />
+    <Compile Include="JefeLogi\Consultar_req.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JefeLogi\Consultar_req.Designer.cs">
+      <DependentUpon>Consultar_req.cs</DependentUpon>
+    </Compile>
     <Compile Include="JefeLogi\frmCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,11 +125,11 @@
     <Compile Include="JefeLogi\frmProducto.Designer.cs">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="JefeLogi\frmRequerimiento.cs">
+    <Compile Include="JefeLogi\frmRequerimientoInterno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JefeLogi\frmRequerimiento.Designer.cs">
-      <DependentUpon>frmRequerimiento.cs</DependentUpon>
+    <Compile Include="JefeLogi\frmRequerimientoInterno.Designer.cs">
+      <DependentUpon>frmRequerimientoInterno.cs</DependentUpon>
     </Compile>
     <Compile Include="JefeLogi\frmUnidades.cs">
       <SubType>Form</SubType>
@@ -226,14 +232,17 @@
     <EmbeddedResource Include="JefeLogistica.resx">
       <DependentUpon>JefeLogistica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JefeLogi\Consultar_req.resx">
+      <DependentUpon>Consultar_req.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JefeLogi\frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JefeLogi\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JefeLogi\frmRequerimiento.resx">
-      <DependentUpon>frmRequerimiento.cs</DependentUpon>
+    <EmbeddedResource Include="JefeLogi\frmRequerimientoInterno.resx">
+      <DependentUpon>frmRequerimientoInterno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JefeMantenimiento.resx">
       <DependentUpon>JefeMantenimiento.cs</DependentUpon>

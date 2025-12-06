@@ -132,5 +132,48 @@ namespace CapaDatos.Consultas.Producto
                 throw new Exception("Error al eliminar producto: " + ex.Message);
             }
         }
+
+        public bool DescontarStock(int idProducto, decimal cantidad)
+        {
+            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+            using (SqlCommand cmd = new SqlCommand("sp_DescontarStockProducto", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_producto", idProducto);
+                cmd.Parameters.AddWithValue("@cantidad", cantidad);
+
+                cn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public entProducto BuscarPorId(int idProducto)
+        {
+            entProducto producto = null;
+
+            using (SqlConnection cn = ConexionDB.ConexionDB.Instancia.Conectar())
+            using (SqlCommand cmd = new SqlCommand("sp_BuscarProductoPorId", cn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_producto", idProducto);
+
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    producto = new entProducto()
+                    {
+                        id_producto = Convert.ToInt32(dr["id_producto"]),
+                        nombre = dr["nombre"].ToString(),
+                        stock_actual = Convert.ToDecimal(dr["stock_actual"])
+                    };
+                }
+            }
+
+            return producto;
+        }
+
+
     }
 }
