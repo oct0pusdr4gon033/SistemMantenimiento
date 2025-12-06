@@ -36,7 +36,7 @@ namespace SistemMantenimiento.JeffeMantto
             CargarAreas();
 
             // Llenar los campos con la información del equipo
-            CargarDatosEquipo();
+            //CargarDatosEquipo();
 
 
         }
@@ -71,35 +71,13 @@ namespace SistemMantenimiento.JeffeMantto
         }
 
         // 🔹 Método que llena los campos con la información del equipo
-        private void CargarDatosEquipo()
-        {
-            if (equipo == null) return;
-
-            txb_buscar_flota.Text = equipo.id_equipo.ToString();
-            txb_codigo_flota.Text = equipo.codigo_flota;
-            txb_numero_serie.Text = equipo.numero_serie;
-            cmb_marca.Text = equipo.marca;
-            txb_modelo.Text = equipo.modelo;
-            txb_anio_fabricacion.Text = equipo.anio_fabricacion?.ToString() ?? "";
-            cmb_tipo_equipo.Text = equipo.tipo_equipo;
-            txb_horometro_actual.Text = equipo.horometro_actual?.ToString() ?? "";
-            txb_horometro_inicial.Text = equipo.horometro_inicial?.ToString() ?? "";
-            cmb_estado.Text = equipo.estado;
-            cmb_criticidad.Text = equipo.criticidad;
-            dtp_fecha_registro.Value = equipo.fecha_ingreso ?? DateTime.Now;
-
-            // Si el equipo tiene área, seleccionarla en el combo
-            if (equipo.id_area.HasValue)
-            {
-                cmb_area.SelectedValue = equipo.id_area.Value;
-            }
-        }
+       
 
         // 🔹 Bloquear campos no editables
         private void no_editables()
         {
             txb_buscar_flota.Enabled = false;
-            dtp_fecha_registro.Enabled = false;
+            dtp_fecha_ingreso.Enabled = false;
         }
 
         private void btn_buscar_Click(object sender, EventArgs e)
@@ -136,61 +114,7 @@ namespace SistemMantenimiento.JeffeMantto
         }
         */
         /*
-       public void desactivar_botones()
-        {
-            try
-            {
-                if (equipo == null)
-                {
-                    MessageBox.Show("No se ha seleccionado ningún equipo.", 
-                                    "Aviso", 
-                                    MessageBoxButtons.OK, 
-                                    MessageBoxIcon.Warning);
-                    return;
-                }
-
-               // bool existeBitacora = validar_existencia_bitacora(equipo.id_equipo);
-
-                if (existeBitacora)
-                {
-                    // 🔒 Desactivar campos
-                    txb_id_editar.Enabled = false;
-                    dtp_fecha_registro.Enabled = false;
-                    txb_codigo_flota.Enabled = false;
-                    btn_editar.Enabled = false;
-                    btn_buscar.Enabled = false;
-                    txb_marca.Enabled = false;
-                    txb_modelo.Enabled = false;
-                    txb_numero_serie.Enabled = false;
-                    txb_tipo_equipo.Enabled = false;
-                    txb_anio_fabricacion.Enabled = false;
-                    cmb_estado.Enabled = false;
-                    txb_horometro_inicial.Enabled = false;
-                    txb_horometro_actual.Enabled = false;
-                    rch_observacion.Enabled = false;
-
-                    // 🎨 Configurar botón Guna2
-                    btn_eliminar.FillColor = Color.Red;               // Fondo rojo
-                    btn_eliminar.HoverState.FillColor = Color.DarkRed; // Fondo más oscuro al pasar el mouse
-                    btn_eliminar.ForeColor = Color.White;              // Texto blanco
-                    btn_eliminar.BorderThickness = 0;                  // Sin borde
-                    btn_eliminar.Text = "Eliminar";                   // Cambiar texto para indicar estado
-
-                    MessageBox.Show("Este equipo tiene una bitácora registrada. La edición ha sido deshabilitada.", 
-                                    "Acción restringida", 
-                                    MessageBoxButtons.OK, 
-                                    MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al desactivar los controles: " + ex.Message, 
-                                "Error", 
-                                MessageBoxButtons.OK, 
-                                MessageBoxIcon.Error);
-            }
-        }
-
+      
 
         private void editables()
 
@@ -304,35 +228,7 @@ namespace SistemMantenimiento.JeffeMantto
             MessageBox.Show("Cambios guardados correctamente y registrados en la bitácora automáticamente.",
                             "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        private void btn_eliminar_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                 "Este equipo tiene una bitácora por edición registrada. ¿Desea dar de baja al equipo?",
-                 "Acción restringida",
-                 MessageBoxButtons.YesNo,
-                 MessageBoxIcon.Question
-             );
-
-            if (result == DialogResult.Yes)
-            {
-                // 👉 Acción si el usuario acepta
-                //logEquipo.Instancia.dar_baja_equipo(equipo.id_equipo);
-                MessageBox.Show("El equipo ha sido dado de baja correctamente.",
-                                "Acción completada",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-            }
-            else
-            {
-                // ❌ Acción si el usuario cancela
-                MessageBox.Show("Operación cancelada. No se realizaron cambios.",
-                                "Cancelado",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-            }
-
-        }
         */
+
     }
 }

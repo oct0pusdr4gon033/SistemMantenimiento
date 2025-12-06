@@ -33,11 +33,11 @@
             this.lbl_titulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_principal = new Guna.UI2.WinForms.Guna2Panel();
             this.gp_agregar = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dtp_fecha_ingreso = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.txb_h_ingreso = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txb_h_compra = new Guna.UI2.WinForms.Guna2TextBox();
             this.txb_anio_fabricacion = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txb_num_serie = new Guna.UI2.WinForms.Guna2TextBox();
             this.txb_codigo_flota = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmb_modelo = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmb_tipo_e = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -54,6 +54,8 @@
             this.lbl_modelo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_marca = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_codigo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.cmb_estado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1.SuspendLayout();
             this.panel_principal.SuspendLayout();
             this.gp_agregar.SuspendLayout();
@@ -104,11 +106,13 @@
             // gp_agregar
             // 
             this.gp_agregar.AutoScroll = true;
-            this.gp_agregar.Controls.Add(this.guna2DateTimePicker1);
-            this.gp_agregar.Controls.Add(this.guna2TextBox3);
-            this.gp_agregar.Controls.Add(this.guna2TextBox2);
+            this.gp_agregar.Controls.Add(this.cmb_estado);
+            this.gp_agregar.Controls.Add(this.guna2HtmlLabel4);
+            this.gp_agregar.Controls.Add(this.dtp_fecha_ingreso);
+            this.gp_agregar.Controls.Add(this.txb_h_ingreso);
+            this.gp_agregar.Controls.Add(this.txb_h_compra);
             this.gp_agregar.Controls.Add(this.txb_anio_fabricacion);
-            this.gp_agregar.Controls.Add(this.guna2TextBox1);
+            this.gp_agregar.Controls.Add(this.txb_num_serie);
             this.gp_agregar.Controls.Add(this.txb_codigo_flota);
             this.gp_agregar.Controls.Add(this.cmb_modelo);
             this.gp_agregar.Controls.Add(this.cmb_tipo_e);
@@ -129,62 +133,62 @@
             this.gp_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.gp_agregar.Location = new System.Drawing.Point(9, 102);
             this.gp_agregar.Name = "gp_agregar";
-            this.gp_agregar.Size = new System.Drawing.Size(601, 469);
+            this.gp_agregar.Size = new System.Drawing.Size(903, 469);
             this.gp_agregar.TabIndex = 4;
             this.gp_agregar.Text = "Agregar Equipos";
             // 
-            // guna2DateTimePicker1
+            // dtp_fecha_ingreso
             // 
-            this.guna2DateTimePicker1.BorderRadius = 10;
-            this.guna2DateTimePicker1.Checked = true;
-            this.guna2DateTimePicker1.FillColor = System.Drawing.Color.Black;
-            this.guna2DateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(320, 336);
-            this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            this.guna2DateTimePicker1.Size = new System.Drawing.Size(253, 36);
-            this.guna2DateTimePicker1.TabIndex = 42;
-            this.guna2DateTimePicker1.Value = new System.DateTime(2025, 11, 22, 5, 37, 42, 626);
+            this.dtp_fecha_ingreso.BorderRadius = 10;
+            this.dtp_fecha_ingreso.Checked = true;
+            this.dtp_fecha_ingreso.FillColor = System.Drawing.Color.Black;
+            this.dtp_fecha_ingreso.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtp_fecha_ingreso.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtp_fecha_ingreso.Location = new System.Drawing.Point(320, 336);
+            this.dtp_fecha_ingreso.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtp_fecha_ingreso.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtp_fecha_ingreso.Name = "dtp_fecha_ingreso";
+            this.dtp_fecha_ingreso.Size = new System.Drawing.Size(253, 36);
+            this.dtp_fecha_ingreso.TabIndex = 42;
+            this.dtp_fecha_ingreso.Value = new System.DateTime(2025, 11, 22, 5, 37, 42, 626);
             // 
-            // guna2TextBox3
+            // txb_h_ingreso
             // 
-            this.guna2TextBox3.BorderRadius = 10;
-            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox3.DefaultText = "";
-            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Location = new System.Drawing.Point(320, 271);
-            this.guna2TextBox3.Name = "guna2TextBox3";
-            this.guna2TextBox3.PlaceholderText = "";
-            this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.Size = new System.Drawing.Size(253, 36);
-            this.guna2TextBox3.TabIndex = 41;
+            this.txb_h_ingreso.BorderRadius = 10;
+            this.txb_h_ingreso.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_h_ingreso.DefaultText = "";
+            this.txb_h_ingreso.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_h_ingreso.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_h_ingreso.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_h_ingreso.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_h_ingreso.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_h_ingreso.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_h_ingreso.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_h_ingreso.Location = new System.Drawing.Point(320, 271);
+            this.txb_h_ingreso.Name = "txb_h_ingreso";
+            this.txb_h_ingreso.PlaceholderText = "";
+            this.txb_h_ingreso.SelectedText = "";
+            this.txb_h_ingreso.Size = new System.Drawing.Size(253, 36);
+            this.txb_h_ingreso.TabIndex = 41;
             // 
-            // guna2TextBox2
+            // txb_h_compra
             // 
-            this.guna2TextBox2.BorderRadius = 10;
-            this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox2.DefaultText = "";
-            this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Location = new System.Drawing.Point(320, 204);
-            this.guna2TextBox2.Name = "guna2TextBox2";
-            this.guna2TextBox2.PlaceholderText = "";
-            this.guna2TextBox2.SelectedText = "";
-            this.guna2TextBox2.Size = new System.Drawing.Size(253, 36);
-            this.guna2TextBox2.TabIndex = 40;
+            this.txb_h_compra.BorderRadius = 10;
+            this.txb_h_compra.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_h_compra.DefaultText = "";
+            this.txb_h_compra.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_h_compra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_h_compra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_h_compra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_h_compra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_h_compra.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_h_compra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_h_compra.Location = new System.Drawing.Point(320, 204);
+            this.txb_h_compra.Name = "txb_h_compra";
+            this.txb_h_compra.PlaceholderText = "";
+            this.txb_h_compra.SelectedText = "";
+            this.txb_h_compra.Size = new System.Drawing.Size(253, 36);
+            this.txb_h_compra.TabIndex = 40;
             // 
             // txb_anio_fabricacion
             // 
@@ -205,24 +209,24 @@
             this.txb_anio_fabricacion.Size = new System.Drawing.Size(253, 36);
             this.txb_anio_fabricacion.TabIndex = 39;
             // 
-            // guna2TextBox1
+            // txb_num_serie
             // 
-            this.guna2TextBox1.BorderRadius = 10;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(320, 70);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(253, 36);
-            this.guna2TextBox1.TabIndex = 38;
+            this.txb_num_serie.BorderRadius = 10;
+            this.txb_num_serie.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_num_serie.DefaultText = "";
+            this.txb_num_serie.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_num_serie.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_num_serie.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_num_serie.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_num_serie.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_num_serie.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_num_serie.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_num_serie.Location = new System.Drawing.Point(320, 70);
+            this.txb_num_serie.Name = "txb_num_serie";
+            this.txb_num_serie.PlaceholderText = "";
+            this.txb_num_serie.SelectedText = "";
+            this.txb_num_serie.Size = new System.Drawing.Size(253, 36);
+            this.txb_num_serie.TabIndex = 38;
             // 
             // txb_codigo_flota
             // 
@@ -335,7 +339,7 @@
             this.btn_agregar.FillColor = System.Drawing.Color.DarkGray;
             this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_agregar.Location = new System.Drawing.Point(334, 391);
+            this.btn_agregar.Location = new System.Drawing.Point(624, 128);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.PressedColor = System.Drawing.Color.Transparent;
             this.btn_agregar.Size = new System.Drawing.Size(193, 45);
@@ -453,6 +457,38 @@
             this.lbl_codigo.TabIndex = 0;
             this.lbl_codigo.Text = "Codigo de Flota:";
             // 
+            // guna2HtmlLabel4
+            // 
+            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(595, 45);
+            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(47, 19);
+            this.guna2HtmlLabel4.TabIndex = 43;
+            this.guna2HtmlLabel4.Text = "Estado:";
+            // 
+            // cmb_estado
+            // 
+            this.cmb_estado.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_estado.BorderRadius = 10;
+            this.cmb_estado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_estado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_estado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_estado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_estado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_estado.ItemHeight = 30;
+            this.cmb_estado.Items.AddRange(new object[] {
+            "CORRECTIVO",
+            "PREVENTIVO",
+            "ACTIVO",
+            "DE BAJA"});
+            this.cmb_estado.Location = new System.Drawing.Point(595, 70);
+            this.cmb_estado.Name = "cmb_estado";
+            this.cmb_estado.Size = new System.Drawing.Size(248, 36);
+            this.cmb_estado.TabIndex = 44;
+            // 
             // AgregarEquipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,6 +499,7 @@
             this.Location = new System.Drawing.Point(275, 54);
             this.Name = "AgregarEquipos";
             this.Text = "AgregarEquipos";
+            this.Load += new System.EventHandler(this.AgregarEquipos_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel_principal.ResumeLayout(false);
@@ -495,10 +532,12 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmb_tipo_e;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_area;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_marca;
-        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtp_fecha_ingreso;
+        private Guna.UI2.WinForms.Guna2TextBox txb_h_ingreso;
+        private Guna.UI2.WinForms.Guna2TextBox txb_h_compra;
         private Guna.UI2.WinForms.Guna2TextBox txb_anio_fabricacion;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txb_num_serie;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_estado;
     }
 }

@@ -92,6 +92,34 @@ namespace SistemMantenimiento.JeffeMantto
                 MessageBox.Show("Advertencia", "No pueden haber campos vacios", MessageBoxButtons.OK);
                 return;
             }
+            try
+            {
+                DialogResult r = MessageBox.Show(
+                                    $"¿Estas seguro que quieres agregar {nombrePM}?",
+                                    "Advertencia",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Information
+                                );
+                if (r==DialogResult.Yes)
+                {
+                    entPM pm = new entPM();
+                    pm.nombre_pm = nombrePM.Trim().ToUpper();
+                    logPM.Instancia.InsertarPM(pm);
+                    MessageBox.Show("PM agregado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    return; 
+                }
+               
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al agregar el PM:\n" +
+                    ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+
         }
 
         private void btn_registrar_pm_Click(object sender, EventArgs e)
@@ -430,30 +458,42 @@ namespace SistemMantenimiento.JeffeMantto
                 );
                 return; 
             }
-            DialogResult r = MessageBox.Show(
-                                "¿Estas seguro que quieres agregar este modelo?",
-                                "Advertencia",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Information
-                            );
-            if (r == DialogResult.Yes)
+            try
             {
-                string nombre_modelo = txb_modelo.Text;
-                int id_marca = int.Parse(txb_id_marca.Text);
-                nombre_modelo = nombre_modelo.Trim().ToUpper();
-                entModelo modelo = new entModelo();
-                modelo.nombre_modelo = nombre_modelo;
-                modelo.id_marca = id_marca;
-                entModelo resultado = logModelo.Instancia.InsertarModelo(modelo);
-                MessageBox.Show(
-                    "Modelo agregado con éxito",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-                txb_modelo.Clear();
-                cargarModelodgv();
+                DialogResult r = MessageBox.Show(
+                               "¿Estas seguro que quieres agregar este modelo?",
+                               "Advertencia",
+                               MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Information
+                           );
+                if (r == DialogResult.Yes)
+                {
+                    string nombre_modelo = txb_modelo.Text;
+                    int id_marca = int.Parse(txb_id_marca.Text);
+                    nombre_modelo = nombre_modelo.Trim().ToUpper();
+                    entModelo modelo = new entModelo();
+                    modelo.nombre_modelo = nombre_modelo;
+                    modelo.id_marca = id_marca;
+                    entModelo resultado = logModelo.Instancia.InsertarModelo(modelo);
+                    MessageBox.Show(
+                        "Modelo agregado con éxito",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                    txb_modelo.Clear();
+                    cargarModelodgv();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al agregar el modelo:\n" +
+                    ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+
+           
         }
 
         private void btn_buscar_marca_modelo_Click(object sender, EventArgs e)

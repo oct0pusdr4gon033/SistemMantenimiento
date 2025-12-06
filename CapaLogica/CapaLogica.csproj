@@ -47,7 +47,9 @@
     <Compile Include="Equipo\logEquipo.cs" />
     <Compile Include="Equipo\logMarca.cs" />
     <Compile Include="Equipo\logModelo.cs" />
+    <Compile Include="Equipo\logPM.cs" />
     <Compile Include="Equipo\logTipoEquipo.cs" />
+    <Compile Include="logLlenarCombos.cs" />
     <Compile Include="Producto\logCategoria_Producto.cs" />
     <Compile Include="Producto\logMarca_Producto.cs" />
     <Compile Include="Producto\logProducto.cs" />
