@@ -43,10 +43,9 @@ namespace SistemMantenimiento
             btn_nota_ingreso.Click += (s, e) => MostrarTitulo("Nota de Ingreso");
             btn_nota_salida.Click += (s, e) => MostrarTitulo("Nota de Salida");
             btn_proveedores.Click += (s, e) => MostrarTitulo("Proveedores");
-            btn_requerimientos.Click += (s, e) => MostrarTitulo("Requerimientos");
+            btn_requerimientos.Click += (s, e) => AbrirFormularioHijo(new frmRequerimientoInterno());
+            btn_consultar_req.Click += (s, e) => AbrirFormularioHijo(new Consultar_req());
 
-            // ❌ ELIMINAR ESTA
-            // btn_producto.Click += btn_producto_Click;
         }
 
 
@@ -57,9 +56,6 @@ namespace SistemMantenimiento
             btn_producto.Text = submenuProductoActivo ? "Producto ▲" : "Producto ▼";
             flp_sub_menu_productos.Visible = submenuProductoActivo;
         }
-
-
-
 
         private void CrearOpcionesSubMenuProductos()
         {
@@ -171,6 +167,5 @@ namespace SistemMantenimiento
             panel_form_hijo.Controls.Add(frm);
             frm.Show();
         }
-
     }
 }

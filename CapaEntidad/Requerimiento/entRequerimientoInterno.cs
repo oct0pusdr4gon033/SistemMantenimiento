@@ -12,5 +12,6 @@ namespace CapaEntidad.Requerimiento
         public int id_empleado { get; set; }
         public string cod_req { get; set; }
         public DateTime fech_req { get; set; }
+        public string nombre_empleado { get; set; }
     }
 }

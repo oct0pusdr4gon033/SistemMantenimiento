@@ -75,5 +75,16 @@ namespace CapaLogica.Producto
             bool ok = datProducto.Instancia.EliminarProducto(id_producto);
             return ok ? "Producto eliminado correctamente." : "No se pudo eliminar el producto.";
         }
+        public bool DescontarStock(int idProducto, decimal cantidad)
+        {
+            return datProducto.Instancia.DescontarStock(idProducto, cantidad);
+        }
+
+        public entProducto BuscarPorId(int idProducto)
+        {
+            return datProducto.Instancia.BuscarPorId(idProducto);
+        }
+
+
     }
 }

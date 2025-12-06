@@ -37,6 +37,7 @@ namespace SistemMantenimiento
             this.btn_minimizar = new System.Windows.Forms.PictureBox();
             this.btn_salir = new System.Windows.Forms.PictureBox();
             this.panel_form_hijo = new System.Windows.Forms.Panel();
+            this.btn_consultar_req = new Guna.UI2.WinForms.Guna2Button();
             this.panel_side_bar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.content_titulo.SuspendLayout();
@@ -62,6 +63,7 @@ namespace SistemMantenimiento
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_consultar_req);
             this.panel1.Controls.Add(this.btn_inicio);
             this.panel1.Controls.Add(this.btn_nota_ingreso);
             this.panel1.Controls.Add(this.btn_nota_salida);
@@ -145,7 +147,7 @@ namespace SistemMantenimiento
             this.btn_requerimientos.FillColor = System.Drawing.Color.Transparent;
             this.btn_requerimientos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btn_requerimientos.ForeColor = System.Drawing.Color.White;
-            this.btn_requerimientos.Location = new System.Drawing.Point(-2, 401);
+            this.btn_requerimientos.Location = new System.Drawing.Point(-5, 395);
             this.btn_requerimientos.Name = "btn_requerimientos";
             this.btn_requerimientos.Size = new System.Drawing.Size(209, 40);
             this.btn_requerimientos.TabIndex = 1;
@@ -261,6 +263,17 @@ namespace SistemMantenimiento
             this.panel_form_hijo.Size = new System.Drawing.Size(986, 584);
             this.panel_form_hijo.TabIndex = 0;
             // 
+            // btn_consultar_req
+            // 
+            this.btn_consultar_req.FillColor = System.Drawing.Color.Transparent;
+            this.btn_consultar_req.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btn_consultar_req.ForeColor = System.Drawing.Color.White;
+            this.btn_consultar_req.Location = new System.Drawing.Point(10, 432);
+            this.btn_consultar_req.Name = "btn_consultar_req";
+            this.btn_consultar_req.Size = new System.Drawing.Size(201, 40);
+            this.btn_consultar_req.TabIndex = 8;
+            this.btn_consultar_req.Text = "Consultar Requerimientos";
+            // 
             // JefeLogistica
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -309,5 +322,6 @@ namespace SistemMantenimiento
         private System.Windows.Forms.PictureBox btn_rezise_max;
         private System.Windows.Forms.PictureBox btn_salir;
         private System.Windows.Forms.PictureBox btn_resize_min;
+        private Guna.UI2.WinForms.Guna2Button btn_consultar_req;
     }
 }
