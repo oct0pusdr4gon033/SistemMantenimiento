@@ -46,6 +46,7 @@
     <Compile Include="Consultas\Empleado\datEmpleado.cs" />
     <Compile Include="Consultas\Equipo\datArea.cs" />
     <Compile Include="Consultas\Equipo\datEquipo.cs" />
+    <Compile Include="Consultas\Equipo\datHorometro.cs" />
     <Compile Include="Consultas\Equipo\datMarca.cs" />
     <Compile Include="Consultas\Equipo\datModelo.cs" />
     <Compile Include="Consultas\Equipo\datPM.cs" />

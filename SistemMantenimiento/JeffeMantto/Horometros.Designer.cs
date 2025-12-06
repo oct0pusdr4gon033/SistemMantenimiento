@@ -32,19 +32,24 @@
             this.lbl_subtitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_titulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_informacion = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2HtmlLabel14 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.cmb_area = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2HtmlLabel13 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_id_equipo = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txb_num_serie = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmb_tipo_equipo = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_codigo_flota = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_codigo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.txb_diferencia_horometro = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2HtmlLabel12 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.rch_observacion = new System.Windows.Forms.RichTextBox();
             this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txb_nombre_operador = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txb_horometro_actual = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -57,6 +62,7 @@
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btn_limpiar = new Guna.UI2.WinForms.Guna2Button();
             this.btn_guardar_registro = new Guna.UI2.WinForms.Guna2Button();
+            this.cmb_empleado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1.SuspendLayout();
             this.panel_informacion.SuspendLayout();
             this.guna2ShadowPanel1.SuspendLayout();
@@ -96,10 +102,14 @@
             // panel_informacion
             // 
             this.panel_informacion.BackColor = System.Drawing.Color.Transparent;
+            this.panel_informacion.Controls.Add(this.guna2HtmlLabel14);
+            this.panel_informacion.Controls.Add(this.cmb_area);
+            this.panel_informacion.Controls.Add(this.guna2ComboBox1);
+            this.panel_informacion.Controls.Add(this.guna2HtmlLabel13);
+            this.panel_informacion.Controls.Add(this.guna2HtmlLabel3);
             this.panel_informacion.Controls.Add(this.txb_id_equipo);
             this.panel_informacion.Controls.Add(this.guna2HtmlLabel11);
-            this.panel_informacion.Controls.Add(this.guna2TextBox1);
-            this.panel_informacion.Controls.Add(this.guna2HtmlLabel3);
+            this.panel_informacion.Controls.Add(this.txb_num_serie);
             this.panel_informacion.Controls.Add(this.cmb_tipo_equipo);
             this.panel_informacion.Controls.Add(this.guna2HtmlLabel2);
             this.panel_informacion.Controls.Add(this.txb_codigo_flota);
@@ -113,6 +123,82 @@
             this.panel_informacion.ShadowDepth = 150;
             this.panel_informacion.Size = new System.Drawing.Size(1054, 234);
             this.panel_informacion.TabIndex = 3;
+            // 
+            // guna2HtmlLabel14
+            // 
+            this.guna2HtmlLabel14.AutoSize = false;
+            this.guna2HtmlLabel14.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel14.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel14.Location = new System.Drawing.Point(618, 158);
+            this.guna2HtmlLabel14.Name = "guna2HtmlLabel14";
+            this.guna2HtmlLabel14.Size = new System.Drawing.Size(53, 17);
+            this.guna2HtmlLabel14.TabIndex = 24;
+            this.guna2HtmlLabel14.Text = "Area:";
+            this.guna2HtmlLabel14.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // cmb_area
+            // 
+            this.cmb_area.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_area.BorderRadius = 10;
+            this.cmb_area.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_area.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_area.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_area.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_area.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_area.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_area.ItemHeight = 30;
+            this.cmb_area.Items.AddRange(new object[] {
+            "M. CORRECTIVO",
+            "M. PREVENTIVO",
+            "H. TRABAJO"});
+            this.cmb_area.Location = new System.Drawing.Point(631, 181);
+            this.cmb_area.Name = "cmb_area";
+            this.cmb_area.Size = new System.Drawing.Size(252, 36);
+            this.cmb_area.TabIndex = 23;
+            // 
+            // guna2ComboBox1
+            // 
+            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox1.BorderRadius = 10;
+            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox1.ItemHeight = 30;
+            this.guna2ComboBox1.Items.AddRange(new object[] {
+            "M. CORRECTIVO",
+            "M. PREVENTIVO",
+            "H. TRABAJO"});
+            this.guna2ComboBox1.Location = new System.Drawing.Point(631, 95);
+            this.guna2ComboBox1.Name = "guna2ComboBox1";
+            this.guna2ComboBox1.Size = new System.Drawing.Size(252, 36);
+            this.guna2ComboBox1.TabIndex = 22;
+            // 
+            // guna2HtmlLabel13
+            // 
+            this.guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel13.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel13.Location = new System.Drawing.Point(631, 72);
+            this.guna2HtmlLabel13.Name = "guna2HtmlLabel13";
+            this.guna2HtmlLabel13.Size = new System.Drawing.Size(89, 17);
+            this.guna2HtmlLabel13.TabIndex = 21;
+            this.guna2HtmlLabel13.Text = "Tipo Horometro";
+            this.guna2HtmlLabel13.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // guna2HtmlLabel3
+            // 
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(337, 158);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(79, 17);
+            this.guna2HtmlLabel3.TabIndex = 20;
+            this.guna2HtmlLabel3.Text = "Numero Serie: ";
             // 
             // txb_id_equipo
             // 
@@ -148,39 +234,28 @@
             this.guna2HtmlLabel11.TabIndex = 18;
             this.guna2HtmlLabel11.Text = "ID Equipo";
             // 
-            // guna2TextBox1
+            // txb_num_serie
             // 
-            this.guna2TextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2TextBox1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2TextBox1.BorderRadius = 10;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(338, 181);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(247, 36);
-            this.guna2TextBox1.TabIndex = 17;
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(337, 158);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(106, 17);
-            this.guna2HtmlLabel3.TabIndex = 16;
-            this.guna2HtmlLabel3.Text = "Nombre de Equipo:";
+            this.txb_num_serie.BackColor = System.Drawing.Color.Transparent;
+            this.txb_num_serie.BorderColor = System.Drawing.Color.Transparent;
+            this.txb_num_serie.BorderRadius = 10;
+            this.txb_num_serie.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_num_serie.DefaultText = "";
+            this.txb_num_serie.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_num_serie.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_num_serie.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_num_serie.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_num_serie.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_num_serie.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_num_serie.ForeColor = System.Drawing.Color.Black;
+            this.txb_num_serie.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_num_serie.Location = new System.Drawing.Point(338, 181);
+            this.txb_num_serie.Name = "txb_num_serie";
+            this.txb_num_serie.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txb_num_serie.PlaceholderText = "";
+            this.txb_num_serie.SelectedText = "";
+            this.txb_num_serie.Size = new System.Drawing.Size(247, 36);
+            this.txb_num_serie.TabIndex = 17;
             // 
             // cmb_tipo_equipo
             // 
@@ -193,18 +268,6 @@
             this.cmb_tipo_equipo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmb_tipo_equipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmb_tipo_equipo.ItemHeight = 30;
-            this.cmb_tipo_equipo.Items.AddRange(new object[] {
-            "Motoniveladora",
-            "Excavadora",
-            "Cargador Frontal",
-            "Tractor Oruga",
-            "Bulldozer",
-            "Moto Niveladora",
-            "Dumper",
-            "Volquete",
-            "Tractor Oruga",
-            "Manipulador Telescópico",
-            "Camion Cisterna"});
             this.cmb_tipo_equipo.Location = new System.Drawing.Point(337, 95);
             this.cmb_tipo_equipo.Name = "cmb_tipo_equipo";
             this.cmb_tipo_equipo.Size = new System.Drawing.Size(252, 36);
@@ -269,9 +332,11 @@
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel1.Controls.Add(this.cmb_empleado);
+            this.guna2ShadowPanel1.Controls.Add(this.txb_diferencia_horometro);
+            this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel12);
             this.guna2ShadowPanel1.Controls.Add(this.rch_observacion);
             this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel10);
-            this.guna2ShadowPanel1.Controls.Add(this.txb_nombre_operador);
             this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel9);
             this.guna2ShadowPanel1.Controls.Add(this.txb_horometro_actual);
             this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel8);
@@ -288,8 +353,42 @@
             this.guna2ShadowPanel1.Radius = 10;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.guna2ShadowPanel1.ShadowDepth = 150;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(1054, 234);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(1054, 296);
             this.guna2ShadowPanel1.TabIndex = 18;
+            // 
+            // txb_diferencia_horometro
+            // 
+            this.txb_diferencia_horometro.BackColor = System.Drawing.Color.Transparent;
+            this.txb_diferencia_horometro.BorderColor = System.Drawing.Color.Transparent;
+            this.txb_diferencia_horometro.BorderRadius = 10;
+            this.txb_diferencia_horometro.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txb_diferencia_horometro.DefaultText = "";
+            this.txb_diferencia_horometro.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txb_diferencia_horometro.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txb_diferencia_horometro.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_diferencia_horometro.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txb_diferencia_horometro.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_diferencia_horometro.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txb_diferencia_horometro.ForeColor = System.Drawing.Color.Black;
+            this.txb_diferencia_horometro.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txb_diferencia_horometro.Location = new System.Drawing.Point(326, 161);
+            this.txb_diferencia_horometro.Name = "txb_diferencia_horometro";
+            this.txb_diferencia_horometro.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txb_diferencia_horometro.PlaceholderText = "";
+            this.txb_diferencia_horometro.SelectedText = "";
+            this.txb_diferencia_horometro.Size = new System.Drawing.Size(247, 36);
+            this.txb_diferencia_horometro.TabIndex = 26;
+            // 
+            // guna2HtmlLabel12
+            // 
+            this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel12.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel12.Location = new System.Drawing.Point(326, 138);
+            this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
+            this.guna2HtmlLabel12.Size = new System.Drawing.Size(60, 17);
+            this.guna2HtmlLabel12.TabIndex = 25;
+            this.guna2HtmlLabel12.Text = "Diferencia:";
             // 
             // rch_observacion
             // 
@@ -299,7 +398,7 @@
             this.rch_observacion.Location = new System.Drawing.Point(656, 161);
             this.rch_observacion.Name = "rch_observacion";
             this.rch_observacion.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rch_observacion.Size = new System.Drawing.Size(247, 57);
+            this.rch_observacion.Size = new System.Drawing.Size(247, 113);
             this.rch_observacion.TabIndex = 24;
             this.rch_observacion.Text = "";
             // 
@@ -313,29 +412,6 @@
             this.guna2HtmlLabel10.Size = new System.Drawing.Size(72, 17);
             this.guna2HtmlLabel10.TabIndex = 23;
             this.guna2HtmlLabel10.Text = "Observacion:";
-            // 
-            // txb_nombre_operador
-            // 
-            this.txb_nombre_operador.BackColor = System.Drawing.Color.Transparent;
-            this.txb_nombre_operador.BorderColor = System.Drawing.Color.Transparent;
-            this.txb_nombre_operador.BorderRadius = 10;
-            this.txb_nombre_operador.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txb_nombre_operador.DefaultText = "";
-            this.txb_nombre_operador.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txb_nombre_operador.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txb_nombre_operador.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_nombre_operador.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txb_nombre_operador.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_nombre_operador.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txb_nombre_operador.ForeColor = System.Drawing.Color.Black;
-            this.txb_nombre_operador.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_nombre_operador.Location = new System.Drawing.Point(656, 95);
-            this.txb_nombre_operador.Name = "txb_nombre_operador";
-            this.txb_nombre_operador.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txb_nombre_operador.PlaceholderText = "";
-            this.txb_nombre_operador.SelectedText = "";
-            this.txb_nombre_operador.Size = new System.Drawing.Size(247, 36);
-            this.txb_nombre_operador.TabIndex = 22;
             // 
             // guna2HtmlLabel9
             // 
@@ -363,7 +439,7 @@
             this.txb_horometro_actual.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txb_horometro_actual.ForeColor = System.Drawing.Color.Black;
             this.txb_horometro_actual.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_horometro_actual.Location = new System.Drawing.Point(338, 160);
+            this.txb_horometro_actual.Location = new System.Drawing.Point(326, 95);
             this.txb_horometro_actual.Name = "txb_horometro_actual";
             this.txb_horometro_actual.PlaceholderForeColor = System.Drawing.Color.Transparent;
             this.txb_horometro_actual.PlaceholderText = "";
@@ -376,7 +452,7 @@
             this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(338, 137);
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(326, 72);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             this.guna2HtmlLabel8.Size = new System.Drawing.Size(124, 17);
             this.guna2HtmlLabel8.TabIndex = 19;
@@ -397,7 +473,7 @@
             this.txb_horometro_anterior.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txb_horometro_anterior.ForeColor = System.Drawing.Color.Black;
             this.txb_horometro_anterior.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txb_horometro_anterior.Location = new System.Drawing.Point(337, 95);
+            this.txb_horometro_anterior.Location = new System.Drawing.Point(17, 238);
             this.txb_horometro_anterior.Name = "txb_horometro_anterior";
             this.txb_horometro_anterior.PlaceholderForeColor = System.Drawing.Color.Transparent;
             this.txb_horometro_anterior.PlaceholderText = "";
@@ -444,7 +520,7 @@
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(337, 72);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(17, 215);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             this.guna2HtmlLabel5.Size = new System.Drawing.Size(130, 17);
             this.guna2HtmlLabel5.TabIndex = 5;
@@ -507,7 +583,7 @@
             this.btn_limpiar.FillColor = System.Drawing.Color.DarkGray;
             this.btn_limpiar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_limpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_limpiar.Location = new System.Drawing.Point(572, 584);
+            this.btn_limpiar.Location = new System.Drawing.Point(560, 657);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.PressedColor = System.Drawing.Color.Transparent;
             this.btn_limpiar.Size = new System.Drawing.Size(247, 45);
@@ -526,12 +602,33 @@
             this.btn_guardar_registro.FillColor = System.Drawing.Color.DarkGray;
             this.btn_guardar_registro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar_registro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_guardar_registro.Location = new System.Drawing.Point(836, 584);
+            this.btn_guardar_registro.Location = new System.Drawing.Point(836, 657);
             this.btn_guardar_registro.Name = "btn_guardar_registro";
             this.btn_guardar_registro.PressedColor = System.Drawing.Color.Transparent;
             this.btn_guardar_registro.Size = new System.Drawing.Size(246, 45);
             this.btn_guardar_registro.TabIndex = 27;
             this.btn_guardar_registro.Text = "Guardar Registro";
+            this.btn_guardar_registro.Click += new System.EventHandler(this.btn_guardar_registro_Click);
+            // 
+            // cmb_empleado
+            // 
+            this.cmb_empleado.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_empleado.BorderRadius = 10;
+            this.cmb_empleado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_empleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_empleado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_empleado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_empleado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_empleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_empleado.ItemHeight = 30;
+            this.cmb_empleado.Items.AddRange(new object[] {
+            "M. CORRECTIVO",
+            "M. PREVENTIVO",
+            "H. TRABAJO"});
+            this.cmb_empleado.Location = new System.Drawing.Point(656, 95);
+            this.cmb_empleado.Name = "cmb_empleado";
+            this.cmb_empleado.Size = new System.Drawing.Size(252, 36);
+            this.cmb_empleado.TabIndex = 25;
             // 
             // Horometros
             // 
@@ -548,6 +645,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Horometros";
             this.Text = "Horometros";
+            this.Load += new System.EventHandler(this.Horometros_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel_informacion.ResumeLayout(false);
@@ -568,8 +666,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_codigo;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2TextBox txb_codigo_flota;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2TextBox txb_num_serie;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_tipo_equipo;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
         private Guna.UI2.WinForms.Guna2TextBox txb_hora_registro;
@@ -580,7 +677,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private System.Windows.Forms.RichTextBox rch_observacion;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
-        private Guna.UI2.WinForms.Guna2TextBox txb_nombre_operador;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
         private Guna.UI2.WinForms.Guna2TextBox txb_horometro_actual;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
@@ -589,5 +685,13 @@
         private Guna.UI2.WinForms.Guna2Button btn_guardar_registro;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel11;
         private Guna.UI2.WinForms.Guna2TextBox txb_id_equipo;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2TextBox txb_diferencia_horometro;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel12;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel13;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel14;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_area;
+        private Guna.UI2.WinForms.Guna2ComboBox cmb_empleado;
     }
 }

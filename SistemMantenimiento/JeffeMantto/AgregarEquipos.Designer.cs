@@ -33,6 +33,8 @@
             this.lbl_titulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel_principal = new Guna.UI2.WinForms.Guna2Panel();
             this.gp_agregar = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.cmb_estado = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.dtp_fecha_ingreso = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.txb_h_ingreso = new Guna.UI2.WinForms.Guna2TextBox();
             this.txb_h_compra = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,7 +45,7 @@
             this.cmb_tipo_e = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmb_area = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmb_marca = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btn_agregar = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_editar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_horometro_act = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -54,8 +56,6 @@
             this.lbl_modelo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_marca = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_codigo = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.cmb_estado = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel1.SuspendLayout();
             this.panel_principal.SuspendLayout();
             this.gp_agregar.SuspendLayout();
@@ -118,7 +118,7 @@
             this.gp_agregar.Controls.Add(this.cmb_tipo_e);
             this.gp_agregar.Controls.Add(this.cmb_area);
             this.gp_agregar.Controls.Add(this.cmb_marca);
-            this.gp_agregar.Controls.Add(this.btn_agregar);
+            this.gp_agregar.Controls.Add(this.btn_editar);
             this.gp_agregar.Controls.Add(this.guna2HtmlLabel2);
             this.gp_agregar.Controls.Add(this.guna2HtmlLabel1);
             this.gp_agregar.Controls.Add(this.lbl_horometro_act);
@@ -136,6 +136,38 @@
             this.gp_agregar.Size = new System.Drawing.Size(903, 469);
             this.gp_agregar.TabIndex = 4;
             this.gp_agregar.Text = "Agregar Equipos";
+            // 
+            // cmb_estado
+            // 
+            this.cmb_estado.BackColor = System.Drawing.Color.Transparent;
+            this.cmb_estado.BorderRadius = 10;
+            this.cmb_estado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmb_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_estado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_estado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmb_estado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmb_estado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmb_estado.ItemHeight = 30;
+            this.cmb_estado.Items.AddRange(new object[] {
+            "CORRECTIVO",
+            "PREVENTIVO",
+            "ACTIVO",
+            "DE BAJA"});
+            this.cmb_estado.Location = new System.Drawing.Point(595, 70);
+            this.cmb_estado.Name = "cmb_estado";
+            this.cmb_estado.Size = new System.Drawing.Size(248, 36);
+            this.cmb_estado.TabIndex = 44;
+            // 
+            // guna2HtmlLabel4
+            // 
+            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(595, 45);
+            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(47, 19);
+            this.guna2HtmlLabel4.TabIndex = 43;
+            this.guna2HtmlLabel4.Text = "Estado:";
             // 
             // dtp_fecha_ingreso
             // 
@@ -327,25 +359,25 @@
             this.cmb_marca.Size = new System.Drawing.Size(249, 36);
             this.cmb_marca.TabIndex = 34;
             // 
-            // btn_agregar
+            // btn_editar
             // 
-            this.btn_agregar.Animated = true;
-            this.btn_agregar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_agregar.BorderRadius = 10;
-            this.btn_agregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_agregar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_agregar.FillColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_agregar.Location = new System.Drawing.Point(624, 128);
-            this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_agregar.Size = new System.Drawing.Size(193, 45);
-            this.btn_agregar.TabIndex = 3;
-            this.btn_agregar.Text = "Agregar";
-            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
+            this.btn_editar.Animated = true;
+            this.btn_editar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_editar.BorderRadius = 10;
+            this.btn_editar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_editar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_editar.FillColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btn_editar.Location = new System.Drawing.Point(624, 128);
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.PressedColor = System.Drawing.Color.Transparent;
+            this.btn_editar.Size = new System.Drawing.Size(193, 45);
+            this.btn_editar.TabIndex = 3;
+            this.btn_editar.Text = "Editar";
+            this.btn_editar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
             // guna2HtmlLabel2
             // 
@@ -457,38 +489,6 @@
             this.lbl_codigo.TabIndex = 0;
             this.lbl_codigo.Text = "Codigo de Flota:";
             // 
-            // guna2HtmlLabel4
-            // 
-            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(595, 45);
-            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(47, 19);
-            this.guna2HtmlLabel4.TabIndex = 43;
-            this.guna2HtmlLabel4.Text = "Estado:";
-            // 
-            // cmb_estado
-            // 
-            this.cmb_estado.BackColor = System.Drawing.Color.Transparent;
-            this.cmb_estado.BorderRadius = 10;
-            this.cmb_estado.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmb_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_estado.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_estado.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmb_estado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmb_estado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmb_estado.ItemHeight = 30;
-            this.cmb_estado.Items.AddRange(new object[] {
-            "CORRECTIVO",
-            "PREVENTIVO",
-            "ACTIVO",
-            "DE BAJA"});
-            this.cmb_estado.Location = new System.Drawing.Point(595, 70);
-            this.cmb_estado.Name = "cmb_estado";
-            this.cmb_estado.Size = new System.Drawing.Size(248, 36);
-            this.cmb_estado.TabIndex = 44;
-            // 
             // AgregarEquipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -515,7 +515,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_titulo;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_subtitulo;
         private Guna.UI2.WinForms.Guna2Panel panel_principal;
-        private Guna.UI2.WinForms.Guna2Button btn_agregar;
+        private Guna.UI2.WinForms.Guna2Button btn_editar;
         private Guna.UI2.WinForms.Guna2GroupBox gp_agregar;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_horometro_act;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_horometro_inicial;

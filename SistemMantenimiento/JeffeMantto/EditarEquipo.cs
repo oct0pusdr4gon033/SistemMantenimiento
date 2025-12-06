@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidad;
+using CapaLogica; 
 
 namespace SistemMantenimiento.JeffeMantto
 {
@@ -19,24 +21,25 @@ namespace SistemMantenimiento.JeffeMantto
         entEquipo equipo = new entEquipo();
         entUsuarioLogueado usuarioEdito =null;
         entArea area = null; 
-        
-
+        logLlenarCombos llenar = new logLlenarCombos();
+        private logEquipo loEquipo = new logEquipo();
         public EditarEquipo(entEquipo _equipo, entUsuarioLogueado usuarioLogueado)
         {
             InitializeComponent();
-            
+            loEquipo = new logEquipo();
             equipo = _equipo;
+            cmb_area.Text = equipo.nombre_area;
+            cmb_tipo_e.SelectedValue = equipo.id_tipo_equipo;
+            cmb_modelo.SelectedValue = equipo.id_modelo_equipo;
+            // Marca NO viene su id, solo nombre — se carga por texto
+            cmb_marca.Text = equipo.nombre_marca;
+            // Estado
+            cmb_estado.Text = equipo.estado;
             usuarioEdito = usuarioLogueado;
-
+            llenarCombos();
+            llenarFormularioEquipo(equipo);
             // Asignar valores
-            equipo = _equipo;
             usuarioEdito = usuarioLogueado;
-
-            // Cargar las áreas antes de asignar valores
-            CargarAreas();
-
-            // Llenar los campos con la información del equipo
-            //CargarDatosEquipo();
 
 
         }
@@ -45,35 +48,52 @@ namespace SistemMantenimiento.JeffeMantto
             InitializeComponent();
             usuarioEdito = null;
             equipo = null;
-
-            // Cargar áreas incluso si es un nuevo registro
-            CargarAreas();
-
             txb_buscar_flota.Enabled = true;
         }
-
-        // 🔹 Método para cargar las áreas en el ComboBox
-        private void CargarAreas()
+        private void llenarFormularioEquipo(entEquipo equipo)
         {
+            // CAMPOS DE TEXTO
+            txb_codigo_flota.Text = equipo.codigo_flota;
+            txb_num_serie.Text = equipo.nume_serie;
+            txb_anio_fabricacion.Text = equipo.anio_fabricacion.ToString();
+            txb_h_compra.Text = equipo.horometro_compra.ToString();
+            txb_h_ingreso.Text = equipo.horometro_ingreso.ToString();
+
+            // FECHA
+            dtp_fecha_ingreso.Value = equipo.fecha_ingreso;
+
+            // COMBOS (INTENTAMOS POR VALUE, Y SI NO EXISTE, POR TEXTO)
             try
             {
-                List<entArea> listaAreas = logArea.Instancia.ObtenerAreas();
-                cmb_area.DataSource = listaAreas;
-                cmb_area.DisplayMember = "Nombre";
-                cmb_area.ValueMember = "IdArea";
-                cmb_area.SelectedIndex = -1; // sin selección inicial
+                //cmb_area.SelectedValue = equipo.id_area;
+                cmb_area.Text = equipo.nombre_area;
             }
-            catch (Exception ex)
+            catch 
+            { 
+                cmb_area.Text = equipo.nombre_area; 
+            }
+
+            try
             {
-                MessageBox.Show("Error al cargar las áreas: " + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //cmb_tipo_e.SelectedValue = equipo.id_tipo_equipo;
+                cmb_tipo_e.SelectedValue = equipo.id_tipo_equipo;
             }
+            catch { cmb_tipo_e.Text = equipo.nombre_tipo_equipo; }
+
+            try
+            {
+                //cmb_modelo.SelectedValue = equipo.id_modelo_equipo;
+                cmb_modelo.SelectedValue = equipo.id_modelo_equipo;
+
+            }
+            catch { cmb_modelo.Text = equipo.nombre_modelo; }
+
+            // Marca NO viene su id, solo nombre — se carga por texto
+            cmb_marca.Text = equipo.nombre_marca;
+
+            // Estado
+            cmb_estado.Text = equipo.estado;
         }
-
-        // 🔹 Método que llena los campos con la información del equipo
-       
-
-        // 🔹 Bloquear campos no editables
         private void no_editables()
         {
             txb_buscar_flota.Enabled = false;
@@ -85,150 +105,125 @@ namespace SistemMantenimiento.JeffeMantto
 
             try
             {
-                if (cmb_area.SelectedValue == null)
+                string flota = txb_buscar_flota.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(flota))
                 {
-                    MessageBox.Show("Seleccione un área primero.",
+                    MessageBox.Show("Ingrese un código de flota para buscar.",
                                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                int idAreaSeleccionada = Convert.ToInt32(cmb_area.SelectedValue);
-                entArea areaSeleccionada = logArea.Instancia.ObtenerAreaPorId(idAreaSeleccionada);
-                
-                if (areaSeleccionada != null)
+                // Buscar un equipo exacto por flota
+                var lista = loEquipo.BuscarEquipoParametros(flota, null, null, null,0);
+
+                if (lista.Count == 0)
                 {
-                    MessageBox.Show($"Área seleccionada:\n\nNombre: {areaSeleccionada.nombre_area}\nCódigo: {areaSeleccionada.id_area}",
-                                    "Área encontrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No se encontró ningún equipo con ese código.",
+                                    "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
+
+                // --- Tomamos el primero (solo 1 flota debería existir) ---
+                equipo = lista.First();
+
+                // --- Llenar el formulario ---
+                llenarFormularioEquipo(equipo);
+
+                no_editables();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener el área: " + ex.Message,
+                MessageBox.Show("Error al buscar el equipo: " + ex.Message,
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        /*
-        public bool validar_existencia_bitacora(int id_equipo)
+
+        public void llenarCombos()
         {
-          return logEquipo.Instancia.existe_bitacora(id_equipo);
+            try
+            {
+                // ====== MARCA ======
+                var listaMarcas = llenar.LlenarComboMarca();
+                CargarCombo(cmb_marca, listaMarcas, "nombre_combo", "id_combo");
+
+                // ====== MODELO ======
+                var listaModelos = llenar.LLenarComboModelo();
+                CargarCombo(cmb_modelo, listaModelos, "nombre_combo", "id_combo");
+
+                // ====== ÁREA ======
+                var listaAreas = llenar.LLenarComboArea();
+                CargarCombo(cmb_area, listaAreas, "nombre_combo", "id_combo");
+
+                // ====== TIPO EQUIPO ======
+                var listaTipos = llenar.LLenarComboTipo();
+                CargarCombo(cmb_tipo_e, listaTipos, "nombre_combo", "id_combo");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al llenar los combos: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-        */
-        /*
-      
 
-        private void editables()
-
+        public void CargarCombo<T>(ComboBox cbo, List<T> lista, string display, string value)
         {
-            txb_marca.Enabled = true;
-            txb_modelo.Enabled = true;
-            txb_numero_serie.Enabled = true;
-            txb_tipo_equipo.Enabled = true;
-            txb_anio_fabricacion.Enabled = true;
-            cmb_estado.Enabled = true;
-            txb_horometro_inicial.Enabled = true;
-            txb_horometro_actual.Enabled = true;
-            rch_observacion.Enabled = true;
-        }
+            // 1. PRIMERO: Configura qué campos usar
+            cbo.DisplayMember = display;
+            cbo.ValueMember = value;
 
-        private void EditarEquipo_Load(object sender, EventArgs e)
-        {
-            no_editables();
-            editables();
-            desactivar_botones();
+            // 2. SEGUNDO: Asigna los datos
+            cbo.DataSource = lista;
+
+            // 3. OPCIONAL: Para que no quede nada seleccionado al inicio
+            cbo.SelectedIndex = -1;
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            try
+            logEquipo insertar = new logEquipo();
+
+            DialogResult r= MessageBox.Show("¿Está seguro de editar el equipo?",
+                "Confirmar edición", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question);
+            if (r == DialogResult.Yes)
             {
-                GuardarCambios();
+                logEquipo.Instancia.EditarEquipo(new entEquipo
+                {
+                    id_equipo = equipo.id_equipo,
+                    codigo_flota = txb_codigo_flota.Text.Trim().ToUpper(),
+                    id_area = Convert.ToInt32(cmb_area.SelectedValue),
+                    id_tipo_equipo = Convert.ToInt32(cmb_tipo_e.SelectedValue),
+                    id_modelo_equipo = Convert.ToInt32(cmb_modelo.SelectedValue),
+                    nombre_marca = cmb_marca.Text.Trim().ToUpper(),
+                    nume_serie = txb_num_serie.Text.Trim().ToUpper(),
+                    anio_fabricacion = int.Parse(txb_anio_fabricacion.Text),
+                    horometro_compra = double.Parse(txb_h_compra.Text),
+                    horometro_ingreso = double.Parse(txb_h_ingreso.Text),
+                    fecha_ingreso = dtp_fecha_ingreso.Value,
+                    estado = cmb_estado.Text.Trim(),
+                });
+                MessageBox.Show("Equipo editado correctamente",
+                    "Edición exitosa",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error al guardar los cambios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
             }
+               
 
         }
-        private bool getEstado(ComboBox cmb)
+
+        private void EditarEquipo_Load(object sender, EventArgs e)
         {
-           if (cmb.SelectedItem.ToString() == "Activo")
-           {
-                return true;
-           }
-           else
-           {
-                return false;
-           }
+            llenarCombos();
         }
-        private entEquipo ObtenerDatosFormulario()
-        {
-            bool estado = getEstado(cmb_estado);
-            return new entEquipo
-            {
-                id_equipo = int.Parse(txb_id_editar.Text),
-                codigo_flota = txb_codigo_flota.Text.Trim(),
-                marca = txb_marca.Text.Trim(),
-                modelo = txb_modelo.Text.Trim(),
-                numero_serie = txb_numero_serie.Text.Trim(),
-                tipo_equipo = txb_tipo_equipo.Text.Trim(),
-                anio_fabricacion = int.Parse(txb_anio_fabricacion.Text),
-                horometro_inicial = int.Parse(txb_horometro_inicial.Text),
-                horometro_actual = int.Parse(txb_horometro_actual.Text),
-                fecha_ingreso = dtp_fecha_registro.Value,
-                estado = cmb_estado.SelectedItem.ToString(),
-            }; 
-        }
-        private void GuardarCambios()
-        {
-            // Obtener el registro original desde la base
-            //entEquipo original = logEquipo.Instancia.ObtenerEquipoPorId(equipo.id_equipo);
-            entEquipo actualizado = ObtenerDatosFormulario();
 
-            // Comparar campo por campo
-            List<(string campo, string antes, string despues)> cambios = new List<(string, string, string)>();
-
-            if (original.marca != actualizado.marca)
-                cambios.Add(("Marca", original.marca, actualizado.marca));
-
-            if (original.modelo != actualizado.modelo)
-                cambios.Add(("Modelo", original.modelo, actualizado.modelo));
-
-            if (original.numero_serie != actualizado.numero_serie)
-                cambios.Add(("Número de Serie", original.numero_serie, actualizado.numero_serie));
-
-            if (original.tipo_equipo != actualizado.tipo_equipo)
-                cambios.Add(("Tipo de Equipo", original.tipo_equipo, actualizado.tipo_equipo));
-
-            if (original.anio_fabricacion != actualizado.anio_fabricacion)
-                cambios.Add(("Año de Fabricación", original.anio_fabricacion.ToString(), actualizado.anio_fabricacion.ToString()));
-
-            if (original.horometro_inicial != actualizado.horometro_inicial)
-                cambios.Add(("Horómetro Inicial", original.horometro_inicial.ToString(), actualizado.horometro_inicial.ToString()));
-
-            if (original.horometro_actual != actualizado.horometro_actual)
-                cambios.Add(("Horómetro Actual", original.horometro_actual.ToString(), actualizado.horometro_actual.ToString()));
-
-            //if (original.estado != actualizado.estado)
-              //  cambios.Add(("Estado", original.estado ? "Activo" : "Inactivo",
-                //                             actualizado.estado ? "Activo" : "Inactivo"));
-
-            if (cambios.Count == 0)
-            {
-                MessageBox.Show("No se detectaron cambios para registrar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            string nombre = usuarioEdito.Nombre;
-            string apellido = usuarioEdito.Apellido;
-            string usuario = $"{nombre} {apellido}";
-
-            string motivo = rch_observacion.Text.Trim();
-            //logEquipo.Instancia.ActualizarEquipo(actualizado, usuario, motivo);
-
-            MessageBox.Show("Cambios guardados correctamente y registrados en la bitácora automáticamente.",
-                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        */
 
     }
 }

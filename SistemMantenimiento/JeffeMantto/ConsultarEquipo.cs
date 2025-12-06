@@ -273,7 +273,15 @@ namespace SistemMantenimiento.JeffeMantto
 
         private void btn_generar_ot_Click(object sender, EventArgs e)
         {
-           
+           GenerarOT ot = new GenerarOT(equipo_seleccionado, usuarioLogueado);
+            AbrirFormularioEnPanel(ot);
+        }
+
+        private void btn_horometro_Click(object sender, EventArgs e)
+        {
+            Horometros registro_horometro= new Horometros(equipo_seleccionado, usuarioLogueado);
+            AbrirFormularioEnPanel(registro_horometro);
+
         }
     }
 }

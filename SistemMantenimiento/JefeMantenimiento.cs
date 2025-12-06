@@ -129,7 +129,7 @@ namespace SistemMantenimiento
                 { "⏱️ Actualizar Horómetro", () =>
                     {
                         if (equipo_seleccionado != null)
-                            AbrirFormularioEnPanel(new Horometros(equipo_seleccionado));
+                            AbrirFormularioEnPanel(new Horometros(equipo_seleccionado,usuarioLogueado));
                         else
                             AbrirFormularioEnPanel(new Horometros()); // ✅ constructor alternativo
                     }

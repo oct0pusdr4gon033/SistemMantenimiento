@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaEntidad;
+using CapaDatos; 
 
 namespace CapaLogica
 {
@@ -38,7 +39,7 @@ namespace CapaLogica
         {
             try
             {
-                return CapaDatos.datLlenarCombos.Instancia.LLenarComboTipo();
+                return datLlenarCombos.Instancia.LLenarComboTipo();
             }
             catch (Exception ex)
             {

@@ -47,7 +47,7 @@
             this.cmb_tipo_e = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmb_area = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmb_marca = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btn_agregar = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_editar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbl_horometro_act = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -162,7 +162,7 @@
             this.gp_agregar.Controls.Add(this.cmb_tipo_e);
             this.gp_agregar.Controls.Add(this.cmb_area);
             this.gp_agregar.Controls.Add(this.cmb_marca);
-            this.gp_agregar.Controls.Add(this.btn_agregar);
+            this.gp_agregar.Controls.Add(this.btn_editar);
             this.gp_agregar.Controls.Add(this.guna2HtmlLabel5);
             this.gp_agregar.Controls.Add(this.guna2HtmlLabel6);
             this.gp_agregar.Controls.Add(this.lbl_horometro_act);
@@ -403,24 +403,25 @@
             this.cmb_marca.Size = new System.Drawing.Size(249, 36);
             this.cmb_marca.TabIndex = 34;
             // 
-            // btn_agregar
+            // btn_editar
             // 
-            this.btn_agregar.Animated = true;
-            this.btn_agregar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_agregar.BorderRadius = 10;
-            this.btn_agregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_agregar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_agregar.FillColor = System.Drawing.Color.DarkGray;
-            this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn_agregar.Location = new System.Drawing.Point(624, 128);
-            this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_agregar.Size = new System.Drawing.Size(193, 45);
-            this.btn_agregar.TabIndex = 3;
-            this.btn_agregar.Text = "Agregar";
+            this.btn_editar.Animated = true;
+            this.btn_editar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_editar.BorderRadius = 10;
+            this.btn_editar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_editar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_editar.FillColor = System.Drawing.Color.DarkGray;
+            this.btn_editar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btn_editar.Location = new System.Drawing.Point(624, 128);
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.PressedColor = System.Drawing.Color.Transparent;
+            this.btn_editar.Size = new System.Drawing.Size(193, 45);
+            this.btn_editar.TabIndex = 3;
+            this.btn_editar.Text = "Agregar";
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
             // 
             // guna2HtmlLabel5
             // 
@@ -546,6 +547,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditarEquipo";
             this.Text = "EditarEquipo";
+            this.Load += new System.EventHandler(this.EditarEquipo_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.gp_agregar.ResumeLayout(false);
@@ -575,7 +577,7 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmb_tipo_e;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_area;
         private Guna.UI2.WinForms.Guna2ComboBox cmb_marca;
-        private Guna.UI2.WinForms.Guna2Button btn_agregar;
+        private Guna.UI2.WinForms.Guna2Button btn_editar;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_horometro_act;

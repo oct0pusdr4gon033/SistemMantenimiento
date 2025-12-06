@@ -39,7 +39,7 @@
             this.btn_buscar = new Guna.UI2.WinForms.Guna2Button();
             this.flp_equipos_buscados = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_editar = new Guna.UI2.WinForms.Guna2Button();
-            this.btn__generar_plan_mantto = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_horometro = new Guna.UI2.WinForms.Guna2Button();
             this.btn_historial = new Guna.UI2.WinForms.Guna2Button();
             this.btn_generar_ot = new Guna.UI2.WinForms.Guna2Button();
             this.panel_titulo_opciones = new System.Windows.Forms.Panel();
@@ -215,25 +215,26 @@
             this.btn_editar.UseWaitCursor = true;
             this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click_1);
             // 
-            // btn__generar_plan_mantto
+            // btn_horometro
             // 
-            this.btn__generar_plan_mantto.Animated = true;
-            this.btn__generar_plan_mantto.BackColor = System.Drawing.Color.Transparent;
-            this.btn__generar_plan_mantto.BorderRadius = 10;
-            this.btn__generar_plan_mantto.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn__generar_plan_mantto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn__generar_plan_mantto.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn__generar_plan_mantto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn__generar_plan_mantto.FillColor = System.Drawing.Color.DarkGray;
-            this.btn__generar_plan_mantto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn__generar_plan_mantto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.btn__generar_plan_mantto.Location = new System.Drawing.Point(170, 3);
-            this.btn__generar_plan_mantto.Name = "btn__generar_plan_mantto";
-            this.btn__generar_plan_mantto.PressedColor = System.Drawing.Color.Transparent;
-            this.btn__generar_plan_mantto.Size = new System.Drawing.Size(132, 45);
-            this.btn__generar_plan_mantto.TabIndex = 11;
-            this.btn__generar_plan_mantto.Text = "Generar Plan Mantto";
-            this.btn__generar_plan_mantto.UseWaitCursor = true;
+            this.btn_horometro.Animated = true;
+            this.btn_horometro.BackColor = System.Drawing.Color.Transparent;
+            this.btn_horometro.BorderRadius = 10;
+            this.btn_horometro.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_horometro.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_horometro.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_horometro.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_horometro.FillColor = System.Drawing.Color.DarkGray;
+            this.btn_horometro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_horometro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btn_horometro.Location = new System.Drawing.Point(170, 3);
+            this.btn_horometro.Name = "btn_horometro";
+            this.btn_horometro.PressedColor = System.Drawing.Color.Transparent;
+            this.btn_horometro.Size = new System.Drawing.Size(132, 45);
+            this.btn_horometro.TabIndex = 11;
+            this.btn_horometro.Text = "Actualizar Horometro";
+            this.btn_horometro.UseWaitCursor = true;
+            this.btn_horometro.Click += new System.EventHandler(this.btn_horometro_Click);
             // 
             // btn_historial
             // 
@@ -311,7 +312,7 @@
             // 
             this.panel_opciones.Controls.Add(this.btn_historial);
             this.panel_opciones.Controls.Add(this.btn_generar_ot);
-            this.panel_opciones.Controls.Add(this.btn__generar_plan_mantto);
+            this.panel_opciones.Controls.Add(this.btn_horometro);
             this.panel_opciones.Controls.Add(this.btn_editar);
             this.panel_opciones.Location = new System.Drawing.Point(18, 482);
             this.panel_opciones.Name = "panel_opciones";
@@ -381,7 +382,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl_marca_equipo;
         private System.Windows.Forms.FlowLayoutPanel flp_equipos_buscados;
         private Guna.UI2.WinForms.Guna2Button btn_editar;
-        private Guna.UI2.WinForms.Guna2Button btn__generar_plan_mantto;
+        private Guna.UI2.WinForms.Guna2Button btn_horometro;
         private Guna.UI2.WinForms.Guna2Button btn_historial;
         private Guna.UI2.WinForms.Guna2Button btn_generar_ot;
         private System.Windows.Forms.Panel panel_titulo_opciones;

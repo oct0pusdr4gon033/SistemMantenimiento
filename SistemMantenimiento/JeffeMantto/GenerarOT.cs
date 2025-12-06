@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaEntidad.Equipo;
+using CapaEntidad.Usuario;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace SistemMantenimiento
 {
     public partial class GenerarOT : Form
     {
-        public GenerarOT(entUsuario usiaroLog, entEquipo equipoOT)
+        public GenerarOT(entEquipo equipoOT,entUsuarioLogueado usiaroLog )
         {
             InitializeComponent();
         }
@@ -22,6 +23,13 @@ namespace SistemMantenimiento
         public GenerarOT () 
         {
             InitializeComponent();
+        }
+
+        private void cargarDatosEquipo(entEquipo equipoOT)
+        {
+            // Cargar los datos del equipo en los controles del formulario
+            //txb_id_equipo.Text=equipoOT.id_equipo.ToString();
+
         }
     }
 }

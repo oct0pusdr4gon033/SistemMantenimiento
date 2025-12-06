@@ -45,6 +45,7 @@
     <Compile Include="Empleado\logEmpleado.cs" />
     <Compile Include="Equipo\logArea.cs" />
     <Compile Include="Equipo\logEquipo.cs" />
+    <Compile Include="Equipo\logHorometro.cs" />
     <Compile Include="Equipo\logMarca.cs" />
     <Compile Include="Equipo\logModelo.cs" />
     <Compile Include="Equipo\logPM.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\logUsuarioLogueado.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
       <Project>{bf27f811-78be-4715-8c0e-38dfab8d3769}</Project>
