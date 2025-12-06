@@ -20,7 +20,8 @@ namespace CapaLogica.Equipo
             get { return logEquipo._instancia; }
         }
 
-        public entEquipo insertar_equipo(entEquipo equipo)
+
+        public bool InsertarEquipo(entEquipo equipo)
         {
             try
             {
@@ -32,40 +33,59 @@ namespace CapaLogica.Equipo
             }
         }
 
-        public List<entEquipo> BuscarEquipos(
-             
-             string codigo_flota,
-             string modelo,
-             string numero_serie,
-             int? anio_fabricacion)
+        public bool EditarEquipo(entEquipo equipo)
         {
             try
             {
-                return datEquipo.Instancia.BuscarEquipos(
-                    codigo_flota,
-
-                    modelo,
-                    numero_serie,
-                    anio_fabricacion);
+                return datEquipo.Instancia.EditarEquipo(equipo);
             }
             catch (Exception ex)
             {
-                
-                throw new Exception("Error al buscar equipos desde la capa lógica: " + ex.Message, ex);
+                throw new ApplicationException("Error en la capa lógica al editar el equipo.", ex);
+            }
+        }
+        public List<entEquipo> BuscarEquipoParametros(string codigo_flota, string modelo, string marca, string area, 
+            int anio_fabricacion)
+        {
+
+            try
+            {
+                return datEquipo.Instancia.BuscarEquipoParametros(codigo_flota, modelo, marca, area, anio_fabricacion);
+            }
+            catch(Exception ex)
+            {
+                throw ex; 
             }
         }
 
-        public entEquipo ObtenerEquipoPorCodigo(string codigo_flota)
+        public List<entEquipo> ListarEquipos()
         {
             try
             {
-                return datEquipo.Instancia.BuscarEquipoPorCodigoFlota(codigo_flota);
+                return datEquipo.Instancia.ListarEquipos();
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener el equipo por código desde la capa lógica: " + ex.Message, ex);
+                throw new Exception("Error al listar equipos desde la capa lógica: " + ex.Message, ex);
             }
         }
+        public bool EliminarEquipo(entEquipo ent)
+        {
+            try
+            {
+                return datEquipo.Instancia.EliminarEquipo(ent);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar el equipo desde la capa lógica: " + ex.Message, ex);
+            }
+        }
+
+
+
+
+
+
 
         /*
         public int ContarEquipos()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,18 +10,19 @@ namespace CapaEntidad.Equipo
     public class entEquipo
     {
         public int id_equipo { get; set; }
+        public int id_area { get; set;  }
+        public int id_tipo_equipo { get; set; } 
+        public int id_modelo_equipo { get; set; }
         public string codigo_flota { get; set; }
-        public string numero_serie { get; set; }
-        public decimal? horometro_inicial { get; set; }
-        public decimal? horometro_actual { get; set; }
-        public string marca { get; set; }
-        public string modelo { get; set; }
-        public int? anio_fabricacion { get; set; }
-        public int? id_area { get; set; }
-        public string criticidad { get; set; } 
-        public string estado { get; set; }  // VARCHAR ahora
-        public DateTime? fecha_ingreso { get; set; } = DateTime.UtcNow;
-        public string tipo_equipo { get; set; }
-        public bool activo { get; set; } 
+        public string nume_serie { get; set; }
+        public int anio_fabricacion { get; set;  }
+        public  double horometro_compra { get; set; }
+        public double horometro_ingreso { get; set;  }
+        public DateTime fecha_ingreso { get; set; }
+        public string estado { get; set; }
+        public string nombre_area { get; set; }
+        public string nombre_tipo_equipo { get; set; }
+        public string nombre_modelo { get; set; }
+        public string nombre_marca { get; set; }
     }
 }

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.pnlBorde = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbl_codigo_flota = new System.Windows.Forms.Label();
             this.lbl_num_serie = new System.Windows.Forms.Label();
-            this.lbl_id_equipo = new System.Windows.Forms.Label();
+            this.lbl_zona = new System.Windows.Forms.Label();
             this.lblAnio = new System.Windows.Forms.Label();
             this.lblFechaIngreso = new System.Windows.Forms.Label();
             this.lblModelo = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblTipoEquipo = new System.Windows.Forms.Label();
-            this.lbl_codigo_flota = new System.Windows.Forms.Label();
             this.pnlBorde.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +46,7 @@
             this.pnlBorde.BorderRadius = 20;
             this.pnlBorde.Controls.Add(this.lbl_codigo_flota);
             this.pnlBorde.Controls.Add(this.lbl_num_serie);
-            this.pnlBorde.Controls.Add(this.lbl_id_equipo);
+            this.pnlBorde.Controls.Add(this.lbl_zona);
             this.pnlBorde.Controls.Add(this.lblAnio);
             this.pnlBorde.Controls.Add(this.lblFechaIngreso);
             this.pnlBorde.Controls.Add(this.lblModelo);
@@ -56,6 +56,16 @@
             this.pnlBorde.Name = "pnlBorde";
             this.pnlBorde.Size = new System.Drawing.Size(308, 177);
             this.pnlBorde.TabIndex = 0;
+            // 
+            // lbl_codigo_flota
+            // 
+            this.lbl_codigo_flota.AutoSize = true;
+            this.lbl_codigo_flota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_codigo_flota.Location = new System.Drawing.Point(177, 75);
+            this.lbl_codigo_flota.Name = "lbl_codigo_flota";
+            this.lbl_codigo_flota.Size = new System.Drawing.Size(50, 16);
+            this.lbl_codigo_flota.TabIndex = 7;
+            this.lbl_codigo_flota.Text = "label1";
             // 
             // lbl_num_serie
             // 
@@ -67,15 +77,15 @@
             this.lbl_num_serie.TabIndex = 6;
             this.lbl_num_serie.Text = "label1";
             // 
-            // lbl_id_equipo
+            // lbl_zona
             // 
-            this.lbl_id_equipo.AutoSize = true;
-            this.lbl_id_equipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lbl_id_equipo.Location = new System.Drawing.Point(177, 16);
-            this.lbl_id_equipo.Name = "lbl_id_equipo";
-            this.lbl_id_equipo.Size = new System.Drawing.Size(50, 16);
-            this.lbl_id_equipo.TabIndex = 5;
-            this.lbl_id_equipo.Text = "label1";
+            this.lbl_zona.AutoSize = true;
+            this.lbl_zona.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lbl_zona.Location = new System.Drawing.Point(177, 16);
+            this.lbl_zona.Name = "lbl_zona";
+            this.lbl_zona.Size = new System.Drawing.Size(50, 16);
+            this.lbl_zona.TabIndex = 5;
+            this.lbl_zona.Text = "label1";
             // 
             // lblAnio
             // 
@@ -127,16 +137,6 @@
             this.lblTipoEquipo.TabIndex = 0;
             this.lblTipoEquipo.Text = "label1";
             // 
-            // lbl_codigo_flota
-            // 
-            this.lbl_codigo_flota.AutoSize = true;
-            this.lbl_codigo_flota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lbl_codigo_flota.Location = new System.Drawing.Point(177, 75);
-            this.lbl_codigo_flota.Name = "lbl_codigo_flota";
-            this.lbl_codigo_flota.Size = new System.Drawing.Size(50, 16);
-            this.lbl_codigo_flota.TabIndex = 7;
-            this.lbl_codigo_flota.Text = "label1";
-            // 
             // EquipoCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,7 +158,7 @@
         private System.Windows.Forms.Label lblModelo;
         private System.Windows.Forms.Label lblFechaIngreso;
         private System.Windows.Forms.Label lblAnio;
-        private System.Windows.Forms.Label lbl_id_equipo;
+        private System.Windows.Forms.Label lbl_zona;
         private System.Windows.Forms.Label lbl_num_serie;
         private System.Windows.Forms.Label lbl_codigo_flota;
     }

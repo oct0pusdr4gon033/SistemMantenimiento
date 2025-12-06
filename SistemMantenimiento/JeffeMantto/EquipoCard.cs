@@ -15,8 +15,6 @@ namespace SistemMantenimiento.JeffeMantto
     {
         // EVENTO que notifica al formulario padre
         public event EventHandler<string> TarjetaClickeada;
-        public entEquipo Equipo { get; set; }
-
 
         public string codigo_flota { get; private set; }
 
@@ -30,6 +28,7 @@ namespace SistemMantenimiento.JeffeMantto
 
         public void CargarDatos(
             int id_equipo,
+            string zona,
             string codigoFlota,
             string tipoEquipo,
             string num_serie,
@@ -38,10 +37,10 @@ namespace SistemMantenimiento.JeffeMantto
             DateTime fechaIngreso,
             int anioFabricacion)
         {
-            
+
 
             // Asignamos los valores a los Labels
-            lbl_id_equipo.Text = id_equipo.ToString();
+            lbl_zona.Text = zona; 
             lbl_codigo_flota.Text = codigoFlota;
             lblTipoEquipo.Text = tipoEquipo;
             lblMarca.Text = marca;

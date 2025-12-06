@@ -58,6 +58,7 @@
     <Compile Include="Consultas\Requerimiento\datRequerimientoInterno.cs" />
     <Compile Include="Consultas\Usuario\datUsuario.cs" />
     <Compile Include="Consultas\Usuario\datUsuarioLogueado.cs" />
+    <Compile Include="datLlenarCombos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

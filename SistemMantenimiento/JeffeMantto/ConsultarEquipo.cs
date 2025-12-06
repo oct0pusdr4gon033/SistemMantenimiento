@@ -28,7 +28,7 @@ namespace SistemMantenimiento.JeffeMantto
         {
             InitializeComponent();
             usuarioLogueado = usuario;
-            RealizarBusqueda(null, null, null, null);
+            RealizarBusqueda(null, null, null, null, null);
             panel_opciones.Visible = false;
             panel_form_hijo.Visible = false;
        
@@ -87,9 +87,8 @@ namespace SistemMantenimiento.JeffeMantto
             string codigo_flota = null;
             string modelo = null;
             int ? anio = null;
-            string num_serie = null;
-
-
+            string marca = null;
+            string area = null; 
 
             // 4. Usamos un 'switch' para asignar el 'valor' al parámetro correcto
             switch (filtroSeleccionado)
@@ -112,13 +111,15 @@ namespace SistemMantenimiento.JeffeMantto
                         return;
                     }
                     break;
-                case "Número por Serie":
-                    num_serie = valor;
+                case "Marca":
+                    marca = valor;
                     break;
+                case "Area":
+                    area= valor;
+                    break; 
             }
 
-            RealizarBusqueda( codigo_flota,  modelo,  anio,
-                                       num_serie);
+            RealizarBusqueda( codigo_flota, modelo, marca,area, anio);
             limpiarBuscador();
         }
         private void limpiarBuscador()
@@ -127,7 +128,7 @@ namespace SistemMantenimiento.JeffeMantto
             cmb_tipo_filtro.SelectedIndex = -1;
 
         }
-        
+
         /// <summary>
         /// Función maestra de búsqueda y dibujado
         /// </summary>
@@ -137,38 +138,54 @@ namespace SistemMantenimiento.JeffeMantto
         /// <param name="modelo"></param>
         /// <param name="fecha"></param>
         /// <param name="num_serie"></param>
-        private void RealizarBusqueda(string codigo_flota, string modelo, int? anio,
-                                      string num_serie)
+        private void RealizarBusqueda(string codigo_flota, string modelo, string marca, string area, int? anio)
         {
             DesactivarPanelDeAcciones();
             flp_equipos_buscados.Controls.Clear();
 
             try
             {
-                List<entEquipo> resultados = logEquipo.Instancia.BuscarEquipos(codigo_flota, modelo, num_serie,anio);
+                // Normalizar valores: si están vacíos, enviamos null
+                string filtroFlota = string.IsNullOrWhiteSpace(codigo_flota) ? null : codigo_flota;
+                string filtroModelo = string.IsNullOrWhiteSpace(modelo) ? null : modelo;
+                string filtroMarca = string.IsNullOrWhiteSpace(marca) ? null : marca;
+                string filtroArea = string.IsNullOrWhiteSpace(area) ? null : area;
+
+                // Conversión correcta del año: si no hay valor, enviar null
+                int anioFinal = anio.HasValue ? anio.Value : 0;
+                // → En nuestra lógica, 0 significa "NULL en SQL"
+
+                // Ejecutar la búsqueda REAL basada en nuestro SP
+                List<entEquipo> resultados = logEquipo.Instancia.BuscarEquipoParametros(
+                    filtroFlota,
+                    filtroModelo,
+                    filtroMarca,
+                    filtroArea,
+                    anioFinal
+                );
 
                 if (resultados.Count == 0)
                 {
-                    MessageBox.Show("No se encontraron equipos.");
+                    MessageBox.Show("No se encontraron equipos con esos criterios.");
                     return;
                 }
 
-                // Crear y agregar tarjetas con eventos conectados
                 foreach (entEquipo equipo in resultados)
                 {
                     EquipoCard nuevaTarjeta = new EquipoCard();
 
                     nuevaTarjeta.CargarDatos(
                         equipo.id_equipo,
+                        equipo.nombre_area,
                         equipo.codigo_flota,
-                        equipo.tipo_equipo, // Argumento 3: tipoEquipo (string)
-                        equipo.numero_serie,
-                        equipo.marca,
-                        equipo.modelo,
-                        equipo.fecha_ingreso.HasValue ? equipo.fecha_ingreso.Value : DateTime.MinValue,
-                        equipo.anio_fabricacion.HasValue ? equipo.anio_fabricacion.Value : 0 // Argumento 8: anioFabricacion (int)
+                        equipo.nombre_tipo_equipo,
+                        equipo.nume_serie,        // ✔ NOMBRE REAL EN ENTIDAD
+                        equipo.nombre_marca,
+                        equipo.nombre_modelo,
+                        equipo.fecha_ingreso,
+                        equipo.anio_fabricacion      // ✔ MAPEADO DESDE anio_frabricacion BD
                     );
-                    // ¡CORREGIDO! Suscribirse al evento antes de agregar
+
                     nuevaTarjeta.TarjetaClickeada += Tarjeta_Click_Handler;
 
                     flp_equipos_buscados.Controls.Add(nuevaTarjeta);
@@ -184,20 +201,29 @@ namespace SistemMantenimiento.JeffeMantto
         {
             try
             {
-                // Cargar la entidad desde la BD
-                equipo_seleccionado = logEquipo.Instancia.BuscarEquipos(codigo_flota, null, null, null)
-                                        .FirstOrDefault();
+                lblEquipoSeleccionado.Text = "Cargando detalles...";
+                // Reutilizamos la búsqueda enviando NULL en todo excepto el código de flota
+                // Orden de params según el SP: (flota, modelo, marca, area, anio)
+                var listaResultados = logEquipo.Instancia.BuscarEquipoParametros(
+                    null,
+                    null,
+                    null,
+                    null,
+                    0
+                );
+
+                equipo_seleccionado = listaResultados.FirstOrDefault();
 
                 if (equipo_seleccionado == null)
                 {
-                    MessageBox.Show("No se encontró el equipo seleccionado.");
+                    MessageBox.Show("No se encontró el equipo seleccionado (pudo haber sido eliminado).");
                     return;
                 }
 
                 // Mostrar información en panel lateral
                 lblEquipoSeleccionado.Text =
                     $"{equipo_seleccionado.codigo_flota}\n" +
-                    $"{equipo_seleccionado.marca} {equipo_seleccionado.modelo}";
+                    $"{equipo_seleccionado.nombre_marca} {equipo_seleccionado.nombre_modelo}";
 
                 SetBotonesEnabled(panel_opciones, true);
                 panel_opciones.Visible = true;

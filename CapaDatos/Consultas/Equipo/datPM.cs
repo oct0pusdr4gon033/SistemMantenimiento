@@ -1,6 +1,7 @@
 ﻿using CapaEntidad.Equipo;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -26,9 +27,24 @@ namespace CapaDatos.Consultas.Equipo
             {
                 using (SqlConnection conn = ConexionDB.ConexionDB.Instancia.Conectar())
                 {
-                    using (SqlCommand cmd= new SqlCommand ("sp_InsertarPM",conn))
+                    using (SqlCommand cmd= new SqlCommand ("sp_InsertarPM", conn))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
 
+                        cmd.Parameters.AddWithValue("@nombre_area", pm.nombre_pm);
+
+                        conn.Open();
+                        int filas_afectadas = cmd.ExecuteNonQuery();
+
+                        if (filas_afectadas > 0)
+                        {
+                            return pm;
+                        }
+                        else
+                        {
+
+                            return null;
+                        }
                     }
                 }
             }catch(Exception ex)
