@@ -56,6 +56,7 @@
     <Compile Include="Consultas\Producto\datProducto.cs" />
     <Compile Include="Consultas\Producto\datUnidadMedida_Producto.cs" />
     <Compile Include="Consultas\Proveedor\datProveedor.cs" />
+    <Compile Include="Consultas\Requerimiento\datDetReqInt.cs" />
     <Compile Include="Consultas\Requerimiento\datRequerimientoInterno.cs" />
     <Compile Include="Consultas\Usuario\datUsuario.cs" />
     <Compile Include="Consultas\Usuario\datUsuarioLogueado.cs" />
